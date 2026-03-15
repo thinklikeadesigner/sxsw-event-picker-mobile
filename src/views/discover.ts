@@ -3,14 +3,10 @@ import { renderEventCard } from '../components/event-card';
 import { dayKey, dayLabel, fmt } from '../utils/time';
 import { isMusicUnlocked, countLockedMusic, countTotalMusic, STRIPE_PAYMENT_LINK, validateAccessCode, unlockMusic } from '../paywall';
 
-function matchesCostFilter(cost: string, filter: string): boolean {
+function matchesTypeFilter(eventType: string, filter: string): boolean {
   if (filter === 'all') return true;
-  const c = (cost || '').toLowerCase();
-  if (filter === 'free') return c === 'free';
-  if (filter === 'register') return c === 'register';
-  if (filter === 'approval') return c.includes('approval');
-  if (filter === 'request') return c.includes('request');
-  if (filter === 'paid') return /\$/.test(cost);
+  if (filter === 'music') return eventType === 'Music + Live Show';
+  if (filter === 'tech') return eventType !== 'Music + Live Show';
   return true;
 }
 
@@ -20,7 +16,7 @@ export function renderDiscover(container: HTMLElement) {
   // Filter events for current day, cost, and not ended
   const now = new Date();
   const dayEvents = events.filter(e =>
-    dayKey(e.start) === currentDay && matchesCostFilter(e.cost, filters.cost) && e.end > now
+    dayKey(e.start) === currentDay && matchesTypeFilter(e.type, filters.type) && e.end > now
   );
 
   if (dayEvents.length === 0) {

@@ -21,6 +21,7 @@ const state: AppState = {
   currentView: 'discover',
   currentDay: (() => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; })(),
   filters: { cost: 'all', type: 'all', search: '' },
+  // type filter is the primary one now (all / music / tech)
   resolveIndex: 0,
 };
 

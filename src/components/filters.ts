@@ -13,13 +13,10 @@ const DAYS = [
   { key: '2026-03-18', label: 'Wed 18' },
 ];
 
-const COSTS = [
+const TYPES = [
   { key: 'all', label: 'All' },
-  { key: 'free', label: 'Free' },
-  { key: 'register', label: 'Register' },
-  { key: 'approval', label: 'Approval Required' },
-  { key: 'request', label: 'Request to Join' },
-  { key: 'paid', label: 'Paid ($)' },
+  { key: 'music', label: '\uD83C\uDFB5 Music' },
+  { key: 'tech', label: 'Tech & Networking' },
 ];
 
 export function renderFilters() {
@@ -54,9 +51,9 @@ export function renderFilters() {
 
   const costFilters = document.getElementById('cost-filters')!;
   costFilters.innerHTML = `
-    <span class="filter-label">COST:</span>
-    ${COSTS.map(c => `
-      <button class="filter-btn ${filters.cost === c.key ? 'active' : ''}" data-cost="${c.key}">${c.label}</button>
+    <span class="filter-label">TYPE:</span>
+    ${TYPES.map(t => `
+      <button class="filter-btn ${filters.type === t.key ? 'active' : ''}" data-type="${t.key}">${t.label}</button>
     `).join('')}
   `;
 
@@ -65,9 +62,9 @@ export function renderFilters() {
     btn.addEventListener('click', () => setDay(btn.getAttribute('data-day')!));
   });
 
-  // Bind cost buttons
-  costFilters.querySelectorAll('[data-cost]').forEach(btn => {
-    btn.addEventListener('click', () => setFilter('cost', btn.getAttribute('data-cost')!));
+  // Bind type buttons
+  costFilters.querySelectorAll('[data-type]').forEach(btn => {
+    btn.addEventListener('click', () => setFilter('type', btn.getAttribute('data-type')!));
   });
 
   // Bind star/clear day

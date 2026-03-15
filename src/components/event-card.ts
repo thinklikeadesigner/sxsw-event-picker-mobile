@@ -28,8 +28,10 @@ export function renderEventCard(event: SXSWEvent, starred: boolean, conflictCoun
   }
 
   const isFree = isFreeSample(event);
-  const musicClass = isMusicEvent(event) ? 'music-event' : '';
+  const isMusic = isMusicEvent(event);
+  const musicClass = isMusic ? 'music-event' : '';
   const sampleBadge = isFree ? '<span class="pill pill-sample">FREE PREVIEW</span>' : '';
+  const musicBadge = isMusic ? '<span class="pill pill-music">\uD83C\uDFB5 Live Music</span>' : '';
 
   return `
     <div class="event-card ${starred ? 'starred' : ''} ${conflictCount > 0 ? 'has-conflict' : ''} ${musicClass}"
@@ -39,7 +41,8 @@ export function renderEventCard(event: SXSWEvent, starred: boolean, conflictCoun
       <div class="event-meta">
         <span class="pill pill-time">${fmt(event.start)} \u2013 ${fmt(event.end)}</span>
         ${event.cost ? `<span class="pill pill-cost">${event.cost}</span>` : ''}
-        ${event.type ? `<span class="pill pill-type">${event.type}</span>` : ''}
+        ${musicBadge}
+        ${!isMusic && event.type ? `<span class="pill pill-type">${event.type}</span>` : ''}
         ${sampleBadge}
         ${conflictCount > 0 ? `<span class="pill pill-conflict">\u26A1 ${conflictCount} overlap${conflictCount > 1 ? 's' : ''}</span>` : ''}
       </div>
