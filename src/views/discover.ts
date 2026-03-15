@@ -73,7 +73,7 @@ export function renderDiscover(container: HTMLElement) {
           </div>
         </div>
         <div class="paywall-actions">
-          <a href="${STRIPE_PAYMENT_LINK}" class="paywall-btn paywall-buy" target="_blank">Unlock All &mdash; <span class="price-old">$19</span> $9</a>
+          <a href="${STRIPE_PAYMENT_LINK}" class="paywall-btn paywall-buy" target="_blank">Unlock All &mdash; $9</a>
           <button class="paywall-btn paywall-code" id="paywall-code-btn">Have a code?</button>
         </div>
         <div class="paywall-code-form" id="paywall-code-form" style="display:none">
