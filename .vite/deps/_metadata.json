@@ -1,0 +1,25 @@
+{
+  "hash": "fe1ab92b",
+  "configHash": "15d3e779",
+  "lockfileHash": "ba3e37e2",
+  "browserHash": "ee273203",
+  "optimized": {
+    "@vercel/analytics": {
+      "src": "../../node_modules/@vercel/analytics/dist/index.mjs",
+      "file": "@vercel_analytics.js",
+      "fileHash": "512ec516",
+      "needsInterop": false
+    },
+    "leaflet": {
+      "src": "../../node_modules/leaflet/dist/leaflet-src.js",
+      "file": "leaflet.js",
+      "fileHash": "185d9cb9",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-BUSYA2B4": {
+      "file": "chunk-BUSYA2B4.js"
+    }
+  }
+}

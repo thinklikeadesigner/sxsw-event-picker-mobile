@@ -1,4 +1,5 @@
 import L from 'leaflet';
+import { SXSWEvent } from '../data/types';
 import { getState, toggleStar } from '../state';
 import { dayKey, fmt } from '../utils/time';
 import { VENUE_COORDS } from '../data/coordinates';
@@ -18,14 +19,19 @@ let userMarker: L.CircleMarker | null = null;
 let happeningSoon = false;
 
 function createMap(container: HTMLElement): L.Map {
+  container.innerHTML = '';
+
   const mapDiv = document.createElement('div');
   mapDiv.id = 'map-container';
-  mapDiv.style.height = 'calc(100vh - 200px)';
+  mapDiv.style.height = '50vh';
   mapDiv.style.width = '100%';
   mapDiv.style.borderRadius = '12px';
   mapDiv.style.overflow = 'hidden';
-  container.innerHTML = '';
   container.appendChild(mapDiv);
+
+  const tlDiv = document.createElement('div');
+  tlDiv.id = 'timeline-container';
+  container.appendChild(tlDiv);
 
   map = L.map('map-container').setView([30.2672, -97.7431], 14);
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
@@ -180,6 +186,156 @@ export function renderMap(container: HTMLElement) {
 
   // Invalidate size after render (Leaflet needs this when container changes)
   setTimeout(() => map?.invalidateSize(), 100);
+
+  // --- Timeline below map ---
+  const timelineDiv = document.getElementById('timeline-container');
+  if (timelineDiv) renderTimeline(timelineDiv, dayEvents, now);
+}
+
+function renderTimeline(container: HTMLElement, events: SXSWEvent[], now: Date) {
+  if (events.length === 0) {
+    container.innerHTML = '';
+    return;
+  }
+
+  // Find time bounds for the day
+  const starts = events.map(e => e.start.getTime());
+  const ends = events.map(e => e.end.getTime());
+  const dayStart = Math.min(...starts);
+  const dayEnd = Math.max(...ends);
+  const totalMs = dayEnd - dayStart;
+  if (totalMs <= 0) { container.innerHTML = ''; return; }
+
+  // Generate hour labels
+  const firstHour = new Date(dayStart);
+  firstHour.setMinutes(0, 0, 0);
+  const hours: Date[] = [];
+  for (let t = firstHour.getTime(); t <= dayEnd; t += 3600000) {
+    if (t >= dayStart - 3600000) hours.push(new Date(t));
+  }
+
+  const hourLabels = hours.map(h => {
+    const hr = h.getHours();
+    const ampm = hr >= 12 ? 'PM' : 'AM';
+    const h12 = hr === 0 ? 12 : hr > 12 ? hr - 12 : hr;
+    const pct = ((h.getTime() - dayStart) / totalMs) * 100;
+    return `<div class="tl-hour" style="left:${pct}%">${h12} ${ampm}</div>`;
+  }).join('');
+
+  // Now line
+  const nowPct = ((now.getTime() - dayStart) / totalMs) * 100;
+  const nowLine = (nowPct >= 0 && nowPct <= 100)
+    ? `<div class="tl-now" style="left:${nowPct}%"></div>`
+    : '';
+
+  // Sort events by start time
+  const sorted = [...events].sort((a, b) => a.start.getTime() - b.start.getTime());
+
+  // Assign rows (simple greedy lane assignment to avoid overlap)
+  const lanes: number[] = []; // end times per lane
+  const eventLanes: number[] = [];
+  for (const e of sorted) {
+    let placed = false;
+    for (let i = 0; i < lanes.length; i++) {
+      if (e.start.getTime() >= lanes[i]) {
+        lanes[i] = e.end.getTime();
+        eventLanes.push(i);
+        placed = true;
+        break;
+      }
+    }
+    if (!placed) {
+      lanes.push(e.end.getTime());
+      eventLanes.push(lanes.length - 1);
+    }
+  }
+
+  const rowHeight = 28;
+  const totalHeight = lanes.length * (rowHeight + 4) + 40;
+
+  const bars = sorted.map((e, i) => {
+    const left = ((e.start.getTime() - dayStart) / totalMs) * 100;
+    const width = ((e.end.getTime() - e.start.getTime()) / totalMs) * 100;
+    const top = eventLanes[i] * (rowHeight + 4);
+    const isMusic = e.type === 'Music + Live Show';
+    const bg = isMusic ? '#7c3aed' : '#2563eb';
+    const label = e.summary.length > 30 ? e.summary.slice(0, 28) + '...' : e.summary;
+    return `<div class="tl-bar" data-index="${e.index}" style="left:${left}%;width:${Math.max(width, 1.5)}%;top:${top}px;background:${bg}" title="${e.summary}\n${fmt(e.start)} \u2013 ${fmt(e.end)}\n${e.location}">${label}</div>`;
+  }).join('');
+
+  container.innerHTML = `
+    <div class="tl-wrapper">
+      <div class="tl-label">Timeline</div>
+      <div class="tl-scroll">
+        <div class="tl-track" style="height:${totalHeight}px;min-width:800px">
+          <div class="tl-hours">${hourLabels}</div>
+          <div class="tl-bars" style="position:relative;top:30px">${bars}</div>
+          ${nowLine}
+        </div>
+      </div>
+    </div>`;
+
+  // Bind click on timeline bars
+  container.querySelectorAll('.tl-bar').forEach(bar => {
+    bar.addEventListener('click', () => {
+      const idx = parseInt(bar.getAttribute('data-index') || '-1');
+      if (idx < 0) return;
+      const event = events.find(e => e.index === idx);
+      if (!event) return;
+
+      const isMobile = window.innerWidth <= 768;
+
+      if (isMobile) {
+        // Show modal on mobile
+        const starred = getState().starred.has(event.index);
+        const isMusic = event.type === 'Music + Live Show';
+        let modal = document.getElementById('tl-modal');
+        if (!modal) {
+          modal = document.createElement('div');
+          modal.id = 'tl-modal';
+          document.body.appendChild(modal);
+        }
+        modal.innerHTML = `
+          <div class="tl-modal-overlay">
+            <div class="tl-modal-card">
+              <button class="tl-modal-close" id="tl-modal-close">&times;</button>
+              <div class="event-name" style="font-size:16px;font-weight:700;margin-bottom:8px">${event.summary}</div>
+              <div class="event-meta" style="margin-bottom:8px">
+                <span class="pill pill-time">${fmt(event.start)} \u2013 ${fmt(event.end)}</span>
+                ${event.cost ? `<span class="pill pill-cost">${event.cost}</span>` : ''}
+                ${isMusic ? '<span class="pill pill-music">\uD83C\uDFB5 Live Music</span>' : `<span class="pill pill-type">${event.type}</span>`}
+              </div>
+              ${event.location ? `<div style="margin-bottom:6px">\uD83D\uDCCD <a href="https://maps.google.com/?q=${encodeURIComponent(event.location)}" target="_blank" style="color:#3b82f6;text-decoration:none">${event.location}</a></div>` : ''}
+              ${event.url ? `<div style="margin-bottom:6px"><a href="${event.url}" target="_blank" style="color:#3b82f6;text-decoration:none">Event page \u2197</a></div>` : ''}
+              ${event.description ? `<div style="font-size:12px;color:#999;margin-top:8px">${event.description}</div>` : ''}
+              <button onclick="window.__toggleStar(${event.index})" style="margin-top:12px;padding:8px 16px;border-radius:8px;border:1px solid ${starred ? '#ef4444' : '#4ade80'};background:${starred ? '#1a0000' : '#052e16'};color:${starred ? '#ef4444' : '#4ade80'};cursor:pointer;font-size:13px;font-weight:600;width:100%">
+                ${starred ? '\u2605 Unstar' : '\u2606 Star this event'}
+              </button>
+            </div>
+          </div>`;
+        modal.style.display = 'block';
+        document.getElementById('tl-modal-close')?.addEventListener('click', () => {
+          modal!.style.display = 'none';
+        });
+        modal.querySelector('.tl-modal-overlay')?.addEventListener('click', (e) => {
+          if ((e.target as HTMLElement).classList.contains('tl-modal-overlay')) {
+            modal!.style.display = 'none';
+          }
+        });
+      } else {
+        // Pan map on desktop
+        if (!map || !markersLayer) return;
+        const coords = VENUE_COORDS[event.location];
+        if (!coords) return;
+        map.setView([coords[0], coords[1]], 16);
+        markersLayer.eachLayer((layer: any) => {
+          if (layer.getLatLng && layer.getLatLng().lat === coords[0] && layer.getLatLng().lng === coords[1]) {
+            layer.openPopup();
+          }
+        });
+      }
+    });
+  });
 }
 
 export function destroyMap() {

@@ -49,6 +49,7 @@ export function toggleStar(index: number) {
 export function setView(view: ViewMode) {
   state.currentView = view;
   if (view === 'resolve') state.resolveIndex = 0;
+  saveToStorage();
   notify();
 }
 
@@ -115,6 +116,7 @@ function saveToStorage() {
       starred: [...state.starred],
       conflicts: state.conflicts,
       currentDay: state.currentDay,
+      currentView: state.currentView,
     }));
   } catch {}
 }
@@ -128,5 +130,6 @@ function loadFromStorage() {
     if (data.conflicts) state.conflicts = data.conflicts;
     const today = state.currentDay;
     if (data.currentDay && data.currentDay >= today) state.currentDay = data.currentDay;
+    if (data.currentView) state.currentView = data.currentView;
   } catch {}
 }

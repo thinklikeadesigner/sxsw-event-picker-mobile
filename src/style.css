@@ -677,6 +677,114 @@ main { padding: 16px 24px; }
 }
 .map-loc-btn:hover { background: #2a2a2a; }
 
+/* ===== TIMELINE ===== */
+.tl-wrapper {
+  margin-top: 16px;
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid #333;
+}
+.tl-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #888;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.tl-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+.tl-track {
+  position: relative;
+  min-width: 800px;
+}
+.tl-hours {
+  position: relative;
+  height: 24px;
+  border-bottom: 1px solid #333;
+}
+.tl-hour {
+  position: absolute;
+  font-size: 11px;
+  color: #666;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.tl-bar {
+  position: absolute;
+  height: 24px;
+  border-radius: 4px;
+  padding: 0 6px;
+  font-size: 11px;
+  color: #fff;
+  line-height: 24px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity 0.15s, transform 0.1s;
+}
+.tl-bar:hover {
+  opacity: 1;
+  z-index: 10;
+  transform: scaleY(1.15);
+}
+.tl-now {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #ef4444;
+  z-index: 5;
+}
+.tl-now::before {
+  content: 'Now';
+  position: absolute;
+  top: -18px;
+  left: -10px;
+  font-size: 9px;
+  color: #ef4444;
+  font-weight: 700;
+}
+
+/* ===== TIMELINE MODAL ===== */
+.tl-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.tl-modal-card {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+  position: relative;
+  color: #e0e0e0;
+}
+.tl-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 24px;
+  cursor: pointer;
+}
+.tl-modal-close:hover { color: #fff; }
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   /* 1. Bottom tab navigation */
@@ -736,9 +844,9 @@ main { padding: 16px 24px; }
     margin-top: 8px;
   }
 
-  /* 6. Full-height map */
+  /* 6. Map with room for timeline */
   #map-container {
-    height: calc(100dvh - 120px) !important;
+    height: 45vh !important;
     border-radius: 0 !important;
   }
 
@@ -774,7 +882,14 @@ main { padding: 16px 24px; }
   .events-row { flex-direction: column; flex-wrap: nowrap; }
   .event-card { min-width: 0; max-width: 100%; flex: none; }
   .resolve-versus { flex-direction: column; }
-  .resolve-divider { padding: 8px 0; }
+  .resolve-divider { padding: 4px 0; }
+  .resolve-card { padding: 12px; }
+  .resolve-card .event-name { font-size: 14px; margin-bottom: 4px; }
+  .resolve-description { max-height: 60px; font-size: 12px; margin-bottom: 6px; }
+  .resolve-pick { padding: 10px 16px; font-size: 14px; }
+  .resolve-side { gap: 8px; }
+  .resolve-container { padding: 8px 0; }
+  .resolve-progress { margin-bottom: 10px; }
   .vs-badge { border-radius: 8px; }
   .day-header { font-size: 16px; }
   .toast { left: 12px; right: 12px; bottom: 70px; max-width: none; }
