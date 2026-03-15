@@ -1,4 +1,5 @@
 import './style.css';
+import { inject } from '@vercel/analytics';
 import { init, onStateChange, getState, setView } from './state';
 import { renderDiscover } from './views/discover';
 import { renderResolve } from './views/resolve';
@@ -7,6 +8,8 @@ import { renderMap, destroyMap } from './views/map';
 import { renderFilters } from './components/filters';
 import { ViewMode } from './data/types';
 import { checkUnlockFromUrl } from './paywall';
+
+inject();
 
 function render() {
   const state = getState();
