@@ -2,6 +2,7 @@ import L from 'leaflet';
 import { getState, toggleStar } from '../state';
 import { dayKey, fmt } from '../utils/time';
 import { VENUE_COORDS } from '../data/coordinates';
+import { isEventLocked, isMusicEvent } from '../paywall';
 
 // Fix Leaflet default icon issue with bundlers
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -109,19 +110,27 @@ export function renderMap(container: HTMLElement) {
     const coords = VENUE_COORDS[event.location];
     if (!coords) continue;
 
+    const locked = isEventLocked(event);
+    const isMusic = isMusicEvent(event);
     const isStarred = starred.has(event.index);
 
     const marker = L.circleMarker([coords[0], coords[1]], {
       radius: 8,
-      fillColor: isStarred ? '#4ade80' : '#3b82f6',
-      color: isStarred ? '#166534' : '#1e40af',
+      fillColor: locked ? '#a78bfa' : isStarred ? '#4ade80' : isMusic ? '#c4b5fd' : '#3b82f6',
+      color: locked ? '#4c1d95' : isStarred ? '#166534' : isMusic ? '#6d28d9' : '#1e40af',
       weight: 2,
-      opacity: 1,
-      fillOpacity: 0.8,
+      opacity: locked ? 0.5 : 1,
+      fillOpacity: locked ? 0.4 : 0.8,
     });
 
-    const popupContent = `
-      <div style="font-family:-apple-system,sans-serif;min-width:200px">
+    const popupContent = locked
+      ? `<div style="font-family:-apple-system,sans-serif;min-width:180px">
+          <strong style="font-size:14px;color:#a78bfa">&#x1F512; ${event.summary}</strong><br>
+          <span style="color:#666;font-size:12px">Music Event &middot; Locked</span><br>
+          <span style="color:#888;font-size:11px">${event.location.split(',')[0]}</span><br>
+          <span style="color:#a78bfa;font-size:11px;margin-top:4px;display:inline-block">Unlock music events to see details</span>
+        </div>`
+      : `<div style="font-family:-apple-system,sans-serif;min-width:200px">
         <strong style="font-size:14px">${event.summary}</strong><br>
         <span style="color:#666;font-size:12px">${fmt(event.start)} \u2013 ${fmt(event.end)}</span><br>
         ${event.cost ? `<span style="color:#7c3aed;font-size:12px">${event.cost}</span><br>` : ''}
@@ -131,8 +140,7 @@ export function renderMap(container: HTMLElement) {
         <button onclick="window.__toggleStar(${event.index})" style="margin-top:6px;padding:4px 12px;border-radius:6px;border:1px solid ${isStarred ? '#ef4444' : '#4ade80'};background:${isStarred ? '#1a0000' : '#052e16'};color:${isStarred ? '#ef4444' : '#4ade80'};cursor:pointer;font-size:12px;font-weight:600">
           ${isStarred ? '\u2605 Unstar' : '\u2606 Star'}
         </button>
-      </div>
-    `;
+      </div>`;
 
     marker.bindPopup(popupContent);
     markersLayer!.addLayer(marker);

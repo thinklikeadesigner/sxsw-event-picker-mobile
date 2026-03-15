@@ -289,6 +289,150 @@ main { padding: 16px 24px; }
 }
 .empty-state h2 { color: #888; margin-bottom: 8px; }
 
+/* ===== PAYWALL ===== */
+.paywall-banner {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border: 1px solid #a78bfa;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.paywall-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.paywall-icon { font-size: 28px; }
+.paywall-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #e0e0e0;
+}
+.paywall-subtitle {
+  font-size: 12px;
+  color: #888;
+  margin-top: 2px;
+}
+.paywall-actions {
+  display: flex;
+  gap: 8px;
+}
+.paywall-btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s;
+  text-decoration: none;
+  text-align: center;
+}
+.paywall-buy {
+  background: #a78bfa;
+  color: #000;
+  flex: 1;
+}
+.paywall-buy:hover { background: #c4b5fd; }
+.price-old {
+  text-decoration: line-through;
+  opacity: 0.5;
+  font-weight: 400;
+  margin-right: 2px;
+}
+.paywall-code {
+  background: transparent;
+  border: 1px solid #444;
+  color: #888;
+  font-size: 12px;
+}
+.paywall-code:hover { border-color: #666; color: #ccc; }
+.paywall-code-form {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.paywall-input {
+  flex: 1;
+  min-width: 140px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background: #0f0f0f;
+  color: #e0e0e0;
+  font-size: 14px;
+}
+.paywall-input:focus { border-color: #a78bfa; outline: none; }
+.paywall-submit {
+  background: #a78bfa;
+  color: #000;
+  padding: 8px 16px;
+}
+.paywall-error {
+  width: 100%;
+  font-size: 12px;
+  color: #f87171;
+  margin-top: 4px;
+}
+
+/* Locked cards */
+.locked-card {
+  border-color: #2a2a3e !important;
+  background: #13131f !important;
+  cursor: default !important;
+  position: relative;
+  overflow: hidden;
+}
+.locked-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(19,19,31,0.9) 100%);
+  pointer-events: none;
+}
+.locked-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 14px;
+}
+.locked-name { color: #888 !important; }
+.pill-locked {
+  background: #1a1a2e;
+  color: #a78bfa;
+}
+.pill-locked-blur {
+  background: #1a1a2e;
+  color: #555;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+.locked-location {
+  color: #555 !important;
+  font-size: 11px;
+  margin-top: 5px;
+}
+.locked-cta {
+  font-size: 11px;
+  color: #a78bfa;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+/* Music event accent (unlocked) */
+.music-event { border-left: 3px solid #a78bfa; }
+.music-event.starred { border-color: #4ade80; border-left: 3px solid #a78bfa; }
+.pill-sample {
+  background: #a78bfa;
+  color: #000;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
 /* ===== RESOLVE VIEW ===== */
 .resolve-container {
   max-width: 900px;

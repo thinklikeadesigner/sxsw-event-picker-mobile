@@ -6,6 +6,7 @@ import { renderSchedule } from './views/schedule';
 import { renderMap, destroyMap } from './views/map';
 import { renderFilters } from './components/filters';
 import { ViewMode } from './data/types';
+import { checkUnlockFromUrl } from './paywall';
 
 function render() {
   const state = getState();
@@ -53,6 +54,7 @@ function render() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  checkUnlockFromUrl();
   init();
   onStateChange(render);
 

@@ -1,6 +1,7 @@
 import { getState, toggleStar } from '../state';
 import { renderEventCard } from '../components/event-card';
 import { dayKey, dayLabel, fmt } from '../utils/time';
+import { isMusicUnlocked, countLockedMusic, countTotalMusic, STRIPE_PAYMENT_LINK, validateAccessCode, unlockMusic } from '../paywall';
 
 function matchesCostFilter(cost: string, filter: string): boolean {
   if (filter === 'all') return true;
@@ -60,7 +61,34 @@ export function renderDiscover(container: HTMLElement) {
   const starredInDay = dayEvents.filter(e => starred.has(e.index)).length;
   const conflictsInDay = dayEvents.filter(e => conflictCounts[e.index]).length;
 
-  let html = `
+  // Paywall banner
+  const musicUnlocked = isMusicUnlocked();
+  const lockedCount = countLockedMusic(events, dayKey, currentDay);
+  const totalMusic = countTotalMusic(events);
+  let paywallHtml = '';
+  if (!musicUnlocked && lockedCount > 0) {
+    paywallHtml = `
+      <div class="paywall-banner" id="paywall-banner">
+        <div class="paywall-content">
+          <div class="paywall-icon">&#x1F3B5;</div>
+          <div class="paywall-text">
+            <div class="paywall-title">${lockedCount} music events today &middot; ${totalMusic} total</div>
+            <div class="paywall-subtitle">Free shows, secret headliners, day parties &mdash; unlock them all</div>
+          </div>
+        </div>
+        <div class="paywall-actions">
+          <a href="${STRIPE_PAYMENT_LINK}" class="paywall-btn paywall-buy" target="_blank">Unlock All &mdash; <span class="price-old">$19</span> $9</a>
+          <button class="paywall-btn paywall-code" id="paywall-code-btn">Have a code?</button>
+        </div>
+        <div class="paywall-code-form" id="paywall-code-form" style="display:none">
+          <input type="text" id="paywall-code-input" placeholder="Enter access code" class="paywall-input" autocomplete="off" />
+          <button class="paywall-btn paywall-submit" id="paywall-code-submit">Unlock</button>
+          <div class="paywall-error" id="paywall-error" style="display:none">Invalid code</div>
+        </div>
+      </div>`;
+  }
+
+  let html = paywallHtml + `
     <div class="day-header">
       ${dayLabel(d)}
       <span class="day-badge">${dayEvents.length} events</span>
@@ -80,8 +108,8 @@ export function renderDiscover(container: HTMLElement) {
 
   container.innerHTML = html;
 
-  // Bind click handlers
-  container.querySelectorAll('.event-card').forEach(card => {
+  // Bind click handlers (skip locked cards)
+  container.querySelectorAll('.event-card:not(.locked-card)').forEach(card => {
     card.addEventListener('click', (e) => {
       if ((e.target as HTMLElement).tagName === 'A') return;
 
@@ -96,6 +124,25 @@ export function renderDiscover(container: HTMLElement) {
         card.classList.toggle('expanded');
       }
     });
+  });
+
+  // Paywall code toggle + submit
+  document.getElementById('paywall-code-btn')?.addEventListener('click', () => {
+    const form = document.getElementById('paywall-code-form')!;
+    form.style.display = form.style.display === 'none' ? 'flex' : 'none';
+  });
+  document.getElementById('paywall-code-submit')?.addEventListener('click', () => {
+    const input = document.getElementById('paywall-code-input') as HTMLInputElement;
+    if (validateAccessCode(input.value)) {
+      unlockMusic();
+      // Re-render to show unlocked events
+      renderDiscover(container);
+    } else {
+      document.getElementById('paywall-error')!.style.display = 'block';
+    }
+  });
+  document.getElementById('paywall-code-input')?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') document.getElementById('paywall-code-submit')?.click();
   });
 
   // Add "Now" button if viewing today

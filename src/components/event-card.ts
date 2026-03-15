@@ -1,5 +1,6 @@
 import { SXSWEvent } from '../data/types';
 import { fmt } from '../utils/time';
+import { isEventLocked, isFreeSample, isMusicEvent } from '../paywall';
 
 export function formatUrlLabel(url: string): string {
   try {
@@ -22,8 +23,16 @@ export function formatUrlLabel(url: string): string {
 }
 
 export function renderEventCard(event: SXSWEvent, starred: boolean, conflictCount: number): string {
+  if (isEventLocked(event)) {
+    return renderLockedCard(event);
+  }
+
+  const isFree = isFreeSample(event);
+  const musicClass = isMusicEvent(event) ? 'music-event' : '';
+  const sampleBadge = isFree ? '<span class="pill pill-sample">FREE PREVIEW</span>' : '';
+
   return `
-    <div class="event-card ${starred ? 'starred' : ''} ${conflictCount > 0 ? 'has-conflict' : ''}"
+    <div class="event-card ${starred ? 'starred' : ''} ${conflictCount > 0 ? 'has-conflict' : ''} ${musicClass}"
          data-index="${event.index}">
       <div class="star-icon">${starred ? '\u2605' : '\u2606'}</div>
       <div class="event-name">${event.summary}</div>
@@ -31,10 +40,25 @@ export function renderEventCard(event: SXSWEvent, starred: boolean, conflictCoun
         <span class="pill pill-time">${fmt(event.start)} \u2013 ${fmt(event.end)}</span>
         ${event.cost ? `<span class="pill pill-cost">${event.cost}</span>` : ''}
         ${event.type ? `<span class="pill pill-type">${event.type}</span>` : ''}
+        ${sampleBadge}
         ${conflictCount > 0 ? `<span class="pill pill-conflict">\u26A1 ${conflictCount} overlap${conflictCount > 1 ? 's' : ''}</span>` : ''}
       </div>
       ${event.location ? `<a class="event-location" href="https://maps.google.com/?q=${encodeURIComponent(event.location)}" target="_blank">\uD83D\uDCCD ${event.location}</a>` : ''}
       ${event.url ? `<a class="event-url" href="${event.url}" target="_blank">${formatUrlLabel(event.url)}</a>` : ''}
       ${event.description ? `<div class="card-description">${event.description}</div>` : ''}
+    </div>`;
+}
+
+function renderLockedCard(event: SXSWEvent): string {
+  return `
+    <div class="event-card locked-card" data-index="${event.index}">
+      <div class="locked-icon">&#x1F512;</div>
+      <div class="event-name locked-name">${event.summary}</div>
+      <div class="event-meta">
+        <span class="pill pill-locked">&#x1F3B5; Music Event</span>
+        <span class="pill pill-locked-blur">&#x2588;&#x2588;:&#x2588;&#x2588; \u2013 &#x2588;&#x2588;:&#x2588;&#x2588;</span>
+      </div>
+      ${event.location ? `<div class="event-location locked-location">\uD83D\uDCCD ${event.location.split(',')[0]}</div>` : ''}
+      <div class="locked-cta">Unlock to see details & RSVP link</div>
     </div>`;
 }
