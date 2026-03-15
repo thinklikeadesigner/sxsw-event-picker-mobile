@@ -2,12 +2,13 @@ import { SXSWEvent } from './data/types';
 
 // --- Configuration ---
 // Replace with your Stripe Payment Link URL
-export const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/YOUR_LINK_HERE';
+export const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/14AdR17msfhq0RHbdfbV601';
 
 // Access codes for "already purchased" flow
 // Add codes here that you distribute (VIP gets one, CREW gets another, etc.)
 const ACCESS_CODES = new Set([
   'MUSIC2026',   // Fallback code included in Stripe receipt
+  'VIPSXSW',     // Inner circle — 100% off on Stripe too
 ]);
 
 // Free sample events — shown unlocked to hook users
