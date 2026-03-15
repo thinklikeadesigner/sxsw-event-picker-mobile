@@ -227,15 +227,18 @@ main { padding: 16px 24px; }
 .event-location a {
   color: #3b82f6;
   text-decoration: none;
+  display: inline;
 }
 .event-location a:hover { text-decoration: underline; }
 .event-url-row {
   margin-top: 4px;
+  font-size: 11px;
 }
 .event-url {
   font-size: 11px;
   color: #3b82f6;
   text-decoration: none;
+  display: inline;
 }
 .event-url:hover { text-decoration: underline; }
 
