@@ -46,8 +46,8 @@ export function renderEventCard(event: SXSWEvent, starred: boolean, conflictCoun
         ${sampleBadge}
         ${conflictCount > 0 ? `<span class="pill pill-conflict">\u26A1 ${conflictCount} overlap${conflictCount > 1 ? 's' : ''}</span>` : ''}
       </div>
-      ${event.location ? `<a class="event-location" href="https://maps.google.com/?q=${encodeURIComponent(event.location)}" target="_blank">\uD83D\uDCCD ${event.location}</a>` : ''}
-      ${event.url ? `<a class="event-url" href="${event.url}" target="_blank">${formatUrlLabel(event.url)}</a>` : ''}
+      ${event.location ? `<div class="event-location">\uD83D\uDCCD <a href="https://maps.google.com/?q=${encodeURIComponent(event.location)}" target="_blank">${event.location}</a></div>` : ''}
+      ${event.url ? `<div class="event-url-row"><a class="event-url" href="${event.url}" target="_blank">${formatUrlLabel(event.url)}</a></div>` : ''}
       ${event.description ? `<div class="card-description">${event.description}</div>` : ''}
     </div>`;
 }
