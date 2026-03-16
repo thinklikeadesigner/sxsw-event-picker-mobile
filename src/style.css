@@ -679,11 +679,14 @@ main { padding: 16px 24px; }
 
 /* ===== TIMELINE ===== */
 .tl-wrapper {
-  margin-top: 16px;
   background: #1a1a1a;
-  border-radius: 12px;
-  padding: 12px;
+  border-radius: 12px 12px 0 0;
+  padding: 10px 12px;
   border: 1px solid #333;
+  border-bottom: none;
+  height: calc(50vh - 60px);
+  display: flex;
+  flex-direction: column;
 }
 .tl-label {
   font-size: 13px;
@@ -692,11 +695,12 @@ main { padding: 16px 24px; }
   margin-bottom: 8px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  flex-shrink: 0;
 }
 .tl-scroll {
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: auto;
   -webkit-overflow-scrolling: touch;
+  flex: 1;
 }
 .tl-track {
   position: relative;
@@ -846,8 +850,13 @@ main { padding: 16px 24px; }
 
   /* 6. Map with room for timeline */
   #map-container {
-    height: 45vh !important;
+    height: 40vh !important;
     border-radius: 0 !important;
+  }
+  .tl-wrapper {
+    height: calc(60vh - 160px) !important;
+    border-radius: 0 !important;
+    margin-top: 0;
   }
 
   /* 8. Resolve view labels */

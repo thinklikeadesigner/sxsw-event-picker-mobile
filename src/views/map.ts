@@ -23,7 +23,7 @@ function createMap(container: HTMLElement): L.Map {
 
   const mapDiv = document.createElement('div');
   mapDiv.id = 'map-container';
-  mapDiv.style.height = '50vh';
+  mapDiv.style.height = '45vh';
   mapDiv.style.width = '100%';
   mapDiv.style.borderRadius = '12px';
   mapDiv.style.overflow = 'hidden';
