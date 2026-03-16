@@ -6013,6 +6013,42 @@ const EVENTS_DATA: RawEvent[] = [
     cost: "Approval Required",
     type: "Dinner + Networking",
     rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0517-metacognition-workshop@groupchat",
+    summary: "Metacognition: The New Leadership Superpower",
+    description: "Live workshop on metacognition and leadership development. Networking, live metacognition assessment, and workshop to reveal where your thinking patterns are working for you and where they're holding you back. Powered by Datababy behavior intelligence platform.",
+    dtstart: "20260316T183000",
+    dtend: "20260316T203000",
+    url: "https://partiful.com/e/VuddrJgPJ0kQSrtOeGq7",
+    location: "Tiger Den ATX, 1303 E 4th St, Austin, TX 78702",
+    cost: "$10",
+    type: "Event + Networking",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0518-jesse-itzler-5k@groupchat",
+    summary: "Big A## Run & Hang (Jesse Itzler x New Balance)",
+    description: "Community 5K run hosted by Jesse Itzler and New Balance. 7:30 AM shoe demo, 8 AM run for all paces, followed by coffee, music, snacks, and raffle with $10,000 in prizes. Event may be full but walk-ups possible.",
+    dtstart: "20260316T080000",
+    dtend: "20260316T110000",
+    url: "https://partiful.com/e/JMleewxYqUesC1hrYxgI",
+    location: "1600 S Congress Ave, Austin, TX 78704",
+    cost: "Free",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0519-casa-encantada-nm-house@groupchat",
+    summary: "Casa Encantada | An Exclusive VIP Evening @ New Mexico House",
+    description: "Exclusive networking for New Mexico's top frontier innovators and leading investors. Curated fireside conversations between entrepreneurs and investors, plus New Mexico-inspired cuisine and cocktails. Restricted to sponsors, investors, economic development professionals, and NM startups.",
+    dtstart: "20260316T170000",
+    dtend: "20260316T203000",
+    url: "https://www.eventbrite.com/e/casa-encantada-an-exclusive-vip-evening-new-mexico-house-tickets-1983641586383",
+    location: "The Courtyard ATX, 208 W 4th St Suite C, Austin, TX 78701",
+    cost: "Approval Required",
+    type: "Event + Networking",
+    rawBlock: ""
   }
 ];
 
