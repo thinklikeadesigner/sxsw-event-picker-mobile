@@ -5929,6 +5929,90 @@ const EVENTS_DATA: RawEvent[] = [
     cost: "Free",
     type: "Music + Live Show",
     rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0510-international-mixer-uk-house@webbatx",
+    summary: "International Mixer at UK House with Sister Cities International",
+    description: "International networking mixer hosted at UK House during SXSW, in partnership with Sister Cities International.",
+    dtstart: "20260316T113000",
+    dtend: "20260316T150000",
+    url: "https://www.events.great.gov.uk/website/19015/",
+    location: "Palm Door On Sixth, 508 E 6th St, Austin, TX 78701",
+    cost: "Register",
+    type: "Event + Networking",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0511-futurespaces-sxsw@webbatx",
+    summary: "Futurespaces x SXSW",
+    description: "Futurespaces event during SXSW at Woody's Bar.",
+    dtstart: "20260316T140000",
+    dtend: "20260316T200000",
+    url: "https://luma.com/fs_sxsw",
+    location: "Woody's Bar, 715 W 6th St, Austin, TX 78701",
+    cost: "Register",
+    type: "Event + Networking",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0512-sauna-like-a-finn@webbatx",
+    summary: "SAUNA LIKE A FINN. Authentic Finnish Sauna Evening - A Reset at SXSW",
+    description: "Authentic Finnish sauna experience as a reset during SXSW. VIP tickets 5-6 PM, general admission 6-9 PM. Very limited capacity.",
+    dtstart: "20260316T170000",
+    dtend: "20260316T200000",
+    url: "https://www.eventbrite.com/e/sauna-like-a-finn-authentic-finnish-sauna-evening-a-reset-at-sxsw-tickets-1980592648929",
+    location: "Bathe, 2922 E Cesar Chavez St, Austin, TX 78702",
+    cost: "Paid",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0513-agentic-gtm-dinner@webbatx",
+    summary: "Agentic GTM Dinner",
+    description: "Dinner event focused on agentic go-to-market strategies during SXSW.",
+    dtstart: "20260316T180000",
+    dtend: "20260316T210000",
+    url: "",
+    location: "The Guest House Austin, 110 San Antonio St Ste R140, Austin, TX 78701",
+    cost: "Approval Required",
+    type: "Dinner + Networking",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0514-apify-gtm-afterparty@webbatx",
+    summary: "Apify AI + GTM roadshow - Afterparty",
+    description: "Afterparty for the Apify AI + GTM roadshow event at Remedy Bar.",
+    dtstart: "20260316T180000",
+    dtend: "20260316T200000",
+    url: "https://luma.com/8i8y202a",
+    location: "Remedy Bar, 360 Nueces St STE 30, Austin, TX 78701",
+    cost: "Register",
+    type: "Party + Networking",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0515-deepgram-vip-dinner@webbatx",
+    summary: "Deepgram SXSW VIP Dinner",
+    description: "VIP dinner hosted by Deepgram during SXSW.",
+    dtstart: "20260316T180000",
+    dtend: "20260316T210000",
+    url: "https://luma.com/dg-sxsw-dinner",
+    location: "Austin, TX",
+    cost: "Approval Required",
+    type: "Dinner + Networking",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0516-deepmind-vip-dinner@webbatx",
+    summary: "SXSW VIP Dinner w/ Google DeepMind: Frontier Models & Generative Media",
+    description: "VIP dinner with Google DeepMind exploring frontier models and generative media.",
+    dtstart: "20260316T180000",
+    dtend: "20260316T210000",
+    url: "",
+    location: "Austin, TX",
+    cost: "Approval Required",
+    type: "Dinner + Networking",
+    rawBlock: ""
   }
 ];
 
