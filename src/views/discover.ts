@@ -1,7 +1,7 @@
 import { getState, toggleStar } from '../state';
 import { renderEventCard } from '../components/event-card';
 import { dayKey, dayLabel, fmt } from '../utils/time';
-import { isMusicUnlocked, countLockedMusic, countTotalMusic, STRIPE_PAYMENT_LINK, validateAccessCode, unlockMusic } from '../paywall';
+import { isMusicUnlocked, countLockedMusic, countTotalMusic, STRIPE_PAYMENT_LINK } from '../paywall';
 
 function matchesTypeFilter(eventType: string, filter: string): boolean {
   if (filter === 'all') return true;
@@ -74,12 +74,6 @@ export function renderDiscover(container: HTMLElement) {
         </div>
         <div class="paywall-actions">
           <a href="${STRIPE_PAYMENT_LINK}" class="paywall-btn paywall-buy" target="_blank">Unlock All &mdash; $9</a>
-          <button class="paywall-btn paywall-code" id="paywall-code-btn">Have a code?</button>
-        </div>
-        <div class="paywall-code-form" id="paywall-code-form" style="display:none">
-          <input type="text" id="paywall-code-input" placeholder="Enter access code" class="paywall-input" autocomplete="off" />
-          <button class="paywall-btn paywall-submit" id="paywall-code-submit">Unlock</button>
-          <div class="paywall-error" id="paywall-error" style="display:none">Invalid code</div>
         </div>
       </div>`;
   }
@@ -120,25 +114,6 @@ export function renderDiscover(container: HTMLElement) {
         card.classList.toggle('expanded');
       }
     });
-  });
-
-  // Paywall code toggle + submit
-  document.getElementById('paywall-code-btn')?.addEventListener('click', () => {
-    const form = document.getElementById('paywall-code-form')!;
-    form.style.display = form.style.display === 'none' ? 'flex' : 'none';
-  });
-  document.getElementById('paywall-code-submit')?.addEventListener('click', () => {
-    const input = document.getElementById('paywall-code-input') as HTMLInputElement;
-    if (validateAccessCode(input.value)) {
-      unlockMusic();
-      // Re-render to show unlocked events
-      renderDiscover(container);
-    } else {
-      document.getElementById('paywall-error')!.style.display = 'block';
-    }
-  });
-  document.getElementById('paywall-code-input')?.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') document.getElementById('paywall-code-submit')?.click();
   });
 
   // Add "Now" button if viewing today
