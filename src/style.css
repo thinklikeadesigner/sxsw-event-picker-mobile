@@ -1,6 +1,48 @@
 @import 'leaflet/dist/leaflet.css';
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
+.wrap-banner {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: linear-gradient(90deg, #4ade80, #22d3ee);
+  color: #000;
+  text-align: center;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.wrap-banner a {
+  color: #000;
+  text-decoration: underline;
+  font-weight: 700;
+}
+.banner-close {
+  display: none;
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  background: none;
+  border: none;
+  color: rgba(0,0,0,0.4);
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+}
+.banner-close:hover { color: #000; }
+@media (max-width: 768px) {
+  .banner-close { display: block; }
+}
+.social-link.glow {
+  background: #4ade80;
+  color: #000;
+  animation: glow-pulse 1.5s ease-in-out 3;
+}
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 4px #4ade80; }
+  50% { box-shadow: 0 0 12px #4ade80, 0 0 24px #4ade8066; }
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: #0f0f0f;
@@ -639,6 +681,7 @@ main { padding: 16px 24px; }
 #map-container {
   z-index: 1;
 }
+.leaflet-control-attribution { display: none !important; }
 .leaflet-popup-content-wrapper {
   background: #1a1a1a !important;
   color: #e0e0e0 !important;
@@ -684,9 +727,9 @@ main { padding: 16px 24px; }
   padding: 10px 12px;
   border: 1px solid #333;
   border-bottom: none;
-  height: calc(50vh - 60px);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 .tl-label {
   font-size: 13px;
@@ -792,6 +835,21 @@ main { padding: 16px 24px; }
 }
 .tl-modal-close:hover { color: #fff; }
 
+/* ===== MAP VIEW: static layout, no scroll ===== */
+body.view-map { overflow: hidden; height: 100vh; }
+body.view-map .site-footer,
+body.view-map .visitor-badge { display: none; }
+body.view-map main {
+  padding: 0;
+  overflow: hidden;
+  height: calc(100vh - var(--sticky-top-h));
+  display: flex;
+  flex-direction: column;
+}
+body.view-map #map-container { flex: 1 1 45%; min-height: 0; height: auto !important; border-radius: 0 !important; }
+body.view-map #timeline-container { flex: 1 1 55%; min-height: 0; display: flex; flex-direction: column; }
+body.view-map .tl-wrapper { flex: 1; min-height: 0; border-radius: 0 !important; }
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   /* 1. Bottom tab navigation */
@@ -851,13 +909,15 @@ main { padding: 16px 24px; }
     margin-top: 8px;
   }
 
-  /* 6. Map with room for timeline */
+  /* 6. Map view: account for bottom tabs */
+  body.view-map main {
+    height: calc(100vh - var(--sticky-top-h) - 52px);
+    padding-bottom: 0;
+  }
   #map-container {
-    height: 40vh !important;
     border-radius: 0 !important;
   }
   .tl-wrapper {
-    height: calc(60vh - 160px) !important;
     border-radius: 0 !important;
     margin-top: 0;
   }

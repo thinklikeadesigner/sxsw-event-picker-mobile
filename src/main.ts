@@ -34,6 +34,15 @@ function render() {
     destroyMap();
   }
 
+  // Toggle body class for map view (hides footer, locks scroll)
+  document.body.classList.toggle('view-map', state.currentView === 'map');
+  if (state.currentView === 'map') {
+    const stickyTop = document.querySelector('.sticky-top') as HTMLElement;
+    const banner = document.querySelector('.wrap-banner') as HTMLElement;
+    const h = (stickyTop?.offsetHeight || 0) + (banner?.offsetHeight || 0);
+    document.documentElement.style.setProperty('--sticky-top-h', h + 'px');
+  }
+
   // Show/hide filters (discover and map views)
   controls.style.display = (state.currentView === 'discover' || state.currentView === 'map') ? '' : 'none';
 
@@ -71,6 +80,26 @@ document.addEventListener('DOMContentLoaded', () => {
   // Filters always visible — hide the toggle
   const filterToggle = document.getElementById('filter-toggle')!;
   filterToggle.style.display = 'none';
+
+  // Position sticky header below sticky banner
+  function updateStickyOffset() {
+    const banner = document.getElementById('wrap-banner');
+    const stickyTop = document.querySelector('.sticky-top') as HTMLElement;
+    if (stickyTop) {
+      const bannerH = banner && banner.style.display !== 'none' ? banner.offsetHeight : 0;
+      stickyTop.style.top = bannerH + 'px';
+    }
+  }
+  updateStickyOffset();
+
+  // Banner close button
+  document.getElementById('banner-close')?.addEventListener('click', () => {
+    const banner = document.getElementById('wrap-banner');
+    if (banner) banner.style.display = 'none';
+    updateStickyOffset();
+    const li = document.getElementById('linkedin-link');
+    if (li) li.classList.add('glow');
+  });
 
   render();
 });
