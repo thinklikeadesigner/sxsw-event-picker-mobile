@@ -7374,6 +7374,19 @@ const EVENTS_DATA: RawEvent[] = [
     type: "Event",
     rawBlock: ""
   },
+  // ── Thursday March 19 ──
+  {
+    uid: "sxsw-2026-0639-future-friends@groupchat",
+    summary: "future friénds: a curated social experience",
+    description: "Structured networking mixer — assigned small groups that rotate, then open mingling. Celebrating Gold Hunt Kickstarter launch. Everyone is vibe checked prior to approval. 7 PM arrival, rotations through 8:30 PM.",
+    dtstart: "20260319T190000",
+    dtend: "20260319T213000",
+    url: "https://partiful.com/e/BogCMXpcepqoduIYthX9",
+    location: "Lefty's Brick Bar, 1813 E 6th St, Austin, TX 78702",
+    cost: "Approval Required",
+    type: "Networking",
+    rawBlock: ""
+  },
   // ── Wednesday March 25 ──
   {
     uid: "sxsw-2026-0566-founders-circle@groupchat",

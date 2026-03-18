@@ -1,6 +1,6 @@
 {
-  "name": "SXSW Event Picker",
-  "short_name": "SXSW Picker",
+  "name": "Wandr ATX",
+  "short_name": "Wandr ATX",
   "start_url": "/sxsw-event-picker/",
   "display": "standalone",
   "background_color": "#0f0f0f",

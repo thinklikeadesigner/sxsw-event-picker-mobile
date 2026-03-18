@@ -24,7 +24,6 @@
   font-weight: 700;
 }
 .banner-close {
-  display: none;
   position: absolute;
   top: 4px;
   right: 8px;
@@ -37,9 +36,6 @@
   line-height: 1;
 }
 .banner-close:hover { color: #000; }
-@media (max-width: 768px) {
-  .banner-close { display: block; }
-}
 .social-link.glow {
   background: #4ade80;
   color: #000;

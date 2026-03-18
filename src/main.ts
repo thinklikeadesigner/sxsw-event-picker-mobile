@@ -92,10 +92,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   updateStickyOffset();
 
-  // Banner close button
+  // Banner close button (remember across sessions)
+  const banner = document.getElementById('wrap-banner');
+  if (banner && localStorage.getItem('banner-dismissed')) {
+    banner.style.display = 'none';
+    updateStickyOffset();
+    const li = document.getElementById('linkedin-link');
+    if (li) li.classList.add('glow');
+  }
   document.getElementById('banner-close')?.addEventListener('click', () => {
-    const banner = document.getElementById('wrap-banner');
     if (banner) banner.style.display = 'none';
+    localStorage.setItem('banner-dismissed', '1');
     updateStickyOffset();
     const li = document.getElementById('linkedin-link');
     if (li) li.classList.add('glow');

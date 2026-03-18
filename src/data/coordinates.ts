@@ -205,4 +205,5 @@ export const VENUE_COORDS: Record<string, [number, number]> = {
   "ZACH Theatre, 202 South Lamar Blvd, Austin, TX 78704": [30.2580, -97.7560],
   "Zilker Metropolitan Park, 2100 Barton Springs Rd, Austin, TX 78704": [30.2670, -97.7730],
   "imogene + willie, 1401 S Congress, Austin, TX": [30.2440, -97.7489],
+  "Lefty's Brick Bar, 1813 E 6th St, Austin, TX 78702": [30.2651, -97.7190],
 };
