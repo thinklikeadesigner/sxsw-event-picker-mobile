@@ -282,56 +282,55 @@ function renderTimeline(container: HTMLElement, events: SXSWEvent[], now: Date) 
       if (!event) return;
 
       const isMobile = window.innerWidth <= 768;
+      const coords = VENUE_COORDS[event.location];
 
-      if (isMobile) {
-        // Show modal on mobile
-        const starred = getState().starred.has(event.index);
-        const isMusic = event.type === 'Music + Live Show';
-        let modal = document.getElementById('tl-modal');
-        if (!modal) {
-          modal = document.createElement('div');
-          modal.id = 'tl-modal';
-          document.body.appendChild(modal);
-        }
-        modal.innerHTML = `
-          <div class="tl-modal-overlay">
-            <div class="tl-modal-card">
-              <button class="tl-modal-close" id="tl-modal-close">&times;</button>
-              <div class="event-name" style="font-size:16px;font-weight:700;margin-bottom:8px">${event.summary}</div>
-              <div class="event-meta" style="margin-bottom:8px">
-                <span class="pill pill-time">${fmt(event.start)} \u2013 ${fmt(event.end)}</span>
-                ${event.cost ? `<span class="pill pill-cost">${event.cost}</span>` : ''}
-                ${isMusic ? '<span class="pill pill-music">\uD83C\uDFB5 Live Music</span>' : `<span class="pill pill-type">${event.type}</span>`}
-              </div>
-              ${event.location ? `<div style="margin-bottom:6px">\uD83D\uDCCD <a href="https://maps.google.com/?q=${encodeURIComponent(event.location)}" target="_blank" style="color:#3b82f6;text-decoration:none">${event.location}</a></div>` : ''}
-              ${event.url ? `<div style="margin-bottom:6px"><a href="${event.url}" target="_blank" style="color:#3b82f6;text-decoration:none">Event page \u2197</a></div>` : ''}
-              ${event.description ? `<div style="font-size:12px;color:#999;margin-top:8px">${event.description}</div>` : ''}
-              <button onclick="window.__toggleStar(${event.index})" style="margin-top:12px;padding:8px 16px;border-radius:8px;border:1px solid ${starred ? '#ef4444' : '#4ade80'};background:${starred ? '#1a0000' : '#052e16'};color:${starred ? '#ef4444' : '#4ade80'};cursor:pointer;font-size:13px;font-weight:600;width:100%">
-                ${starred ? '\u2605 Unstar' : '\u2606 Star this event'}
-              </button>
-            </div>
-          </div>`;
-        modal.style.display = 'block';
-        document.getElementById('tl-modal-close')?.addEventListener('click', () => {
-          modal!.style.display = 'none';
-        });
-        modal.querySelector('.tl-modal-overlay')?.addEventListener('click', (e) => {
-          if ((e.target as HTMLElement).classList.contains('tl-modal-overlay')) {
-            modal!.style.display = 'none';
-          }
-        });
-      } else {
-        // Pan map on desktop
-        if (!map || !markersLayer) return;
-        const coords = VENUE_COORDS[event.location];
-        if (!coords) return;
+      // On desktop, try to pan map to the venue first
+      if (!isMobile && map && markersLayer && coords) {
         map.setView([coords[0], coords[1]], 16);
         markersLayer.eachLayer((layer: any) => {
           if (layer.getLatLng && layer.getLatLng().lat === coords[0] && layer.getLatLng().lng === coords[1]) {
             layer.openPopup();
           }
         });
+        return;
       }
+
+      // Show modal (mobile, or desktop fallback when no coords)
+      const starred = getState().starred.has(event.index);
+      const isMusic = event.type === 'Music + Live Show';
+      let modal = document.getElementById('tl-modal');
+      if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'tl-modal';
+        document.body.appendChild(modal);
+      }
+      modal.innerHTML = `
+        <div class="tl-modal-overlay">
+          <div class="tl-modal-card">
+            <button class="tl-modal-close" id="tl-modal-close">&times;</button>
+            <div class="event-name" style="font-size:16px;font-weight:700;margin-bottom:8px">${event.summary}</div>
+            <div class="event-meta" style="margin-bottom:8px">
+              <span class="pill pill-time">${fmt(event.start)} \u2013 ${fmt(event.end)}</span>
+              ${event.cost ? `<span class="pill pill-cost">${event.cost}</span>` : ''}
+              ${isMusic ? '<span class="pill pill-music">\uD83C\uDFB5 Live Music</span>' : `<span class="pill pill-type">${event.type}</span>`}
+            </div>
+            ${event.location ? `<div style="margin-bottom:6px">\uD83D\uDCCD <a href="https://maps.google.com/?q=${encodeURIComponent(event.location)}" target="_blank" style="color:#3b82f6;text-decoration:none">${event.location}</a></div>` : ''}
+            ${event.url ? `<div style="margin-bottom:6px"><a href="${event.url}" target="_blank" style="color:#3b82f6;text-decoration:none">Event page \u2197</a></div>` : ''}
+            ${event.description ? `<div style="font-size:12px;color:#999;margin-top:8px">${event.description}</div>` : ''}
+            <button onclick="window.__toggleStar(${event.index})" style="margin-top:12px;padding:8px 16px;border-radius:8px;border:1px solid ${starred ? '#ef4444' : '#4ade80'};background:${starred ? '#1a0000' : '#052e16'};color:${starred ? '#ef4444' : '#4ade80'};cursor:pointer;font-size:13px;font-weight:600;width:100%">
+              ${starred ? '\u2605 Unstar' : '\u2606 Star this event'}
+            </button>
+          </div>
+        </div>`;
+      modal.style.display = 'block';
+      document.getElementById('tl-modal-close')?.addEventListener('click', () => {
+        modal!.style.display = 'none';
+      });
+      modal.querySelector('.tl-modal-overlay')?.addEventListener('click', (e) => {
+        if ((e.target as HTMLElement).classList.contains('tl-modal-overlay')) {
+          modal!.style.display = 'none';
+        }
+      });
     });
   });
 }

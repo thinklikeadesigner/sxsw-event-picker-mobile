@@ -5175,18 +5175,6 @@ const EVENTS_DATA: RawEvent[] = [
     rawBlock: ""
   },
   {
-    uid: "sxsw-2026-0447-queer-country@rsvpatx",
-    summary: "TX Queer Country Club Showcase",
-    description: "Queer country music showcase by Neon Rainbows during SXSW. Unofficial showcase. 21+.",
-    dtstart: "20260316T180000",
-    dtend: "20260316T230000",
-    url: "https://partiful.com/e/AmgWnEIyWf3LrQkOM8eQ",
-    location: "Sagebrush, 5500 S Congress Ave, Austin, TX 78745",
-    cost: "Free",
-    type: "Music + Live Show",
-    rawBlock: ""
-  },
-  {
     uid: "sxsw-2026-0448-real-estate-forum@rsvpatx",
     summary: "SXSW Real Estate Forum: PropTech, Construction & AI",
     description: "600+ RSVPed guests including real estate professionals, industrial developers, manufacturers, brokers, and PropTech/ConTech entrepreneurs. Sessions on AI in real estate, manufacturing innovation, mortgage tech, startup showcases.",
@@ -6048,6 +6036,1501 @@ const EVENTS_DATA: RawEvent[] = [
     location: "The Courtyard ATX, 208 W 4th St Suite C, Austin, TX 78701",
     cost: "Approval Required",
     type: "Event + Networking",
+    rawBlock: ""
+  },
+  // ── Tuesday March 17 ──
+  {
+    uid: "sxsw-2026-0520-me-to-we-populous-house@groupchat",
+    summary: "Me to We: Populous House",
+    description: "All-day event at 3Ten ACL Live as part of the Populous House series.",
+    dtstart: "20260317T090000",
+    dtend: "20260317T233000",
+    url: "",
+    location: "3Ten ACL Live, Austin, TX",
+    cost: "RSVP",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0521-congress-ave-block-party-tue@groupchat",
+    summary: "Congress Ave Block Party",
+    description: "Street closure block party on Congress Ave with food and drinks.",
+    dtstart: "20260317T110000",
+    dtend: "20260317T190000",
+    url: "",
+    location: "900 Congress St, Austin, TX",
+    cost: "Free",
+    type: "Party",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0522-casamigos-day-party@groupchat",
+    summary: "Casamigos Day Party",
+    description: "Day party at Austin Garden with food and drinks.",
+    dtstart: "20260317T120000",
+    dtend: "20260317T180000",
+    url: "",
+    location: "Austin Garden, Austin, TX",
+    cost: "Free",
+    type: "Party",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0523-paste-illegal-mezcal-day-shows@groupchat",
+    summary: "Paste x Illegal Mezcal Day Shows",
+    description: "Daytime showcases presented by Paste Magazine and Illegal Mezcal at High Noon. Drinks available.",
+    dtstart: "20260317T120000",
+    dtend: "20260317T190000",
+    url: "",
+    location: "High Noon, Austin, TX",
+    cost: "RSVP",
+    type: "Music",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0524-radio-day-stage-tue@groupchat",
+    summary: "Radio Day Stage",
+    description: "Daytime showcases at Downright Hotel.",
+    dtstart: "20260317T120000",
+    dtend: "20260317T200000",
+    url: "",
+    location: "Downright Hotel, Austin, TX",
+    cost: "Free",
+    type: "Music",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0525-take-action-day@groupchat",
+    summary: "Take Action Day Panels & Showcase",
+    description: "All-day panels and showcase at Inn Cahoots with food and drinks. Runs into the late night.",
+    dtstart: "20260317T120000",
+    dtend: "20260318T020000",
+    url: "",
+    location: "Inn Cahoots, Austin, TX",
+    cost: "RSVP",
+    type: "Event + Music",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0526-waterloo-day-shows-tue@groupchat",
+    summary: "Waterloo Day Shows",
+    description: "Daytime music showcases at 1105 N. Lamar.",
+    dtstart: "20260317T130000",
+    dtend: "20260317T190000",
+    url: "",
+    location: "1105 N. Lamar, Austin, TX",
+    cost: "Free",
+    type: "Music",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0527-howdy-podner@groupchat",
+    summary: "Howdy Podner",
+    description: "Afternoon hangout at imogene + willie on South Congress with drinks.",
+    dtstart: "20260317T140000",
+    dtend: "20260317T190000",
+    url: "",
+    location: "imogene + willie, 1401 S Congress, Austin, TX",
+    cost: "RSVP",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0528-fat-ass-rap-show@groupchat",
+    summary: "Fat A$ Rap Show",
+    description: "Rap showcase at Venue 6 with food. Runs late night.",
+    dtstart: "20260317T180000",
+    dtend: "20260318T020000",
+    url: "",
+    location: "Venue 6, Austin, TX",
+    cost: "RSVP",
+    type: "Music",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0529-british-music-embassy-tue@groupchat",
+    summary: "British Music Embassy",
+    description: "Showcase at Palm Door on 6th presented by the British Music Embassy.",
+    dtstart: "20260317T193000",
+    dtend: "20260318T010000",
+    url: "",
+    location: "Palm Door on 6th, Austin, TX",
+    cost: "RSVP",
+    type: "Music",
+    rawBlock: ""
+  },
+  // ── Wednesday March 18 ──
+  {
+    uid: "sxsw-2026-0530-dropbox-hope-lounge@groupchat",
+    summary: "Dropbox: HOPE Lounge",
+    description: "Dropbox-hosted lounge at HOPE Gallery with food.",
+    dtstart: "20260318T100000",
+    dtend: "20260318T160000",
+    url: "",
+    location: "HOPE Gallery, Austin, TX",
+    cost: "RSVP",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0531-day-off-austin@groupchat",
+    summary: "Day Off Austin",
+    description: "Daytime event at Vulcan Gas Co.",
+    dtstart: "20260318T110000",
+    dtend: "20260318T180000",
+    url: "",
+    location: "Vulcan Gas Co, Austin, TX",
+    cost: "RSVP",
+    type: "Music",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0532-congress-ave-block-party-wed@groupchat",
+    summary: "Congress Ave Block Party",
+    description: "Street closure block party on Congress Ave with food and drinks.",
+    dtstart: "20260318T110000",
+    dtend: "20260318T190000",
+    url: "",
+    location: "900 Congress St, Austin, TX",
+    cost: "Free",
+    type: "Party",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0533-radio-day-stage-wed@groupchat",
+    summary: "Radio Day Stage",
+    description: "Daytime showcases at Downright Hotel.",
+    dtstart: "20260318T120000",
+    dtend: "20260318T200000",
+    url: "",
+    location: "Downright Hotel, Austin, TX",
+    cost: "Free",
+    type: "Music",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0534-waterloo-day-shows-wed@groupchat",
+    summary: "Waterloo Day Shows",
+    description: "Daytime music showcases at 1105 N. Lamar.",
+    dtstart: "20260318T130000",
+    dtend: "20260318T190000",
+    url: "",
+    location: "1105 N. Lamar, Austin, TX",
+    cost: "Free",
+    type: "Music",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0535-lafayette-sheaukaze-wed@groupchat",
+    summary: "Lafayette Sheaukaze",
+    description: "Evening event at Antone's with food and drinks.",
+    dtstart: "20260318T190000",
+    dtend: "20260319T020000",
+    url: "",
+    location: "Antone's, Austin, TX",
+    cost: "RSVP",
+    type: "Event + Music",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0536-british-music-embassy-wed@groupchat",
+    summary: "British Music Embassy",
+    description: "Showcase at Palm Door on 6th presented by the British Music Embassy.",
+    dtstart: "20260318T193000",
+    dtend: "20260319T010000",
+    url: "",
+    location: "Palm Door on 6th, Austin, TX",
+    cost: "RSVP",
+    type: "Music",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0537-austin-evo-vc-startups@groupchat",
+    summary: "Austin EVO VC & Startups in Edge Rooftop",
+    description: "Community gathering for builders - founders, investors, and innovators. Focused on high-quality professional connections. Cash bar available. Target audience: angel investors, VCs, deep tech founders, startup founders seeking partnerships or funding.",
+    dtstart: "20260318T183000",
+    dtend: "20260318T213000",
+    url: "https://luma.com/04nzqpnv",
+    location: "Edge Rooftop, JW Marriott Austin, 110 E 2nd St, Austin, TX 78701",
+    cost: "Free",
+    type: "Networking",
+    rawBlock: ""
+  },
+  // ── Thursday March 19 ──
+  {
+    uid: "sxsw-2026-0538-atx-eas-admins-cocktails@groupchat",
+    summary: "ATX EAs & Admins: Connection & Cocktails",
+    description: "Networking for executive assistants and admin professionals. Open bar, bites, and structured networking activities. Hosted by GroupTogether and Elevating Administrative Professionals. Limited spots, approval required.",
+    dtstart: "20260319T180000",
+    dtend: "20260319T200000",
+    url: "https://luma.com/kkxtkxvc",
+    location: "LOVEBIRDS, 2337 E Cesar Chavez St, Austin, TX 78702",
+    cost: "Approval Required",
+    type: "Networking",
+    rawBlock: ""
+  },
+  // ── Friday March 20 ──
+  {
+    uid: "sxsw-2026-0539-your-startup-sucks@groupchat",
+    summary: "Your Startup Sucks SXSW | Live Pitch Comedy Show",
+    description: "Comedy pitch event where founders present startups to a panel of investors, former founders, and comedians. Audience votes on the winner. Pre-show networking at 6 PM, main event at 6:30 PM. Free parking 2 hrs at Saltillo/Whole Foods with validation.",
+    dtstart: "20260320T180000",
+    dtend: "20260320T203000",
+    url: "https://luma.com/xgamndkj",
+    location: "Brushy Street Commons, 501 Brushy St, Austin, TX 78702",
+    cost: "$10",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Saturday March 21 ──
+  {
+    uid: "sxsw-2026-0540-founders-running-club@groupchat",
+    summary: "Founders Running Club :: Austin",
+    description: "Community run with 5K and 10K options plus a walking group. 8 AM intro and warm-up, 8:10 AM run start. Coffee and brunch at Afuga Coffee from 8:30 AM. All fitness levels welcome, pacers available. 10% discount at Afuga, free parking.",
+    dtstart: "20260321T090000",
+    dtend: "20260321T113000",
+    url: "https://luma.com/kyucmljf",
+    location: "Edward Rendon Park, Austin, TX",
+    cost: "Free",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Wednesday March 18 ──
+  {
+    uid: "sxsw-2026-0541-gaming-industry-mixer@groupchat",
+    summary: "SXSW Gaming Industry Mixer (no badge req)",
+    description: "Austin Gaming Industry Meetup gathering at Lazarus Brewing. Connect with gaming professionals and enthusiasts. No SXSW badge required. Beverages, snacks, and dinner available at venue.",
+    dtstart: "20260318T163000",
+    dtend: "20260318T193000",
+    url: "https://partiful.com/e/RkzZabLayB23PWbmsSxW",
+    location: "Lazarus Brewing Company, 1902 E 6th St, Austin, TX 78702",
+    cost: "Free",
+    type: "Networking",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0542-girls-with-goals@groupchat",
+    summary: "Girls With Goals: SXSW Networking Event",
+    description: "Free networking event hosted by b.social during SXSW. Drink specials, snacks, and an opportunity to meet like-minded women in different career paths at the skyline lounge.",
+    dtstart: "20260318T180000",
+    dtend: "20260318T210000",
+    url: "https://partiful.com/e/CsF5SPp1J4Aou6AWskRn",
+    location: "Skyline Lounge at Hyatt Centric, 721 Congress Ave, Austin, TX 78701",
+    cost: "Free",
+    type: "Networking",
+    rawBlock: ""
+  },
+  // ── Saturday March 21 ──
+  {
+    uid: "sxsw-2026-0543-holidays-3rd-birthday@groupchat",
+    summary: "Holiday's 3rd Birthday",
+    description: "Venue 3rd anniversary celebration with DJ music, flash tattoos, food vendors, tarot readings, and burlesque performance by Ruby Joule. First 50 guests get a free custom Holiday bandana. Walk-ins only, first-come first-served seating. Ride share encouraged, leashed dogs welcome.",
+    dtstart: "20260321T190000",
+    dtend: "20260322T010000",
+    url: "https://partiful.com/e/XGyDaqOQkZsVtg8Gvz5A",
+    location: "5020 E 7th St, Austin, TX 78702",
+    cost: "Free",
+    type: "Party",
+    rawBlock: ""
+  },
+  // ── Sunday March 22 ──
+  {
+    uid: "sxsw-2026-0544-southby-sandlot@groupchat",
+    summary: "SOUTHBY SANDLOT",
+    description: "Baseball doubleheader (Sallies Baseball vs Texas Tallboys; Meat City Smoke vs The MNightcrawlers) plus four live music acts and a vendor market with food. Blankets, chairs, non-alcoholic beverages, pets, and families welcome.",
+    dtstart: "20260322T110000",
+    dtend: "20260322T180000",
+    url: "https://partiful.com/e/kF0rGOq4migQhYMP9Rdh",
+    location: "The Longtime, 5707 Dunlap Rd N, Austin, TX 78725",
+    cost: "$10",
+    type: "Event + Music",
+    rawBlock: ""
+  },
+  // ── Wednesday March 18 ──
+  {
+    uid: "sxsw-2026-0545-well-made-plays@groupchat",
+    summary: "Well Made Plays: Artist's Lounge & Showcase",
+    description: "Artist mixer, live performances, and DJ sets. Afternoon jukebox DJ set with resources for independent artists, live interviews, giveaways. Free wings 2-5 PM. Acoustic performances 5-8 PM, DJ sets closing out the night. 21+.",
+    dtstart: "20260318T140000",
+    dtend: "20260319T000000",
+    url: "https://partiful.com/e/BKJ9BSWX4ZS9qoqx8a2i",
+    location: "Saturn Cocktail Club, 906 Congress Ave, Austin, TX 78701",
+    cost: "Free",
+    type: "Music",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0546-hoedown-throwdown-pt3@groupchat",
+    summary: "Hoedown Throwdown Pt 3",
+    description: "Live music and wrestling showcase featuring Drook, Balaclava, Hot Garbage, Zastava, AKA BK, Haha Laughing, plus a mystery guest. Two wrestling matches interspersed throughout. Doors 8 PM, show 8:30 PM. 21+.",
+    dtstart: "20260318T200000",
+    dtend: "20260319T020000",
+    url: "https://partiful.com/e/0eOj35gsirhLKsabCtBc",
+    location: "Hole in the Wall, 2538 Guadalupe St, Austin, TX 78705",
+    cost: "$10",
+    type: "Music",
+    rawBlock: ""
+  },
+  // ── Thursday March 19 ──
+  {
+    uid: "sxsw-2026-0547-it-aint-over-yet@groupchat",
+    summary: "It Ain't Over Yet",
+    description: "Post-SXSW music event by Howdy Gals, Just Hard Squeezed, and Rocky & The Hair. Six bands: Analog Dog, CDSM, Cormae, Sasha & The Valentines, The Dirty Turkeys, Texas String Assembly. All ages. Doors 5 PM, first act 5:45 PM.",
+    dtstart: "20260319T170000",
+    dtend: "20260319T223000",
+    url: "https://partiful.com/e/pNefGCrREZT5x54m3VG3",
+    location: "The ABGB, 1305 W Oltorf, Austin, TX 78704",
+    cost: "$10 suggested donation",
+    type: "Music",
+    rawBlock: ""
+  },
+  // ── Friday March 20 ──
+  {
+    uid: "sxsw-2026-0548-cumbia-night-anis@groupchat",
+    summary: "Cumbia Night at Ani's",
+    description: "Evening of cumbia with dance class by Alberto Solorzano, live music from Sonora Tukukuy (Miami), Los Gatos 512 (San Marcos), and Mr. Mancera (Austin). Food, beverages, and local shopping.",
+    dtstart: "20260320T180000",
+    dtend: "20260320T220000",
+    url: "https://partiful.com/e/n0iIJ1CxGXAmDpfq0ejW",
+    location: "Ani's Day & Night, 7107 E Riverside Dr, Austin, TX 78741",
+    cost: "Free",
+    type: "Music",
+    rawBlock: ""
+  },
+  // ── Thursday March 26 ──
+  {
+    uid: "sxsw-2026-0550-last-thursdays@groupchat",
+    summary: "Last Thursdays",
+    description: "Casual outdoor community gathering with music, games, and potluck charcuterie. Bring blankets and snacks to share. Hosted by Impact FC Young Adults Group. Zero pressure vibes.",
+    dtstart: "20260326T190000",
+    dtend: "20260326T203000",
+    url: "https://partiful.com/e/8nzoDC9p8V1IJ0Gt0jXH",
+    location: "Zilker Metropolitan Park, 2100 Barton Springs Rd, Austin, TX 78704",
+    cost: "Free",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Saturday April 4 ──
+  {
+    uid: "sxsw-2026-0552-skyfest-crawfish@groupchat",
+    summary: "SKYFEST: Music & Crawfish Boil",
+    description: "Afternoon of loud music, cold drinks, and Cajun fun. Five local acts spanning orchestral metal, dance, rap, techno, and singer-songwriter. Plus Man Versus Yoga pop-up. 250 capacity.",
+    dtstart: "20260404T160000",
+    dtend: "20260404T200000",
+    url: "https://partiful.com/e/i96FLFHkertDakrmUsKX",
+    location: "HowMuch?!, 6910 Shirley Ave Unit L, Austin, TX 78752",
+    cost: "$10",
+    type: "Music",
+    rawBlock: ""
+  },
+  // ── Friday April 10 ──
+  {
+    uid: "sxsw-2026-0553-club-house-5ever@groupchat",
+    summary: "CLUB HOUSE 5EVER!",
+    description: "Broad Studios Club House 5th anniversary celebration. Free beverages, music, artwork for purchase from studio members, food by Grandpa's Glizzies. All welcome.",
+    dtstart: "20260410T180000",
+    dtend: "20260410T220000",
+    url: "https://partiful.com/e/J8hCx1OTe3JVD3MvKLkM",
+    location: "Broad Studios Club House, 727 Airport Blvd, Austin, TX 78702",
+    cost: "Free",
+    type: "Party",
+    rawBlock: ""
+  },
+  // ── Tuesday March 24 ──
+  {
+    uid: "sxsw-2026-0554-aitx-monthly-meetup@groupchat",
+    summary: "AITX Monthly Meetup",
+    description: "Monthly meetup for AI entrepreneurs, engineers, and explorers in Austin. Features demos from local startups and big companies showcasing what they're building with AI, plus networking. All experience levels welcome.",
+    dtstart: "20260324T173000",
+    dtend: "20260324T193000",
+    url: "https://luma.com/aitx-mar26",
+    location: "Antler VC, Austin, TX",
+    cost: "Free",
+    type: "Networking",
+    rawBlock: ""
+  },
+  // ── Thursday March 26 ──
+  {
+    uid: "sxsw-2026-0555-applied-ai-live-3@groupchat",
+    summary: "Applied AI Live #3: How To Build Production Grade OpenClaws",
+    description: "Third installment of Applied AI Live series. Topics: combining OpenClaw's computer-use with Apify's web scraping, monetizing agent development, production-grade infrastructure for enterprise. Speakers: Michael Daigler (Apify/AITX), Jordaaan Hill (Organized AI), Travis Oliphant (OpenTeams, NumPy/SciPy creator).",
+    dtstart: "20260326T173000",
+    dtend: "20260326T200000",
+    url: "https://luma.com/AppliedAILive003",
+    location: "Antler VC, Austin, TX",
+    cost: "Free",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0556-fridge-fire-sauna-coffee@groupchat",
+    summary: "Fridge Fire! Sauna & Coffee (founders)",
+    description: "Post-SXSW cleanse with Mark Hellweg, founder of Vim Saunas and Ratio Coffee. Ratio coffee around fire pits, new sauna and bucket shower. Wear sauna attire or just come hang. Approval required.",
+    dtstart: "20260326T090000",
+    dtend: "20260326T103000",
+    url: "https://luma.com/u8mjfgdz",
+    location: "The Red Fridge Society, 508 Oakland Ave, Austin, TX 78703",
+    cost: "Approval Required",
+    type: "Networking",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0557-happy-hour-cold-cycle@groupchat",
+    summary: "Happy Hour w/Cold Cycle Coffee (investors)",
+    description: "Cold Cycle Coffee demos, tastings, and investor conversations. Sample cold brew, decaf, and coffee-infused vodka made with their rapid-brew system. Details on their $3MM fundraising round for manufacturing and market expansion.",
+    dtstart: "20260326T170000",
+    dtend: "20260326T183000",
+    url: "https://luma.com/sy7i1bc7",
+    location: "The Red Fridge Society, 508 Oakland Ave, Austin, TX 78703",
+    cost: "Free",
+    type: "Networking",
+    rawBlock: ""
+  },
+  // ── Tuesday March 24 ──
+  {
+    uid: "sxsw-2026-0558-fiesta-march@groupchat",
+    summary: "FIESTA in March",
+    description: "Monthly gathering for founders, investors, entrepreneurs, startups, techies, and Austin newcomers. Pizza, drinks, 10-12 one-minute founder pitches, funder intros. After-party at Retail Therapy. Free parking after 6 PM on streets or $8 Omni garage with validation.",
+    dtstart: "20260324T173000",
+    dtend: "20260324T203000",
+    url: "https://www.meetup.com/fiesta-atx/events/313506925/",
+    location: "Capital Factory, 701 Brazos St, Austin, TX",
+    cost: "Free",
+    type: "Networking",
+    rawBlock: ""
+  },
+  // ── Wednesday March 25 ──
+  {
+    uid: "sxsw-2026-0559-acm-ieee-tech-talks@groupchat",
+    summary: "ACM/IEEE Austin: March Tech Talks & Community Showcase",
+    description: "Deep-dive talks in AI, cloud-native systems, security, identity, and modern infrastructure engineering. Speakers from Atlassian, Meta, and more covering data engineering with AI, enterprise AI agents, LLM systems, and DevSecOps.",
+    dtstart: "20260325T180000",
+    dtend: "20260325T200000",
+    url: "https://www.meetup.com/acm-austin/events/313448439/",
+    location: "CGCS, ACC Rio Campus Bldg #3000, 1218 West Ave, Austin, TX 78701",
+    cost: "Free",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0560-austin-robotics-ai@groupchat",
+    summary: "Austin Robotics & AI",
+    description: "Monthly meetup for robotics and AI enthusiasts. Talks: TriMech Design Process (product development from research to manufacturing) and Thermoelectrics (practical cooling design for robotics). Seeking beta testers for evaluation hardware.",
+    dtstart: "20260325T180000",
+    dtend: "20260325T200000",
+    url: "https://www.meetup.com/austin-robotics-ai/events/311586503/",
+    location: "HICAM, 6201 Quinn Luke Trail, Austin, TX",
+    cost: "Free",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Thursday March 26 ──
+  {
+    uid: "sxsw-2026-0561-austin-startup-tech@groupchat",
+    summary: "Austin Startup and Tech 2026",
+    description: "Networking mixer connecting Fortune 500/1000s with entrepreneurs and startups. Find your next client, employee, business partner or co-founder. Cash bar.",
+    dtstart: "20260326T180000",
+    dtend: "20260326T210000",
+    url: "https://www.meetup.com/buildnscale-austin-startup-and-tech/events/310835591/",
+    location: "Higbie's, 720 Brazos St Ste B-710, Austin, TX",
+    cost: "Paid",
+    type: "Networking",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0562-raw-conversations@groupchat",
+    summary: "Austin RAW Conversations: Timing in Early-Stage Building & Fundraising",
+    description: "Monthly networking for founders, investors, and operators in early-stage tech. Facilitated workshop pods led by experienced operators exploring when to raise capital and assess market readiness. Light snacks. Sponsored by Station Austin.",
+    dtstart: "20260326T180000",
+    dtend: "20260326T200000",
+    url: "https://www.meetup.com/austin-raw-conversations-meetup/events/313619303/",
+    location: "Capital Factory, Captain America Room (8th Floor), 701 Brazos St, Austin, TX",
+    cost: "Free",
+    type: "Networking",
+    rawBlock: ""
+  },
+  // ── Wednesday April 1 ──
+  {
+    uid: "sxsw-2026-0563-aimug-mixer-showcase@groupchat",
+    summary: "AIMUG Monthly Mixer & Showcase",
+    description: "Austin LangChain AI Middleware Users Group monthly gathering. Focus on agentic software development, multi-agent architectures, LangChain/LangGraph workflows. Networking, Thunderstorm Talks (4x 15-min presentations), Q&A. After-party at The Tavern.",
+    dtstart: "20260401T180000",
+    dtend: "20260401T210000",
+    url: "https://www.meetup.com/austin-langchain-ai-group/events/312282692/",
+    location: "ACC - RGC 3000, 1218 West Ave, Austin, TX",
+    cost: "Free",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0564-ai-meetup-april@groupchat",
+    summary: "AI Meetup (April) for GenAI LLMs and Agents",
+    description: "Deep dive tech talks on AI, GenAI, LLMs and Agents, hands-on code labs, workshops, and networking with speakers and fellow developers.",
+    dtstart: "20260401T173000",
+    dtend: "20260401T203000",
+    url: "https://www.meetup.com/aittg-austin/events/313699639/",
+    location: "Capital Factory, 701 Brazos St, Austin, TX",
+    cost: "Free",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Tuesday April 7 ──
+  {
+    uid: "sxsw-2026-0565-founder-led-sales@groupchat",
+    summary: "Founder-Led Sales for Startups",
+    description: "Workshop teaching startup founders to build sales momentum and generate revenue. Develop your talk track, generate leads, win clients through interactive exercises with panel feedback. Includes cold-pitching techniques. Sponsored by Station Austin.",
+    dtstart: "20260407T183000",
+    dtend: "20260407T203000",
+    url: "https://www.meetup.com/founder-led-sales-class-for-startups/events/312644553/",
+    location: "Capital Factory, 701 Brazos St 16th Floor, Austin, TX",
+    cost: "Free",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Wednesday March 18 ──
+  {
+    uid: "sxsw-2026-0568b-dinner-entrepreneurs-gold@research",
+    summary: "Dinner with Entrepreneurs | Austin (Gold Tier Edition)",
+    description: "Intimate networking dinner for established entrepreneurs. Small groups of 4-6 people at a rotating restaurant. Food/drink not included in ticket price.",
+    dtstart: "20260318T190000",
+    dtend: "20260318T220000",
+    url: "https://www.eventbrite.com/e/dinner-with-entrepreneurs-austin-gold-tier-edition-tickets-1976952347690",
+    location: "East 6th Street, Austin, TX 78701",
+    cost: "$55",
+    type: "Networking",
+    rawBlock: ""
+  },
+  // ── Thursday March 19 ──
+  {
+    uid: "sxsw-2026-0569b-opencoffee-northside@research",
+    summary: "OpenCoffee Club Austin - Northside",
+    description: "Semi-monthly meetup for entrepreneurs and investors to share experiences, motivate, and explore ideas. Welcomes startup founders, tech execs, investors, and service providers.",
+    dtstart: "20260319T083000",
+    dtend: "20260319T100000",
+    url: "https://lu.ma/opencoffee",
+    location: "Houndstooth Coffee, Austin, TX",
+    cost: "Free",
+    type: "Networking",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0570b-future-millionaires-dinner@research",
+    summary: "Future Millionaires: Dinner with Entrepreneurs | Austin",
+    description: "Curated dining experience bringing together strangers for networking. Small groups of 4-6 people. Food/drink purchased separately.",
+    dtstart: "20260319T190000",
+    dtend: "20260319T220000",
+    url: "https://www.eventbrite.com/e/future-millionaires-dinner-with-entrepreneurs-austin-tickets-1981001443645",
+    location: "Congress Avenue, Austin, TX 78701",
+    cost: "$55",
+    type: "Networking",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0571b-dinner-entrepreneurs-girls@research",
+    summary: "Dinner with Entrepreneurs: Austin | Girls Night Out",
+    description: "Women-focused entrepreneur networking dinner. Small groups of 4-6 at rotating local restaurants. Food/drink purchased separately.",
+    dtstart: "20260319T190000",
+    dtend: "20260319T220000",
+    url: "https://www.eventbrite.com/e/dinner-with-entrepreneurs-austin-girls-night-out-tickets-1985157190596",
+    location: "South Congress Avenue, Austin, TX 78704",
+    cost: "$23",
+    type: "Networking",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0572b-master-buying-selling-startups@research",
+    summary: "Master the Art of Buying, Selling & Scaling Startups",
+    description: "4-hour intensive workshop on frameworks for acquiring, scaling, and exiting startups. Topics: valuation, deal structuring, exit planning, portfolio management, and AI tools for M&A.",
+    dtstart: "20260319T130000",
+    dtend: "20260319T170000",
+    url: "https://www.eventbrite.com/e/master-the-art-of-buying-selling-scaling-startups-successfully-tickets-1979668553936",
+    location: "Congress Ave District, Austin, TX",
+    cost: "$104+",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0573b-genai-book-launch@research",
+    summary: "GenAI 2.0: Introduction to Generative AI Book Launch Party",
+    description: "Austin Forum on Technology & Society hosts the second edition launch of 'Introduction to Generative AI' by Numa Dhamani and Maggie Engler. Author Q&A, book signing, networking over drinks and appetizers.",
+    dtstart: "20260319T190000",
+    dtend: "20260319T210000",
+    url: "https://www.austinforum.org/events/march-19-2026",
+    location: "Remedy Bar, 360 Nueces St, Austin, TX 78701",
+    cost: "Free",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0574b-comedians-roast-tech@research",
+    summary: "Comedians Roast Austin: Tech Roast Show",
+    description: "Tech comedians roast techies on stage. Features comedians Jesse Warren, Austin Nasso, and Nikita Oster. Audience volunteers for speed roasts. All ages.",
+    dtstart: "20260319T193000",
+    dtend: "20260319T210000",
+    url: "https://www.eventbrite.com/e/comedians-roast-austin-tech-roast-show-tickets-1978649675443",
+    location: "ZACH Theatre, 202 South Lamar Blvd, Austin, TX 78704",
+    cost: "$52+",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Friday March 20 ──
+  {
+    uid: "sxsw-2026-0575b-capital-variation-texas@research",
+    summary: "Capital Variation: Capital & Strategic Growth Experience",
+    description: "Exclusive gathering for family offices, high-net-worth investors, and TXSE-listed companies. Infrastructure/real estate forum, defense/tech innovation roundtable, investor-company matchmaking, impact portfolio showcase. Application-based.",
+    dtstart: "20260320T150000",
+    dtend: "20260320T210000",
+    url: "https://www.eventbrite.com/e/capital-variation-comes-to-texas-capital-strategic-growth-experience-tickets-1982645785917",
+    location: "110 East 9th St, Austin, TX 78701",
+    cost: "$217",
+    type: "Networking",
+    rawBlock: ""
+  },
+  // ── Saturday March 21 ──
+  {
+    uid: "sxsw-2026-0576b-big-ballers-dinner@research",
+    summary: "Big Ballers: Dinner with Entrepreneurs (Giving Back Edition)",
+    description: "Entrepreneur networking dinner where 100% of ticket proceeds go to GoFundMe campaigns. Small groups of 4-6. Food/drink purchased separately. 18+.",
+    dtstart: "20260321T190000",
+    dtend: "20260321T220000",
+    url: "https://www.eventbrite.com/e/big-ballers-dinner-with-entrepreneurs-austin-giving-back-edition-tickets-1976753515979",
+    location: "Congress Avenue, Austin, TX 78701",
+    cost: "$109",
+    type: "Networking",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0577b-women-tech-panel@research",
+    summary: "International Women's Month Technology Panel",
+    description: "Panel celebrating women shaping technology and product design. Industry leaders discuss building sustainable, forward-thinking products. Topics: technology, product leadership, cybersecurity. Includes catering and networking.",
+    dtstart: "20260321T133000",
+    dtend: "20260321T160000",
+    url: "https://www.meetup.com/austin-user-experience-professionals-association/events/",
+    location: "The Commune, 101 N Loop Blvd E, Austin, TX",
+    cost: "Free",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Tuesday March 24 ──
+  {
+    uid: "sxsw-2026-0578b-pitch-like-a-pro@research",
+    summary: "Pitch Like a Pro: Financials for Investor Readiness",
+    description: "Workshop led by Bart Bohn (partner at ATP, UT Austin instructor) on preparing startup financials for investors. Lecture and Q&A with tailored feedback. Targeted at UT system entrepreneurs.",
+    dtstart: "20260324T150000",
+    dtend: "20260324T170000",
+    url: "https://www.eventbrite.com/e/pitch-like-a-pro-workshop-financials-for-investor-readiness-tickets-1980472092341",
+    location: "Robert B. Rowling Hall, 300 W MLK Blvd, Austin, TX 78705",
+    cost: "Free",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Wednesday March 25 ──
+  {
+    uid: "sxsw-2026-0579b-ai-tech-startup-night@research",
+    summary: "AI Tech & Startup Night - Austin",
+    description: "Networking for founders, investors, and builders in the AI startup ecosystem. Live 5-7 minute startup pitch presentations with Q&A from investors and industry experts.",
+    dtstart: "20260325T180000",
+    dtend: "20260325T210000",
+    url: "https://www.eventbrite.com/e/ai-tech-startup-night-austin-tickets-1983688092484",
+    location: "Higbie's, 720 Brazos St Suite B-710, Austin, TX 78701",
+    cost: "Free + Paid",
+    type: "Networking",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0580b-producttank-seed-to-series-a@research",
+    summary: "ProductTank: From Seed to Series A - Building Product Operations",
+    description: "Speaker Matt McGuire discusses operational gaps challenging seed-stage companies approaching Series A, and why promising startups hit operational walls that damage fundraising. Networking 7-7:30 PM, talk 7:30-8:30 PM.",
+    dtstart: "20260325T190000",
+    dtend: "20260325T210000",
+    url: "https://www.meetup.com/producttank-austin/events/",
+    location: "Productside @ Victory Plaza, 5209 Burnet Rd, Austin, TX",
+    cost: "Free",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0581b-acg-nextgen-happy-hour@research",
+    summary: "ACG Austin/San Antonio NextGen Happy Hour",
+    description: "Happy hour networking for next-generation dealmakers and corporate growth professionals. Sponsored by Venturi Private Wealth.",
+    dtstart: "20260325T170000",
+    dtend: "20260325T190000",
+    url: "https://www.acg.org/asa/events",
+    location: "Wanderlust Wine Co., 702 Shady Ln, Austin, TX 78702",
+    cost: "Paid",
+    type: "Networking",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0582b-austin-networking-social@research",
+    summary: "Austin Networking Social (Bar Crawl)",
+    description: "Professional networking bar crawl. Four venues: JW Marriott (7 PM), Thirsty's (7:45), Dizzy Rooster (9 PM), Pete's Dueling Piano Bar (10:15). Cowboy boots and music t-shirt dress code with prizes.",
+    dtstart: "20260325T190000",
+    dtend: "20260325T230000",
+    url: "https://www.eventbrite.ca/e/austin-networking-social-tickets-1974972471828",
+    location: "JW Marriott Austin, 110 E 2nd St, Austin, TX 78701",
+    cost: "Free + Paid",
+    type: "Networking",
+    rawBlock: ""
+  },
+  // ── Thursday March 26 ──
+  {
+    uid: "sxsw-2026-0583b-csa-cyber-happy-hour@research",
+    summary: "CSA / ATX Cyber Alliance Austin Happy Hour",
+    description: "Monthly happy hour by Cloud Security Alliance - Austin Chapter (merged with ATX Cyber Alliance). Connect with cybersecurity and tech industry leaders and peers.",
+    dtstart: "20260326T160000",
+    dtend: "20260326T190000",
+    url: "https://www.eventbrite.com/e/csa-austin-happy-hour-tickets-1983891808805",
+    location: "Easy Tiger South Lamar, 3508 S Lamar Blvd #300, Austin, TX 78704",
+    cost: "Free",
+    type: "Networking",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0584b-contracts-essentials@research",
+    summary: "Contracts & Essentials for Early-Stage Entrepreneurs",
+    description: "Covers NDAs, licensing agreements, contractor agreements, vendor agreements. Includes 1-on-1 time with law students for venture-specific legal questions. By UT Brumley Institute.",
+    dtstart: "20260326T180000",
+    dtend: "20260326T190000",
+    url: "https://www.eventbrite.com/e/contracts-essentials-for-early-stage-entrepreneurs-tickets-1983904136678",
+    location: "Robert B. Rowling Hall, 300 W MLK Blvd, Austin, TX 78705",
+    cost: "Free",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0585b-networking-entrepreneurs-nomads@research",
+    summary: "Networking for Entrepreneurs & Digital Nomads",
+    description: "Casual networking for founders, operators, freelancers, and digital nomads. No stage, no host-led agenda — just high-signal intros. International crowd. Uses Metan app for matching.",
+    dtstart: "20260326T200000",
+    dtend: "20260326T220000",
+    url: "https://www.eventbrite.com/e/networking-for-entrepreneurs-digital-nomads-tickets-1984645911346",
+    location: "Austin, TX",
+    cost: "Free",
+    type: "Networking",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0586b-austin-deal-room@research",
+    summary: "The Austin Deal Room: Investor Happy Hour",
+    description: "Curated networking for real estate investors, operators, and dealmakers. No panels, no pitches. Food, drinks, and conversation. Complimentary drinks for Backflip app users.",
+    dtstart: "20260326T183000",
+    dtend: "20260326T210000",
+    url: "https://www.eventbrite.com/e/the-austin-deal-room-investor-happy-hour-tickets-1982820254758",
+    location: "Hold Out Brewing, 1208 W 4th St, Austin, TX 78703",
+    cost: "Free",
+    type: "Networking",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0587b-techfluence-hopsquad@research",
+    summary: "Tech Networking Austin @ HopSquad Brewing",
+    description: "Casual networking for software engineers, product managers, startup founders, and tech professionals. No presentations — just conversation and mingling at a brewery. 255+ RSVPs.",
+    dtstart: "20260326T183000",
+    dtend: "20260326T210000",
+    url: "https://www.meetup.com/techfluence-austin/events/",
+    location: "HopSquad Brewing, 2307 Kramer, Austin, TX",
+    cost: "Free",
+    type: "Networking",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0588b-kubernetes-austin@research",
+    summary: "Kubernetes Austin: AI RAG on K8s with NVIDIA",
+    description: "Two talks: AI RAG Agent on K8s with NVIDIA GPU scheduling, and modernizing a policy platform on Kubernetes at enterprise scale. Food and networking 6-6:30 PM. Parking $8 with validation.",
+    dtstart: "20260326T180000",
+    dtend: "20260326T200000",
+    url: "https://www.meetup.com/kubernetes-austin/events/",
+    location: "Station Austin (Capital Factory), 701 Brazos St, Austin, TX",
+    cost: "Free",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0589b-vistage-executive-summit@research",
+    summary: "Vistage Austin Executive Summit",
+    description: "Full-day executive summit with market forecasting, targeted learning breakouts with industry leaders, and high-impact peer networking.",
+    dtstart: "20260326T073000",
+    dtend: "20260326T163000",
+    url: "https://www.vistage.com/event/austin-summit-2026/",
+    location: "AT&T Hotel & Conference Center at UT Austin, Austin, TX",
+    cost: "Paid",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Friday March 27 ──
+  {
+    uid: "sxsw-2026-0590b-christian-business-networking@research",
+    summary: "Christian Business Networking: Faith, Coffee & Connect",
+    description: "Faith-based breakfast roundtable for entrepreneurs and professionals. Coffee + breakfast tacos, guided discussions. March topic: 'Wholistic Wellness' with Camille K. Walker, JD.",
+    dtstart: "20260327T093000",
+    dtend: "20260327T113000",
+    url: "https://www.eventbrite.com/e/christian-business-networking-event-faith-coffee-connect-tickets-1983917858721",
+    location: "Casa Chapala, 9041 Research Blvd #100, Austin, TX 78759",
+    cost: "$25",
+    type: "Networking",
+    rawBlock: ""
+  },
+  // ── Tuesday March 31 ──
+  {
+    uid: "sxsw-2026-0591b-texas-europe-business-summit@research",
+    summary: "Texas-Europe Business Summit 2026",
+    description: "14th annual summit — the premier event for Texas businesses and entrepreneurs seeking to expand in Europe. Trade and expansion opportunities, hosted by World Affairs Council of Austin, UT, ACC, and Consulate General of Ireland.",
+    dtstart: "20260331T083000",
+    dtend: "20260331T170000",
+    url: "https://conferences.la.utexas.edu/texaseusummit/",
+    location: "San Jacinto Hall, 309 E 21st St, UT Austin, TX 78712",
+    cost: "Paid",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0592b-founder-coffee-tasting@research",
+    summary: "Founder Coffee Tasting",
+    description: "Exclusive coffee tasting for founders and CEOs. Sample a single coffee bean prepared six different ways: cold brew, hot cold brew, bean-to-cup, pour over, vacuum siphon, and Belgian balance siphon. Very limited seating.",
+    dtstart: "20260331T093000",
+    dtend: "20260331T110000",
+    url: "https://lu.ma/calendar/cal-ouHgAHCszM3INEo",
+    location: "The Red Fridge Society, 508 Oakland Ave, Austin, TX 78703",
+    cost: "Approval Required",
+    type: "Networking",
+    rawBlock: ""
+  },
+  // ── Wednesday April 1 ──
+  {
+    uid: "sxsw-2026-0593b-founders-investors-talent-mixer@research",
+    summary: "Founders, Investors & Talent Networking Mixer | Austin",
+    description: "Structured networking rounds, Talent Corner for job seekers/recruiters, and founder pitch presentations. Check-in 6:45, networking 7:20-8:20, pitches 8:50-9:30. Free for verified investors.",
+    dtstart: "20260401T184500",
+    dtend: "20260401T220000",
+    url: "https://www.eventbrite.com/e/founders-investors-talent-networking-mixer-austin-tickets-1984586919901",
+    location: "720 Brazos St Suite B 710, Austin, TX 78701",
+    cost: "Free + Paid",
+    type: "Networking",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0594b-ai-startup-pitch-night@research",
+    summary: "AI Startup Networking & Founder Pitch Night | Austin",
+    description: "Three-hour event for founders, AI builders, and investors. Interactive networking on fundraising/product challenges, followed by founder pitch session. By Startup Ascent.",
+    dtstart: "20260401T190000",
+    dtend: "20260401T220000",
+    url: "https://www.eventbrite.com/e/ai-startup-networking-founder-pitch-night-austin-tickets-1984586913883",
+    location: "720 Brazos St Suite B 710, Austin, TX 78701",
+    cost: "Free + Paid",
+    type: "Networking",
+    rawBlock: ""
+  },
+  // ═══ MUSIC EVENTS ═══
+  // ── Wednesday March 18 ──
+  {
+    uid: "sxsw-2026-0600-miguel-caos-tour@research",
+    summary: "Miguel: CAOS Tour w/ Jean Dawson",
+    description: "Grammy-winning R&B artist Miguel performing songs from his latest album Caos, with special guest Jean Dawson. All ages. Doors 6 PM, show 8 PM.",
+    dtstart: "20260318T200000",
+    dtend: "20260318T230000",
+    url: "https://do512.com/events/2026/3/18/miguel-caos-tour-tickets",
+    location: "Moody Amphitheater at Waterloo Park, 1401 Trinity St, Austin, TX 78701",
+    cost: "$59+",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0601-attack-on-titan-concert@research",
+    summary: "Attack on Titan: Beyond the Walls - The Official Concert",
+    description: "Live orchestral/rock concert featuring the iconic Attack on Titan anime soundtrack by Hiroyuki Sawano and Kohta Yamamoto. Immersive visuals and vocal performances.",
+    dtstart: "20260318T193000",
+    dtend: "20260318T220000",
+    url: "https://texasperformingarts.org/event/attack-on-titan-2026-bass-concert-hall-austin-texas/",
+    location: "Bass Concert Hall, 2350 Robert Dedman Dr, Austin, TX 78712",
+    cost: "$45+",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0602-austin-blues-fest-antones@research",
+    summary: "Austin Blues Fest & Antone's Forever Day Party",
+    description: "C.J. Chenier & The Red Hot Louisiana Band, Adrian Quesada's Trio Asesino, Keith Frank & The Soileau Zydeco Band, Monica Valli, Gypsy Mitchell, Eve Monsees & more. Preview of April Austin Blues Festival.",
+    dtstart: "20260318T120000",
+    dtend: "20260318T180000",
+    url: "https://www.eventbrite.com/e/austin-blues-fest-antones-forever-sxsw-2026-day-party-tickets-1983874169044",
+    location: "Antone's Nightclub, 305 E 5th St, Austin, TX 78701",
+    cost: "$10",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  // ── Thursday March 19 ──
+  {
+    uid: "sxsw-2026-0603-luck-reunion@research",
+    summary: "Luck Reunion 2026",
+    description: "One-day festival at Willie Nelson's ranch with 45+ performances. Willie Nelson & Family, St. Vincent, Lukas Nelson, Booker T. Jones, Trampled by Turtles, Ghostland Observatory, James McMurtry, and dozens more.",
+    dtstart: "20260319T110000",
+    dtend: "20260319T230000",
+    url: "https://www.luckpresents.com/events",
+    location: "Luck Ranch, Spicewood, TX",
+    cost: "Lottery ticketing",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0604-nothing-more@research",
+    summary: "Nothing More w/ Catch Your Breath, Archers & Doobie",
+    description: "Texas rock quartet on their Carnal Nature Tour. All ages. Doors 5:30 PM, show 6:30 PM.",
+    dtstart: "20260319T183000",
+    dtend: "20260319T230000",
+    url: "https://do512.com/events/2026/3/19/nothing-more-w-catch-your-breath-archers-and-doobie-tickets",
+    location: "Stubb's Waller Creek Amphitheater, 801 Red River St, Austin, TX 78701",
+    cost: "$35+",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  // ── Friday March 20 ──
+  {
+    uid: "sxsw-2026-0605-drain-no-pressure@research",
+    summary: "Drain w/ No Pressure, Haywire & Secret World",
+    description: "Hardcore/punk band Drain with support. High-energy show.",
+    dtstart: "20260320T180000",
+    dtend: "20260320T230000",
+    url: "https://do512.com/events/2026/3/20/drain-w-no-pressure-haywire-secret-world-tickets",
+    location: "Emo's Austin, 2015 E Riverside Dr, Austin, TX 78741",
+    cost: "$54+",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0606-boyce-avenue@research",
+    summary: "Boyce Avenue - Spring 2026 Tour",
+    description: "YouTube sensation acoustic trio performing their biggest hits. Outdoor venue with heaters, food, and drinks under the stars.",
+    dtstart: "20260320T180000",
+    dtend: "20260320T230000",
+    url: "https://hautespot.live/calendar/boyce-avenue-2026",
+    location: "Haute Spot, 1501 E New Hope Dr, Cedar Park, TX 78641",
+    cost: "$49+",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  // ── Saturday March 21 ──
+  {
+    uid: "sxsw-2026-0607-robert-plant@research",
+    summary: "Robert Plant with Saving Grace, Suzi Dian & Rosie Flores",
+    description: "Led Zeppelin icon performing with his Saving Grace project, exploring blues, folk, gospel, and country roots. Special guest Austin guitar legend Rosie Flores.",
+    dtstart: "20260321T193000",
+    dtend: "20260321T230000",
+    url: "https://www.acllive.com/event/2026-03-21-robert-plant-with-saving-grace-and-suzi-dian-at-7-30-pm",
+    location: "ACL Live at The Moody Theater, 310 W Willie Nelson Blvd, Austin, TX 78701",
+    cost: "$206+",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0608-booker-t-jones@research",
+    summary: "Booker T. Jones",
+    description: "Legendary Blues Hall of Famer and multi-instrumentalist (Booker T. & the MGs) performing on the classic Hammond B-3 organ. Six decades of material.",
+    dtstart: "20260321T210000",
+    dtend: "20260322T000000",
+    url: "https://antonesnightclub.com/tm-event/booker-t-jones/",
+    location: "Antone's Nightclub, 305 E 5th St, Austin, TX 78701",
+    cost: "$43+",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0609-rnb-only-live@research",
+    summary: "COLORS Presents: R&B Only Live",
+    description: "DJ-driven live music experience celebrating R&B from past to present. Sing, dance, and enjoy classic and modern R&B jams. 18+.",
+    dtstart: "20260321T200000",
+    dtend: "20260322T010000",
+    url: "https://austin.rnbonly.com/",
+    location: "Emo's Austin, 2015 E Riverside Dr, Austin, TX 78741",
+    cost: "Paid",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  // ── Sunday March 22 ──
+  {
+    uid: "sxsw-2026-0610-itzhak-perlman@research",
+    summary: "Itzhak Perlman",
+    description: "Grammy and Emmy Award-winning violinist, one of the most celebrated musicians of our time. Known for the Schindler's List soundtrack.",
+    dtstart: "20260322T140000",
+    dtend: "20260322T163000",
+    url: "https://www.austin-theater.com/dates/2026/03/category/concert",
+    location: "Dell Hall, Long Center, 701 W Riverside Dr, Austin, TX 78704",
+    cost: "$176+",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  // ── Tuesday March 24 ──
+  {
+    uid: "sxsw-2026-0611-puscifer@research",
+    summary: "Puscifer: The Normal Isn't Tour w/ Dave Hill",
+    description: "Maynard James Keenan's electro-industrial project blending music, visuals, and theatrical storytelling. With comedian Dave Hill.",
+    dtstart: "20260324T193000",
+    dtend: "20260324T230000",
+    url: "https://texasperformingarts.org/event/puscifer-2026-bass-concert-hall-austin-texas/",
+    location: "Bass Concert Hall, 2350 Robert Dedman Dr, Austin, TX 78712",
+    cost: "$47+",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  // ── Wednesday March 25 ──
+  {
+    uid: "sxsw-2026-0612-rainbow-kitten-surprise@research",
+    summary: "Rainbow Kitten Surprise: bones Tour w/ Common People",
+    description: "Genre-blending alt-rock band combining grunge, folk, and blues. $1 per ticket donated to mental health organizations. All ages.",
+    dtstart: "20260325T190000",
+    dtend: "20260325T230000",
+    url: "https://www.moodyamphitheater.com/events/rainbow-kitten-surprise25",
+    location: "Moody Amphitheater at Waterloo Park, 1401 Trinity St, Austin, TX 78701",
+    cost: "$81+",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0613-microwave-much-love@research",
+    summary: "Microwave: Much Love 10 Year Anniversary w/ Anthony Green & All Get Out",
+    description: "Atlanta indie/emo band celebrating 10 years of their album Much Love. Anthony Green (Circa Survive) and All Get Out.",
+    dtstart: "20260325T180000",
+    dtend: "20260325T230000",
+    url: "https://www.ticketmaster.com/microwave-much-love-10-year-anniversary-austin-texas-03-25-2026/event/3A00637AA92B7DB7",
+    location: "Emo's Austin, 2015 E Riverside Dr, Austin, TX 78741",
+    cost: "Paid",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  // ── Thursday March 26 ──
+  {
+    uid: "sxsw-2026-0614-jesse-welles@research",
+    summary: "Jesse Welles: Under The Powerlines Tour w/ S.G. Goodman",
+    description: "Singer-songwriter performing folk/rock/Americana. All ages.",
+    dtstart: "20260326T190000",
+    dtend: "20260326T230000",
+    url: "https://stubbsaustin.com/tm-event/jesse-welles-under-the-powerlines-2026/",
+    location: "Stubb's Waller Creek Amphitheater, 801 Red River St, Austin, TX 78701",
+    cost: "Paid",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0615-third-day-30th@research",
+    summary: "Third Day: 30th Anniversary Tour w/ Zach Williams",
+    description: "Multi-platinum Christian rock band reuniting original members for a limited 30th anniversary tour.",
+    dtstart: "20260326T190000",
+    dtend: "20260326T230000",
+    url: "https://moodycenteratx.com/event/third-day/",
+    location: "Moody Center, 2001 Robert Dedman Dr, Austin, TX 78712",
+    cost: "$26+",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0616-the-knocks-dragonette@research",
+    summary: "The Knocks x Dragonette x Aquaria: REVELATION",
+    description: "Electro-pop collaboration featuring NYC duo The Knocks, Canadian synthpop band Dragonette, and drag superstar Aquaria.",
+    dtstart: "20260326T190000",
+    dtend: "20260326T230000",
+    url: "https://do512.com/events/2026/3/26/the-knocks-x-dragonette-x-aquaria-revelation-tickets",
+    location: "Emo's Austin, 2015 E Riverside Dr, Austin, TX 78741",
+    cost: "Paid",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  // ── Friday March 27 ──
+  {
+    uid: "sxsw-2026-0617-last-dinner-party@research",
+    summary: "The Last Dinner Party: From The Pyre Tour w/ Florence Road",
+    description: "Brit Award-winning British indie rock band known for their debut album. Gothic, romantic, theatrical rock.",
+    dtstart: "20260327T200000",
+    dtend: "20260327T230000",
+    url: "https://www.acllive.com/event/2026-03-27-the-last-dinner-party-at-8-pm",
+    location: "ACL Live at The Moody Theater, 310 W Willie Nelson Blvd, Austin, TX 78701",
+    cost: "$98+",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0618-fab-four-beatles@research",
+    summary: "The Fab Four: HELP! - Ultimate Beatles Tribute",
+    description: "Award-winning Beatles tribute band recreating the energy of the 1965 film Help! with note-for-note renditions.",
+    dtstart: "20260327T200000",
+    dtend: "20260327T223000",
+    url: "https://tickets.austintheatre.org/13078",
+    location: "Paramount Theatre, 713 Congress Ave, Austin, TX 78701",
+    cost: "$52+",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0619-shrek-rave@research",
+    summary: "Shrek Rave (18+)",
+    description: "Themed rave event with DJs, Shrek-themed music and visuals, and swampy green cocktails. 18+.",
+    dtstart: "20260327T210000",
+    dtend: "20260328T020000",
+    url: "https://do512.com/events/2026/3/27/shrek-rave-tickets",
+    location: "Emo's Austin, 2015 E Riverside Dr, Austin, TX 78741",
+    cost: "$25+",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  // ── Saturday March 28 ──
+  {
+    uid: "sxsw-2026-0620-the-neighbourhood@research",
+    summary: "The Neighbourhood: THE WOURLD TOUR",
+    description: "Indie rock band known for 'Sweater Weather' on their world tour.",
+    dtstart: "20260328T193000",
+    dtend: "20260328T230000",
+    url: "https://moodycenteratx.com/event/the-neighbourhood/",
+    location: "Moody Center, 2001 Robert Dedman Dr, Austin, TX 78712",
+    cost: "$70+",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0621-snow-tha-product@research",
+    summary: "Snow Tha Product: BEFORE I CRASHOUT Tour",
+    description: "Latin Grammy-nominated, multi-platinum rapper and actress on her spring tour.",
+    dtstart: "20260328T190000",
+    dtend: "20260328T230000",
+    url: "https://www.ticketmaster.com/snow-tha-product-before-i-crash-austin-texas-03-28-2026/event/3A006378CBDEAA11",
+    location: "Emo's Austin, 2015 E Riverside Dr, Austin, TX 78741",
+    cost: "$48+",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0622-shinyribs-anthropos@research",
+    summary: "Anthropos Arts Spring Fling with Shinyribs",
+    description: "Shinyribs full band with Anthropos Arts All Stars. Genre-hopping blues, funk, and country. Free Tito's cocktails while supplies last. Benefits youth music mentorship.",
+    dtstart: "20260328T190000",
+    dtend: "20260328T230000",
+    url: "https://do512.com/events/2026/3/28/anthropos-arts-spring-fling-with-shinyribs-tickets",
+    location: "Antone's Nightclub, 305 E 5th St, Austin, TX 78701",
+    cost: "Paid",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  // ── Sunday March 29 ──
+  {
+    uid: "sxsw-2026-0623-ricardo-arjona@research",
+    summary: "Ricardo Arjona: Lo Que El Seco No Dijo Tour",
+    description: "Guatemalan Latin pop/rock superstar on his U.S. arena tour.",
+    dtstart: "20260329T200000",
+    dtend: "20260329T230000",
+    url: "https://moodycenteratx.com/event/ricardo-arjona-2026/",
+    location: "Moody Center, 2001 Robert Dedman Dr, Austin, TX 78712",
+    cost: "$75+",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0624-hawthorne-heights@research",
+    summary: "Hawthorne Heights: 20th Anniversary w/ letlive. & Creeper",
+    description: "Emo/post-hardcore band performing their classic album If Only You Were Lonely in full, plus career-spanning set.",
+    dtstart: "20260329T180000",
+    dtend: "20260329T230000",
+    url: "https://www.emosaustin.com/",
+    location: "Emo's Austin, 2015 E Riverside Dr, Austin, TX 78741",
+    cost: "Paid",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  // ── Tuesday March 31 ──
+  {
+    uid: "sxsw-2026-0625-journey-farewell@research",
+    summary: "Journey: Final Frontier Tour 2026",
+    description: "Rock legends Journey on their farewell tour. Full evening performance including Don't Stop Believin' and classic hits.",
+    dtstart: "20260331T193000",
+    dtend: "20260331T230000",
+    url: "https://moodycenteratx.com/event/journey-2026/",
+    location: "Moody Center, 2001 Robert Dedman Dr, Austin, TX 78712",
+    cost: "$98+",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  // ── Wednesday April 1 ──
+  {
+    uid: "sxsw-2026-0626-tiffany-tribeza@research",
+    summary: "TRIBEZA's Birthday Bash: Tiffany w/ The McGrath Project",
+    description: "TRIBEZA magazine's 25th anniversary featuring 1980s pop icon Tiffany ('I Think We're Alone Now'). 21+.",
+    dtstart: "20260401T200000",
+    dtend: "20260401T230000",
+    url: "https://antonesnightclub.com/tm-event/tribezas-birthday-bash-tiffany-w-the-mcgrath-project/",
+    location: "Antone's Nightclub, 305 E 5th St, Austin, TX 78701",
+    cost: "$49+",
+    type: "Music + Live Show",
+    rawBlock: ""
+  },
+  // ═══ COMEDY EVENTS ═══
+  // ── Thursday March 19 ──
+  {
+    uid: "sxsw-2026-0630-ashley-gavin@research",
+    summary: "Ashley Gavin (Cap City Comedy Club)",
+    description: "Featured on Comedy Central, Netflix, Just For Laughs. Multiple shows Thu-Sat. Couples packages available.",
+    dtstart: "20260319T193000",
+    dtend: "20260319T210000",
+    url: "https://www.capcitycomedy.com/shows/349617",
+    location: "Cap City Comedy Club, 11506 Century Oaks Terrace Bldg B, Austin, TX 78758",
+    cost: "$50+",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Friday March 20 ──
+  {
+    uid: "sxsw-2026-0631-chris-delia@research",
+    summary: "Chris D'Elia: Go For It! (Vulcan Gas Company)",
+    description: "Four intimate shows at Vulcan Gas Company. 21+. Shows Fri & Sat at 7:30 PM and 10 PM.",
+    dtstart: "20260320T193000",
+    dtend: "20260320T210000",
+    url: "https://www.eventbrite.com/e/chris-delia-live-at-vulcan-gas-co-austin-tx-tickets-1982785452664",
+    location: "Vulcan Gas Company, 418 E 6th St, Austin, TX 78701",
+    cost: "$63+",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0632-stephen-lynch@research",
+    summary: "Stephen Lynch (Paramount Theatre)",
+    description: "Musical comedian with six best-selling CDs, Comedy Central specials, Tony-nominated for The Wedding Singer on Broadway. Doors 6 PM, show 7 PM.",
+    dtstart: "20260320T190000",
+    dtend: "20260320T210000",
+    url: "https://tickets.austintheatre.org/13346",
+    location: "Paramount Theatre, 713 Congress Ave, Austin, TX 78701",
+    cost: "$44+",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0633-todd-glass@research",
+    summary: "Todd Glass (Creek and the Cave) - SOLD OUT",
+    description: "High-energy stand-up. Three Netflix specials, appeared on The Daily Show, Jimmy Kimmel Live! Multiple shows Fri-Sat. 21+.",
+    dtstart: "20260320T190000",
+    dtend: "20260320T210000",
+    url: "https://www.creekandcave.com/events/todd-glass-live",
+    location: "The Creek and the Cave, 611 E 7th St, Austin, TX 78701",
+    cost: "$25-$35",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Tuesday March 25 ──
+  {
+    uid: "sxsw-2026-0634-nick-colletti@research",
+    summary: "Nick Colletti (Cap City Comedy Club)",
+    description: "Star of THE REAL BROS OF SIMI VALLEY, 940k+ online fans.",
+    dtstart: "20260325T193000",
+    dtend: "20260325T210000",
+    url: "https://www.capcitycomedy.com/shows/350158",
+    location: "Cap City Comedy Club, 11506 Century Oaks Terrace Bldg B, Austin, TX 78758",
+    cost: "Paid",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Wednesday March 26 ──
+  {
+    uid: "sxsw-2026-0635-jeremy-piven@research",
+    summary: "Jeremy Piven (Cap City Comedy Club)",
+    description: "Award-winning actor (Entourage) now performing stand-up. Hosts podcast 'How U Livin' J Piven.'",
+    dtstart: "20260326T193000",
+    dtend: "20260326T210000",
+    url: "https://www.capcitycomedy.com/shows/351746",
+    location: "Cap City Comedy Club, 11506 Century Oaks Terrace Bldg B, Austin, TX 78758",
+    cost: "Paid",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Saturday March 28 ──
+  {
+    uid: "sxsw-2026-0636-justin-willman@research",
+    summary: "Justin Willman: One for the Ages (Paramount Theatre)",
+    description: "Star of Netflix's Magic for Humans and Magic Prank Show. New material mixing mind-blowing magic and comedy. Doors 6 PM, show 7 PM.",
+    dtstart: "20260328T190000",
+    dtend: "20260328T210000",
+    url: "https://tickets.austintheatre.org/12924",
+    location: "Paramount Theatre, 713 Congress Ave, Austin, TX 78701",
+    cost: "$74+",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0637-josh-wolf@research",
+    summary: "Josh Wolf: Touring Hard (Cap City Comedy Club)",
+    description: "Touring comedian for 30+ years. Best-selling author, writer for My Name Is Earl and Raising Hope. Multiple shows Fri-Sun. VIP meet & greet available.",
+    dtstart: "20260328T190000",
+    dtend: "20260328T210000",
+    url: "https://www.capcitycomedy.com/shows/348434",
+    location: "Cap City Comedy Club, 11506 Century Oaks Terrace Bldg B, Austin, TX 78758",
+    cost: "Paid",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Monday March 31 ──
+  {
+    uid: "sxsw-2026-0638-mohanad-elshieky@research",
+    summary: "Mohanad Elshieky (Cap City Comedy Club)",
+    description: "Libyan-born NYC comedian. Featured on Conan, Late Show with Stephen Colbert, Comedy Central. Writer for NPR's Wait Wait Don't Tell Me.",
+    dtstart: "20260331T193000",
+    dtend: "20260331T210000",
+    url: "https://www.capcitycomedy.com/shows/348168",
+    location: "Cap City Comedy Club, 11506 Century Oaks Terrace Bldg B, Austin, TX 78758",
+    cost: "Paid",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Wednesday March 25 ──
+  {
+    uid: "sxsw-2026-0566-founders-circle@groupchat",
+    summary: "Founder's Circle 2026",
+    description: "Monthly casual meetup for founders to connect, share experiences, and discuss strategies. Supportive network community. Sponsored by Station Austin.",
+    dtstart: "20260325T173000",
+    dtend: "20260325T183000",
+    url: "https://www.eventbrite.com/e/founders-circle-2026-tickets-1102683679569",
+    location: "Capital Factory, Padawan Room (5th Floor), 701 Brazos St, Austin, TX 78701",
+    cost: "Free",
+    type: "Networking",
+    rawBlock: ""
+  },
+  // ── Wednesday April 1 ──
+  {
+    uid: "sxsw-2026-0567-meet-your-cofounder@groupchat",
+    summary: "Meet Your Co-Founder: Startup Builders Night in Austin",
+    description: "Curated networking for founders, engineers, product builders and entrepreneurs. Interactive co-founder networking with participant voting on topics, startup pitch presentations, and casual networking. 40-80 participants. By Startup Ascent.",
+    dtstart: "20260401T190000",
+    dtend: "20260401T220000",
+    url: "https://www.eventbrite.com/e/meet-your-co-founder-startup-builders-night-in-austin-tickets-1984586914886",
+    location: "720 Brazos St Suite B 710, Austin, TX 78701",
+    cost: "Free + Paid",
+    type: "Networking",
+    rawBlock: ""
+  },
+  // ── Rodeo Austin (Mar 18–28) ──
+  {
+    uid: "sxsw-2026-0568-rodeo-austin-mar18@groupchat",
+    summary: "Rodeo Austin",
+    description: "One of America's top 5 ProRodeos. Fair, rodeo competitions, concerts, carnival, food, livestock show, and more. Raising millions to support Texas children since 1938.",
+    dtstart: "20260318T110000",
+    dtend: "20260318T230000",
+    url: "https://rodeoaustin.com/",
+    location: "Travis County Exposition Center, 9100 Decker Lake Rd, Austin, TX 78724",
+    cost: "Paid",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0569-rodeo-austin-mar19@groupchat",
+    summary: "Rodeo Austin",
+    description: "One of America's top 5 ProRodeos. Fair, rodeo competitions, concerts, carnival, food, livestock show, and more. Raising millions to support Texas children since 1938.",
+    dtstart: "20260319T110000",
+    dtend: "20260319T230000",
+    url: "https://rodeoaustin.com/",
+    location: "Travis County Exposition Center, 9100 Decker Lake Rd, Austin, TX 78724",
+    cost: "Paid",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0570-rodeo-austin-mar20@groupchat",
+    summary: "Rodeo Austin",
+    description: "One of America's top 5 ProRodeos. Fair, rodeo competitions, concerts, carnival, food, livestock show, and more. Raising millions to support Texas children since 1938.",
+    dtstart: "20260320T110000",
+    dtend: "20260320T230000",
+    url: "https://rodeoaustin.com/",
+    location: "Travis County Exposition Center, 9100 Decker Lake Rd, Austin, TX 78724",
+    cost: "Paid",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0571-rodeo-austin-mar21@groupchat",
+    summary: "Rodeo Austin",
+    description: "One of America's top 5 ProRodeos. Fair, rodeo competitions, concerts, carnival, food, livestock show, and more. Raising millions to support Texas children since 1938.",
+    dtstart: "20260321T110000",
+    dtend: "20260321T230000",
+    url: "https://rodeoaustin.com/",
+    location: "Travis County Exposition Center, 9100 Decker Lake Rd, Austin, TX 78724",
+    cost: "Paid",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0572-rodeo-austin-mar22@groupchat",
+    summary: "Rodeo Austin",
+    description: "One of America's top 5 ProRodeos. Fair, rodeo competitions, concerts, carnival, food, livestock show, and more. Raising millions to support Texas children since 1938.",
+    dtstart: "20260322T110000",
+    dtend: "20260322T230000",
+    url: "https://rodeoaustin.com/",
+    location: "Travis County Exposition Center, 9100 Decker Lake Rd, Austin, TX 78724",
+    cost: "Paid",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0573-rodeo-austin-mar23@groupchat",
+    summary: "Rodeo Austin",
+    description: "One of America's top 5 ProRodeos. Fair, rodeo competitions, concerts, carnival, food, livestock show, and more. Raising millions to support Texas children since 1938.",
+    dtstart: "20260323T110000",
+    dtend: "20260323T230000",
+    url: "https://rodeoaustin.com/",
+    location: "Travis County Exposition Center, 9100 Decker Lake Rd, Austin, TX 78724",
+    cost: "Paid",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0574-rodeo-austin-mar24@groupchat",
+    summary: "Rodeo Austin",
+    description: "One of America's top 5 ProRodeos. Fair, rodeo competitions, concerts, carnival, food, livestock show, and more. Raising millions to support Texas children since 1938.",
+    dtstart: "20260324T110000",
+    dtend: "20260324T230000",
+    url: "https://rodeoaustin.com/",
+    location: "Travis County Exposition Center, 9100 Decker Lake Rd, Austin, TX 78724",
+    cost: "Paid",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0575-rodeo-austin-mar25@groupchat",
+    summary: "Rodeo Austin",
+    description: "One of America's top 5 ProRodeos. Fair, rodeo competitions, concerts, carnival, food, livestock show, and more. Raising millions to support Texas children since 1938.",
+    dtstart: "20260325T110000",
+    dtend: "20260325T230000",
+    url: "https://rodeoaustin.com/",
+    location: "Travis County Exposition Center, 9100 Decker Lake Rd, Austin, TX 78724",
+    cost: "Paid",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0576-rodeo-austin-mar26@groupchat",
+    summary: "Rodeo Austin",
+    description: "One of America's top 5 ProRodeos. Fair, rodeo competitions, concerts, carnival, food, livestock show, and more. Raising millions to support Texas children since 1938.",
+    dtstart: "20260326T110000",
+    dtend: "20260326T230000",
+    url: "https://rodeoaustin.com/",
+    location: "Travis County Exposition Center, 9100 Decker Lake Rd, Austin, TX 78724",
+    cost: "Paid",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0577-rodeo-austin-mar27@groupchat",
+    summary: "Rodeo Austin",
+    description: "One of America's top 5 ProRodeos. Fair, rodeo competitions, concerts, carnival, food, livestock show, and more. Raising millions to support Texas children since 1938.",
+    dtstart: "20260327T110000",
+    dtend: "20260327T230000",
+    url: "https://rodeoaustin.com/",
+    location: "Travis County Exposition Center, 9100 Decker Lake Rd, Austin, TX 78724",
+    cost: "Paid",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0578-rodeo-austin-mar28@groupchat",
+    summary: "Rodeo Austin",
+    description: "One of America's top 5 ProRodeos. Fair, rodeo competitions, concerts, carnival, food, livestock show, and more. Raising millions to support Texas children since 1938. Final day!",
+    dtstart: "20260328T110000",
+    dtend: "20260328T230000",
+    url: "https://rodeoaustin.com/",
+    location: "Travis County Exposition Center, 9100 Decker Lake Rd, Austin, TX 78724",
+    cost: "Paid",
+    type: "Event",
     rawBlock: ""
   }
 ];
