@@ -1,6 +1,8 @@
 import { SXSWEvent } from './data/types';
 
 // --- Configuration ---
+// Set to true to enable the music paywall, false to show all events free
+export const PAYWALL_ENABLED = false;
 // Replace with your Stripe Payment Link URL
 export const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/14AdR17msfhq0RHbdfbV601';
 
@@ -34,6 +36,7 @@ export function isFreeSample(event: SXSWEvent): boolean {
 }
 
 export function isEventLocked(event: SXSWEvent): boolean {
+  if (!PAYWALL_ENABLED) return false;
   if (!isMusicEvent(event)) return false;
   if (isMusicUnlocked()) return false;
   if (isFreeSample(event)) return false;

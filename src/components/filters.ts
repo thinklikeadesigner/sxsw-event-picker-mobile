@@ -1,65 +1,52 @@
 import { getState, setDay, setFilter, starAll, clearStars } from '../state';
 import { dayKey } from '../utils/time';
 
-const DAYS = [
-  { key: '2026-03-10', label: 'Tue 10' },
-  { key: '2026-03-11', label: 'Wed 11' },
-  { key: '2026-03-12', label: 'Thu 12' },
-  { key: '2026-03-13', label: 'Fri 13' },
-  { key: '2026-03-14', label: 'Sat 14' },
-  { key: '2026-03-15', label: 'Sun 15' },
-  { key: '2026-03-16', label: 'Mon 16' },
-  { key: '2026-03-17', label: 'Tue 17' },
-  { key: '2026-03-18', label: 'Wed 18' },
-  { key: '2026-03-19', label: 'Thu 19' },
-  { key: '2026-03-20', label: 'Fri 20' },
-  { key: '2026-03-21', label: 'Sat 21' },
-  { key: '2026-03-22', label: 'Sun 22' },
-  { key: '2026-03-23', label: 'Mon 23' },
-  { key: '2026-03-24', label: 'Tue 24' },
-  { key: '2026-03-25', label: 'Wed 25' },
-  { key: '2026-03-26', label: 'Thu 26' },
-  { key: '2026-03-27', label: 'Fri 27' },
-  { key: '2026-03-28', label: 'Sat 28' },
-  { key: '2026-03-29', label: 'Sun 29' },
-  { key: '2026-03-31', label: 'Tue 31' },
-  { key: '2026-04-01', label: 'Wed Apr 1' },
-  { key: '2026-04-03', label: 'Fri Apr 3' },
-  { key: '2026-04-04', label: 'Sat Apr 4' },
-  { key: '2026-04-05', label: 'Sun Apr 5' },
-  { key: '2026-04-07', label: 'Tue Apr 7' },
-  { key: '2026-04-06', label: 'Mon Apr 6' },
-  { key: '2026-04-08', label: 'Wed Apr 8' },
-  { key: '2026-04-09', label: 'Thu Apr 9' },
-  { key: '2026-04-10', label: 'Fri Apr 10' },
-  { key: '2026-04-13', label: 'Mon Apr 13' },
-  { key: '2026-04-14', label: 'Tue Apr 14' },
-  { key: '2026-04-15', label: 'Wed Apr 15' },
-  { key: '2026-04-16', label: 'Thu Apr 16' },
-  { key: '2026-04-17', label: 'Fri Apr 17' },
-  { key: '2026-04-18', label: 'Sat Apr 18' },
-  { key: '2026-04-20', label: 'Mon Apr 20' },
-  { key: '2026-04-21', label: 'Tue Apr 21' },
-  { key: '2026-04-22', label: 'Wed Apr 22' },
-  { key: '2026-04-23', label: 'Thu Apr 23' },
-  { key: '2026-04-25', label: 'Sat Apr 25' },
-  { key: '2026-04-27', label: 'Mon Apr 27' },
-  { key: '2026-04-29', label: 'Wed Apr 29' },
-  { key: '2026-05-01', label: 'Fri May 1' },
-  { key: '2026-05-06', label: 'Wed May 6' },
-  { key: '2026-05-07', label: 'Thu May 7' },
-  { key: '2026-05-11', label: 'Mon May 11' },
-  { key: '2026-05-12', label: 'Tue May 12' },
-  { key: '2026-05-22', label: 'Fri May 22' },
-  { key: '2026-05-28', label: 'Thu May 28' },
-  { key: '2026-05-29', label: 'Fri May 29' },
-  { key: '2026-10-01', label: 'Thu Oct 1' },
-];
+let weekOffset = 0;
+
+function getPageDays(offset: number, events: { start: Date; end: Date }[]): { key: string; label: string }[] {
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const start = new Date(today);
+  start.setDate(today.getDate() + offset * 7);
+
+  const eventDays = new Set<string>();
+  for (const e of events) {
+    if (e.end > now) eventDays.add(dayKey(e.start));
+  }
+
+  const days: { key: string; label: string }[] = [];
+  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(start);
+    d.setDate(start.getDate() + i);
+    const key = dayKey(d);
+    if (eventDays.has(key)) {
+      days.push({ key, label: `${dayNames[d.getDay()]} ${monthNames[d.getMonth()]} ${d.getDate()}` });
+    }
+  }
+  return days;
+}
+
+function getPageLabel(offset: number): string {
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const start = new Date(today);
+  start.setDate(today.getDate() + offset * 7);
+  const end = new Date(start);
+  end.setDate(start.getDate() + 6);
+  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  if (start.getMonth() === end.getMonth()) {
+    return `${monthNames[start.getMonth()]} ${start.getDate()}\u2013${end.getDate()}`;
+  }
+  return `${monthNames[start.getMonth()]} ${start.getDate()} \u2013 ${monthNames[end.getMonth()]} ${end.getDate()}`;
+}
 
 const TYPES = [
   { key: 'all', label: 'All' },
   { key: 'music', label: '\uD83C\uDFB5 Music' },
   { key: 'tech', label: 'Tech & Networking' },
+  { key: 'wellness', label: '\uD83E\uDDD8 Wellness' },
 ];
 
 export function renderFilters() {
@@ -75,17 +62,23 @@ export function renderFilters() {
     dayCounts[k] = (dayCounts[k] || 0) + 1;
   }
 
-  const today = dayKey(new Date());
-  const visibleDays = DAYS.filter(d => d.key >= today);
+  const weekDays = getPageDays(weekOffset, events);
+  const weekLabel = getPageLabel(weekOffset);
 
   dayFilters.innerHTML = `
-    <span class="filter-label">DAY:</span>
-    ${visibleDays.map(d => `
-      <button class="filter-btn ${currentDay === d.key ? 'active' : ''}" data-day="${d.key}">
-        ${d.label}
-        <span class="filter-count">${dayCounts[d.key] || 0}</span>
-      </button>
-    `).join('')}
+    <div class="week-nav">
+      <button class="week-nav-btn" id="prev-week">\u2190</button>
+      <span class="week-label">${weekOffset === 0 ? 'This Week' : weekLabel}</span>
+      <button class="week-nav-btn" id="next-week">\u2192</button>
+    </div>
+    <div class="week-days">
+      ${weekDays.map(d => `
+        <button class="filter-btn day-btn ${currentDay === d.key ? 'active' : ''}" data-day="${d.key}">
+          ${d.label}
+          <span class="filter-count">${dayCounts[d.key] || 0}</span>
+        </button>
+      `).join('') || '<span class="empty-week">No events this week</span>'}
+    </div>
     <div class="filter-actions">
       <button class="filter-btn" id="star-day">Star Day</button>
       <button class="filter-btn" id="clear-day">Clear Day</button>
@@ -99,6 +92,16 @@ export function renderFilters() {
       <button class="filter-btn ${filters.type === t.key ? 'active' : ''}" data-type="${t.key}">${t.label}</button>
     `).join('')}
   `;
+
+  // Bind week nav
+  document.getElementById('prev-week')?.addEventListener('click', () => {
+    weekOffset--;
+    renderFilters();
+  });
+  document.getElementById('next-week')?.addEventListener('click', () => {
+    weekOffset++;
+    renderFilters();
+  });
 
   // Bind day buttons
   dayFilters.querySelectorAll('[data-day]').forEach(btn => {

@@ -1,12 +1,27 @@
 import { getState, toggleStar } from '../state';
 import { renderEventCard } from '../components/event-card';
 import { dayKey, dayLabel, fmt } from '../utils/time';
-import { isMusicUnlocked, countLockedMusic, countTotalMusic, STRIPE_PAYMENT_LINK } from '../paywall';
+import { PAYWALL_ENABLED, isMusicUnlocked, countLockedMusic, countTotalMusic, STRIPE_PAYMENT_LINK } from '../paywall';
 
-function matchesTypeFilter(eventType: string, filter: string): boolean {
+const WELLNESS_TYPES = new Set([
+  'Relax + Networking',
+  'Sport + Networking',
+  'Health + Event + Networking',
+]);
+
+const WELLNESS_KEYWORDS = /wellness|yoga|meditat|fitness|breathwork|mindful|sound bath|pilates|recovery|restore|recharge/i;
+
+function isWellnessEvent(event: { type: string; summary: string; description: string }): boolean {
+  return WELLNESS_TYPES.has(event.type) ||
+    WELLNESS_KEYWORDS.test(event.summary) ||
+    WELLNESS_KEYWORDS.test(event.description);
+}
+
+function matchesTypeFilter(event: { type: string; summary: string; description: string }, filter: string): boolean {
   if (filter === 'all') return true;
-  if (filter === 'music') return eventType === 'Music + Live Show';
-  if (filter === 'tech') return eventType !== 'Music + Live Show';
+  if (filter === 'music') return event.type === 'Music + Live Show';
+  if (filter === 'wellness') return isWellnessEvent(event);
+  if (filter === 'tech') return event.type !== 'Music + Live Show' && !isWellnessEvent(event);
   return true;
 }
 
@@ -16,7 +31,7 @@ export function renderDiscover(container: HTMLElement) {
   // Filter events for current day, cost, and not ended
   const now = new Date();
   const dayEvents = events.filter(e =>
-    dayKey(e.start) === currentDay && matchesTypeFilter(e.type, filters.type) && e.end > now
+    dayKey(e.start) === currentDay && matchesTypeFilter(e, filters.type) && e.end > now
   );
 
   if (dayEvents.length === 0) {
@@ -62,7 +77,7 @@ export function renderDiscover(container: HTMLElement) {
   const lockedCount = countLockedMusic(events, dayKey, currentDay);
   const totalMusic = countTotalMusic(events);
   let paywallHtml = '';
-  if (!musicUnlocked && lockedCount > 0) {
+  if (PAYWALL_ENABLED && !musicUnlocked && lockedCount > 0) {
     paywallHtml = `
       <div class="paywall-banner" id="paywall-banner">
         <div class="paywall-content">
@@ -124,8 +139,9 @@ export function renderDiscover(container: HTMLElement) {
     nowBtn.className = 'now-btn';
     nowBtn.textContent = '\u25CF Now';
     nowBtn.addEventListener('click', () => {
-      const currentHour = today.getHours();
-      const currentMin = today.getMinutes();
+      const now2 = new Date();
+      const currentHour = now2.getHours();
+      const currentMin = now2.getMinutes();
       const ampm = currentHour >= 12 ? 'PM' : 'AM';
       const hr = currentHour % 12 || 12;
       const timeStr = `${hr}:${currentMin < 30 ? '00' : '30'} ${ampm}`;
