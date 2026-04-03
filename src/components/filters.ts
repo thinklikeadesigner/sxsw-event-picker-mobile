@@ -24,9 +24,20 @@ const DAYS = [
   { key: '2026-03-29', label: 'Sun 29' },
   { key: '2026-03-31', label: 'Tue 31' },
   { key: '2026-04-01', label: 'Wed Apr 1' },
+  { key: '2026-04-03', label: 'Fri Apr 3' },
   { key: '2026-04-04', label: 'Sat Apr 4' },
+  { key: '2026-04-05', label: 'Sun Apr 5' },
   { key: '2026-04-07', label: 'Tue Apr 7' },
+  { key: '2026-04-08', label: 'Wed Apr 8' },
   { key: '2026-04-10', label: 'Fri Apr 10' },
+  { key: '2026-04-11', label: 'Sat Apr 11' },
+  { key: '2026-04-12', label: 'Sun Apr 12' },
+  { key: '2026-04-13', label: 'Mon Apr 13' },
+  { key: '2026-04-14', label: 'Tue Apr 14' },
+  { key: '2026-04-16', label: 'Thu Apr 16' },
+  { key: '2026-04-17', label: 'Fri Apr 17' },
+  { key: '2026-04-18', label: 'Sat Apr 18' },
+  { key: '2026-04-20', label: 'Mon Apr 20' },
 ];
 
 const TYPES = [

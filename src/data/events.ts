@@ -7387,6 +7387,261 @@ const EVENTS_DATA: RawEvent[] = [
     type: "Networking",
     rawBlock: ""
   },
+  // ── Friday April 3 ──
+  {
+    uid: "sxsw-2026-0640-muther-rucker-walk@luma",
+    summary: "MUTHER RUCKER - Walk & Talks",
+    description: "Monthly 2-mile walk for women juggling careers, families, and entrepreneurship. Comfortable conversational pace, weights optional. Mothers, executives, founders, and creatives welcome.",
+    dtstart: "20260403T084500",
+    dtend: "20260403T101500",
+    url: "https://luma.com/u17l7ame",
+    location: "Mañana Coffee, 111 Sandara Muraida Way, Austin, TX",
+    cost: "Free",
+    type: "Networking",
+    rawBlock: ""
+  },
+  // ── Saturday April 4 ──
+  {
+    uid: "sxsw-2026-0641-openclaw-hackathon@luma",
+    summary: "Austin OpenClaw Hackathon",
+    description: "Building event focused on OpenClaw development. Kickoff 10 AM, build until 1:30 PM, taco lunch, rapid demos 2-3 PM. Bring laptop. Help with OpenClaw install available. Backed by Crowdstake.",
+    dtstart: "20260404T100000",
+    dtend: "20260404T150000",
+    url: "https://luma.com/jtvgqgho",
+    location: "Mort Subite European Bar, Austin, TX",
+    cost: "Free",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Sunday April 5 ──
+  {
+    uid: "sxsw-2026-0642-ai-implementation-club@luma",
+    summary: "The AI Implementation Club",
+    description: "Bring ONE AI thing you want to implement. Two 45-minute silent build sprints with a buzzer. Share results at end. No slides, no panels, no theory — just building alongside other founders.",
+    dtstart: "20260405T130000",
+    dtend: "20260405T153000",
+    url: "https://luma.com/bdlligqy",
+    location: "Austin, TX",
+    cost: "Free",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Tuesday April 7 ──
+  {
+    uid: "sxsw-2026-0643-atx-marketing-breakfast@luma",
+    summary: "ATX Marketing Innovators Power Breakfast",
+    description: "Curated gathering for marketing and eCommerce leaders. Breakfast tacos + coffee. High-signal working session for practitioners building brands across DTC, Amazon, Walmart, and omnichannel. Approval required.",
+    dtstart: "20260407T083000",
+    dtend: "20260407T100000",
+    url: "https://luma.com/kr9a5c19",
+    location: "St. Elmo Brewing Company - Springdale, 8110 Springdale Rd, Austin, TX 78724",
+    cost: "Approval Required",
+    type: "Networking",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0644-out-in-tech-demo@luma",
+    summary: "Out in Tech Demo Night",
+    description: "Demo night for tech professionals. Anyone can demo a passion project, early-stage startup, or experimental tool. Builders, designers, and technologists welcome. Sponsored by Station Austin.",
+    dtstart: "20260407T183000",
+    dtend: "20260407T203000",
+    url: "https://luma.com/rke6tntc",
+    location: "Capital Factory, 701 Brazos St, Austin, TX",
+    cost: "Free",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Wednesday April 8 ──
+  {
+    uid: "sxsw-2026-0645-austin-startup-connections@luma",
+    summary: "Austin Startup Connections",
+    description: "Structured 1-on-1 networking — meet up to 10 people in quality timed conversations filtered by shared interests. For anyone in tech or the startup ecosystem. Complimentary tequila by Tequila 512.",
+    dtstart: "20260408T180000",
+    dtend: "20260408T210000",
+    url: "https://luma.com/8e44o2xz",
+    location: "701 Brazos St, Austin, TX",
+    cost: "Free",
+    type: "Networking",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0646-deal-catch-pitch@luma",
+    summary: "Deal Catch: Networking & Pitch in Austin",
+    description: "Pre-selected founders deliver live pitches while investors and founders network. Top performers get acceleration opportunities, media coverage, and collaboration resources. By Olivier Club and Fishman VC.",
+    dtstart: "20260408T190000",
+    dtend: "20260408T213000",
+    url: "https://luma.com/austinpitch",
+    location: "Higbie's, 720 Brazos St Suite B-710, Austin, TX 78701",
+    cost: "$28",
+    type: "Networking",
+    rawBlock: ""
+  },
+  // ── Tuesday April 14 ──
+  {
+    uid: "sxsw-2026-0647-scrappy-startups-3@luma",
+    summary: "Scrappy Startups Meetup #3",
+    description: "Monthly gathering for founders, aspiring entrepreneurs, and business owners. Open networking, brief intros, focused discussions. Free beer, soda, water, and food. Free street parking after 6 PM.",
+    dtstart: "20260414T180000",
+    dtend: "20260414T200000",
+    url: "https://luma.com/zzv7hnqa",
+    location: "Capital Factory, 701 Brazos St, Austin, TX",
+    cost: "Free",
+    type: "Networking",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0648-blueprint-scaling-ai@luma",
+    summary: "The Blueprint for Scaling AI Support: Live in Austin",
+    description: "Afternoon event for customer service and CX leaders exploring AI deployment strategies. Real-world success stories, 2026 product updates from Intercom, networking with food and drinks.",
+    dtstart: "20260414T143000",
+    dtend: "20260414T180000",
+    url: "https://luma.com/61b789eo",
+    location: "Austin, TX",
+    cost: "Free",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Friday April 17 ──
+  {
+    uid: "sxsw-2026-0649-female-founders-friends@luma",
+    summary: "Austin Female Founders & Friends",
+    description: "Quarterly networking by The Artemis Fund for female founders and investors. Seed funding org supporting families, individuals, and businesses. Sponsored by Justworks.",
+    dtstart: "20260417T083000",
+    dtend: "20260417T103000",
+    url: "https://luma.com/txplnpf7",
+    location: "Cosmic Saltillo, 1300 E 4th St, Austin, TX 78702",
+    cost: "Free",
+    type: "Networking",
+    rawBlock: ""
+  },
+  // ── Saturday April 18 ──
+  {
+    uid: "sxsw-2026-0650-hook-em-hacks@luma",
+    summary: "Hook 'Em Hacks",
+    description: "Curated 24-hour AI hackathon at UT Austin. Form teams or work solo, collaborate with mentors, attend workshops, build AI projects across impact-driven tracks. Apr 18 9:30 AM - Apr 19 5:30 PM.",
+    dtstart: "20260418T093000",
+    dtend: "20260419T173000",
+    url: "https://luma.com/p630wbba",
+    location: "The University of Texas at Austin, Austin, TX",
+    cost: "Free",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Monday April 20 ──
+  {
+    uid: "sxsw-2026-0651-hack-ai-posthog@luma",
+    summary: "Hack AI x PostHog",
+    description: "Monthly gathering for AI builders. Talks from PostHog, AutoHDR, and Lascari AI, followed by collaborative hacking and networking. Free pizza, beer, soda, water. All experience levels welcome.",
+    dtstart: "20260420T180000",
+    dtend: "20260420T200000",
+    url: "https://luma.com/dcyqc6m1",
+    location: "Capital Factory, 701 Brazos St, Austin, TX",
+    cost: "Free",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Tuesday April 7 ──
+  {
+    uid: "sxsw-2026-0652-health-hustlers@luma",
+    summary: "The Health Hustlers: Networking for Health/Wellness Professionals",
+    description: "Networking for health, wellness, and fitness professionals. Icebreakers, speed networking, friendworking. Authentic connection over transactional networking. No sales or pitches.",
+    dtstart: "20260407T183000",
+    dtend: "20260407T203000",
+    url: "https://luma.com/43tutdq4",
+    location: "2043 S Lamar Blvd, Austin, TX",
+    cost: "Free",
+    type: "Networking",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0653-training-mate-hiit@luma",
+    summary: "Austin: Training Mate HIIT Workout",
+    description: "45-minute fitness session for moms, moms-to-be, and anyone TTC. Modifications available. Guided stretching, post-workout refreshments, and giveaways.",
+    dtstart: "20260407T143000",
+    dtend: "20260407T163000",
+    url: "https://luma.com/ra8qm6tw",
+    location: "Training Mate Austin SoCo, Austin, TX",
+    cost: "Free",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Friday April 10 ──
+  {
+    uid: "sxsw-2026-0654-clutch-night-purse-bingo@luma",
+    summary: "Clutch Night Purse Bingo",
+    description: "Fundraising evening with 6 themed rounds of purse bingo, designer handbag prizes, cocktails, charcuterie, live DJ. Cocktail glamour dress code. All proceeds support Dress for Success.",
+    dtstart: "20260410T173000",
+    dtend: "20260410T210000",
+    url: "https://luma.com/712mqtpr",
+    location: "Dress For Success Austin, Austin, TX",
+    cost: "$20",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Saturday April 11 ──
+  {
+    uid: "sxsw-2026-0655-earth-month-clothing-swap@luma",
+    summary: "Celebrate Earth Month: Curated Clothing Swap",
+    description: "Sustainable fashion morning. Bring well-loved pieces to exchange. Complimentary refreshments, local slow fashion vendors, sewing workshop, panel on mindful consumption. 20% off at hosting businesses.",
+    dtstart: "20260411T100000",
+    dtend: "20260411T120000",
+    url: "https://luma.com/1fl1x87r",
+    location: "HarperSage, 4803 Burnet Rd, Austin, TX 78756",
+    cost: "Free",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Sunday April 12 ──
+  {
+    uid: "sxsw-2026-0656-childrens-day-festival@luma",
+    summary: "Children's Day Festival",
+    description: "Family-friendly celebration with 20+ activities: calligraphy, origami, Japanese matsuri games, craft stations, snacks, toy raffles, and kids music. Only 130 activity passes available.",
+    dtstart: "20260412T140000",
+    dtend: "20260412T160000",
+    url: "https://luma.com/d64l1lp7",
+    location: "Cat Hollow Park, Round Rock, TX",
+    cost: "$10",
+    type: "Event",
+    rawBlock: ""
+  },
+  // ── Monday April 13 ──
+  {
+    uid: "sxsw-2026-0657-drinks-on-james@luma",
+    summary: "Drinks on James!",
+    description: "Casual monthly networking — no panels, no pitches, just good people and good beverages. First drink complimentary. Capped at 50 RSVPs. For people building, investing, or thinking about what's next.",
+    dtstart: "20260413T173000",
+    dtend: "20260413T200000",
+    url: "https://luma.com/a8qcbnh0",
+    location: "Mort Subite European Bar, 308 Congress Ave, Austin, TX 78701",
+    cost: "Free",
+    type: "Networking",
+    rawBlock: ""
+  },
+  // ── Thursday April 16 ──
+  {
+    uid: "sxsw-2026-0658-scent-social@luma",
+    summary: "Scent Social: Sip, Snif N' Scratch",
+    description: "Sip sensory cocktails, sniff S.S.K. (LABS) oil kit, and scratch to win. Tonka or Myrrh sample with purchase, scent station, cocktails inspired by scent profiles.",
+    dtstart: "20260416T180000",
+    dtend: "20260416T200000",
+    url: "https://luma.com/ga781veb",
+    location: "Marlow, Austin, TX",
+    cost: "Free",
+    type: "Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0659-fertility-formula@luma",
+    summary: "The Fertility Formula with Dr. Natalie Crawford",
+    description: "Dr. Natalie Crawford discusses The Fertility Formula with McCall McPherson, PA-C. Book signing with books for purchase. 15% of store proceeds go to Resolve. Space limited.",
+    dtstart: "20260416T160000",
+    dtend: "20260416T180000",
+    url: "https://luma.com/03i2iae0",
+    location: "Veronica Beard Austin, Austin, TX",
+    cost: "Free",
+    type: "Event",
+    rawBlock: ""
+  },
   // ── Wednesday March 25 ──
   {
     uid: "sxsw-2026-0566-founders-circle@groupchat",
