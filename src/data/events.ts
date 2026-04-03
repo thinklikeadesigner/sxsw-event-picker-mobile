@@ -9028,12 +9028,24 @@ const EVENTS_DATA: RawEvent[] = [
     rawBlock: ""
   },
   {
-    uid: "sxsw-2026-0786-method39-popup@manual",
+    uid: "sxsw-2026-0786-method39-popup-thu@manual",
     summary: "Method 39 Pop-Up",
     description: "Free pop-up fitness class at METHOD39 studio in East Austin. 60-minute workout session. Drop-in, no membership required. Program access includes Method39 Pop-Up and Free Saturday Community Workout.",
     dtstart: "20260402T183000",
     dtend: "20260402T193000",
     url: "https://method39.wodify.com/OnlineSalesPage/Main?q=MembershipType%7CLocationId%3D12248%26ClassId%3D188168901%26HasProgramAccess%3DFalse",
+    location: "METHOD39, 4716 East 5th Street, Austin, TX 78702",
+    cost: "Free",
+    type: "Health + Event",
+    rawBlock: ""
+  },
+  {
+    uid: "sxsw-2026-0787-method39-community-sat@manual",
+    summary: "Free Saturday Community Workout at Method 39",
+    description: "Free Saturday community workout at METHOD39 studio in East Austin. 60-minute fitness class. Free trial includes 1 class with access to Method39 Pop-Up and Free Saturday Community Workout programs.",
+    dtstart: "20260404T090000",
+    dtend: "20260404T100000",
+    url: "https://method39.wodify.com/OnlineSalesPage/Main?q=MembershipType%7CLocationId%3D12248%26ClassId%3D188168936%26HasProgramAccess%3DFalse",
     location: "METHOD39, 4716 East 5th Street, Austin, TX 78702",
     cost: "Free",
     type: "Health + Event",
