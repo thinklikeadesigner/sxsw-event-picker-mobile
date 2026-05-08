@@ -9233,11 +9233,8 @@ const EVENTS_DATA: RawEvent[] = [
   },
   {
     uid: "sxsw-2026-0803-the-1-board-awakening-talent@manual",
-    summary: "The     rawBlock: ""
-  } Board, Awakening Talent Around the World",
-    description: "Please join </de_CENTRALIZED> for presentation titled “The     rawBlock: ""
-  } Board: Awakening Talent Around the World”. The     rawBlock: ""
-  } Board is a symbol of possibility, classroom-ready, open source and community-first approach. It gives anyone, let it be a student, teacher, dreamer, the chance to invent. The mission is simple: lower a barrier to entry to enable innovation and achieve widespread adoption! Food and drinks will be provided, courtesy of Stand With Crypto",
+    summary: "The $1 Board, Awakening Talent Around the World",
+    description: "Please join </de_CENTRALIZED> for presentation titled \"The $1 Board: Awakening Talent Around the World\". The $1 Board is a symbol of possibility, classroom-ready, open source and community-first approach. It gives anyone, let it be a student, teacher, dreamer, the chance to invent. The mission is simple: lower a barrier to entry to enable innovation and achieve widespread adoption! Food and drinks will be provided, courtesy of Stand With Crypto",
     dtstart: "20260512T183000",
     dtend: "20260512T210000",
     url: "https://luma.com/tob9hj44",
@@ -9297,9 +9294,7 @@ const EVENTS_DATA: RawEvent[] = [
   {
     uid: "sxsw-2026-0808-founders-funders-poker-night@manual",
     summary: "founders & funders: poker night 🃏",
-    description: "We’re swapping pitch decks for poker chips and bringing together a solid group of builders and backers for a weekly poker night. Game details: -     rawBlock: ""
-  }00 buy-in - Blinds double every 30 min - Unlimited rebuys if chip stack drops below     rawBlock: ""
-  }0 Top floor in downtown. Food & drinks provided.",
+    description: "We’re swapping pitch decks for poker chips and bringing together a solid group of builders and backers for a weekly poker night. Game details: - $100 buy-in - Blinds double every 30 min - Unlimited rebuys if chip stack drops below $10 Top floor in downtown. Food & drinks provided.",
     dtstart: "20260514T190000",
     dtend: "20260514T220000",
     url: "https://luma.com/mjfitbsk",
@@ -9460,16 +9455,14 @@ const EVENTS_DATA: RawEvent[] = [
     dtend: "20260522T203000",
     url: "https://luma.com/7tx6i6i3",
     location: "Brushy Street Commons, Austin, TX",
-    cost: "    rawBlock: ""
-  }0",
+    cost: "$10",
     type: "Comedy Show",
     rawBlock: ""
   },
   {
     uid: "sxsw-2026-0822-texas-venture-gala-forum-2026@manual",
     summary: "Texas Venture Gala & Forum 2026",
-    description: "The upcoming Texas Venture Gala & Forum is the 3rd Annual Meeting reconvening from across 20+ cities, and our industry's signature event featuring the innovation ecosystem. A RECONVENING OF TEXAS INNOVATION: Hosted at the Texas State Capitol Building & The Headliner's Club in one truly Texas-sized experience, speakers, guests, and recognized Texans include: venture capital firms, emerging managers, incubators, accelerators, angel networks, universities, family offices, elected & appointed officials, successful CEOs, and industry partners. ACCESS & AGENDA: As a Texas Venture Patron, you receive complimentary access to the capacity-limited Texas Venture Forum at the State Capitol as well as the Texas Venture Gala. With featured briefings, post-session speaker access, focused networking & roundtables, and open mingling, there are plenty of ways to connect with peers and industry leaders. 5/26: 10-12, Pre Event & Badges (State Capitol, video navigation) 5/26: 5-9pm, Texas Venture Gala at The Headliner's Club 5/27: 9-6pm, Forum (State Capitol, video navigation) More agenda details + up-to-date info: www.texasventuregala.com. AWARDS: During the evening awards dinner we recognize: Texas Investor of the Year, Texas Innovator of the Year, Texas Venture Fest of the Year… and with the announcement of the new Gala theme, “Innovation is Statecraft”, we introduce the Texas Statecraft Leader of the Year spotlighting Texas powerbrokers supporting innovation. VOLUNTEERS: It takes a team of 30+ volunteers to pull off this entire production, so we accept them from certain backgrounds. There are varying levels of perks depending on availability. Share your interest here. GETTING THERE: Texas Capitol parking instructions are here. A video navigating from the Capitol entrance to the Auditorium is here. The Headliner's Club has self-parking in an attached garage with entrances on 5th St and on Colorado St. Discounted parking is $5 before 6pm and     rawBlock: ""
-  }0 afterward, with a voucher you will receive. Also consider street parking for both venues. Learn more about this event at www.texasventuregala.com.",
+    description: "The upcoming Texas Venture Gala & Forum is the 3rd Annual Meeting reconvening from across 20+ cities, and our industry's signature event featuring the innovation ecosystem. A RECONVENING OF TEXAS INNOVATION: Hosted at the Texas State Capitol Building & The Headliner's Club in one truly Texas-sized experience, speakers, guests, and recognized Texans include: venture capital firms, emerging managers, incubators, accelerators, angel networks, universities, family offices, elected & appointed officials, successful CEOs, and industry partners. ACCESS & AGENDA: As a Texas Venture Patron, you receive complimentary access to the capacity-limited Texas Venture Forum at the State Capitol as well as the Texas Venture Gala. With featured briefings, post-session speaker access, focused networking & roundtables, and open mingling, there are plenty of ways to connect with peers and industry leaders. 5/26: 10-12, Pre Event & Badges (State Capitol, video navigation) 5/26: 5-9pm, Texas Venture Gala at The Headliner's Club 5/27: 9-6pm, Forum (State Capitol, video navigation) More agenda details + up-to-date info: www.texasventuregala.com. AWARDS: During the evening awards dinner we recognize: Texas Investor of the Year, Texas Innovator of the Year, Texas Venture Fest of the Year… and with the announcement of the new Gala theme, “Innovation is Statecraft”, we introduce the Texas Statecraft Leader of the Year spotlighting Texas powerbrokers supporting innovation. VOLUNTEERS: It takes a team of 30+ volunteers to pull off this entire production, so we accept them from certain backgrounds. There are varying levels of perks depending on availability. Share your interest here. GETTING THERE: Texas Capitol parking instructions are here. A video navigating from the Capitol entrance to the Auditorium is here. The Headliner's Club has self-parking in an attached garage with entrances on 5th St and on Colorado St. Discounted parking is $5 before 6pm and $10 afterward, with a voucher you will receive. Also consider street parking for both venues. Learn more about this event at www.texasventuregala.com.",
     dtstart: "20260526T090000",
     dtend: "20260527T140000",
     url: "https://luma.com/texasventuregala",
