@@ -53,6 +53,7 @@ export interface LaunchConfig {
 export interface CityConfig {
   slug: string;
   name: string;
+  header: { title: string; subtitle: string };
   theme: Record<string, string>;
   map: { center: [number, number]; zoom: number };
   launches: LaunchConfig[];

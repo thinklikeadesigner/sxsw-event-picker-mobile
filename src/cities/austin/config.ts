@@ -3,6 +3,10 @@ import { CityConfig } from '../../data/types';
 export const austinConfig: CityConfig = {
   slug: 'austin',
   name: 'Austin',
+  header: {
+    title: 'Wandr ATX',
+    subtitle: 'SXSW energy. Every week.',
+  },
   theme: {
     '--color-bg': '#0f0f0f',
     '--color-surface': '#1a1a1a',

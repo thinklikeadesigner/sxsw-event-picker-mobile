@@ -79,6 +79,10 @@ async function routeAndRender() {
 
   applyTheme(route.city.theme);
   setDocumentMeta(route.city, route.launchSlug);
+  const titleEl = document.getElementById('app-title');
+  const subtitleEl = document.getElementById('app-subtitle');
+  if (titleEl) titleEl.textContent = route.city.header.title;
+  if (subtitleEl) subtitleEl.textContent = route.city.header.subtitle;
   localStorage.setItem('lastCity', route.city.slug);
 
   const current = getState();

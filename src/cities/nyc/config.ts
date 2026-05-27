@@ -3,6 +3,10 @@ import { CityConfig } from '../../data/types';
 export const nycConfig: CityConfig = {
   slug: 'nyc',
   name: 'New York',
+  header: {
+    title: 'Wandr NYC',
+    subtitle: 'All the VIP lists. None of the lines.',
+  },
   theme: {
     '--color-bg': '#0a0a0f',
     '--color-surface': '#15151c',
