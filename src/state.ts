@@ -1,10 +1,11 @@
-import { CityEvent, Conflict, ViewMode, Filters } from './data/types';
-import { loadEvents } from './cities/austin/events';
+import { CityEvent, Conflict, ViewMode, Filters, CityConfig, LaunchConfig } from './data/types';
 import { detectConflicts } from './data/conflicts';
 
-const STORAGE_KEY = 'sxsw2026-v2';
+const STORAGE_KEY_BASE = 'sxsw2026-v2';
 
 interface AppState {
+  city: CityConfig | null;
+  launch: LaunchConfig | null;
   events: CityEvent[];
   starred: Set<number>;
   conflicts: Conflict[];
@@ -15,13 +16,14 @@ interface AppState {
 }
 
 const state: AppState = {
+  city: null,
+  launch: null,
   events: [],
   starred: new Set(),
   conflicts: [],
   currentView: 'discover',
   currentDay: (() => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; })(),
   filters: { cost: 'all', type: 'all', search: '' },
-  // type filter is the primary one now (all / music / tech)
   resolveIndex: 0,
 };
 
@@ -32,10 +34,42 @@ function notify() { renderCallback?.(); }
 
 export function getState() { return state; }
 
-export function init() {
-  state.events = loadEvents();
+export function getActiveEvents(): CityEvent[] {
+  if (!state.launch) return state.events;
+  const tag = state.launch.slug;
+  return state.events.filter(e => e.tags.includes(tag));
+}
+
+function storageKey(): string {
+  return state.city ? `${STORAGE_KEY_BASE}:${state.city.slug}` : STORAGE_KEY_BASE;
+}
+
+export async function initCity(city: CityConfig, launchSlug: string | null) {
+  state.city = city;
+  state.launch = launchSlug ? city.launches.find(l => l.slug === launchSlug) ?? null : null;
+  state.events = await city.loadEvents();
+  state.starred = new Set();
+  state.conflicts = [];
+  state.resolveIndex = 0;
   loadFromStorage();
   recomputeConflicts();
+  notify();
+}
+
+export function setLaunch(launchSlug: string | null) {
+  if (!state.city) return;
+  state.launch = launchSlug ? state.city.launches.find(l => l.slug === launchSlug) ?? null : null;
+  recomputeConflicts();
+  notify();
+}
+
+export function resetCity() {
+  state.city = null;
+  state.launch = null;
+  state.events = [];
+  state.starred = new Set();
+  state.conflicts = [];
+  notify();
 }
 
 export function toggleStar(index: number) {
@@ -78,7 +112,6 @@ export function resolveConflict(conflictId: string, winnerIndex: number) {
 export function skipConflict() {
   const unresolved = state.conflicts.filter(c => !c.resolved);
   if (unresolved.length > 1) {
-    // Rotate: move first unresolved to end by incrementing resolveIndex
     state.resolveIndex = (state.resolveIndex + 1) % unresolved.length;
   }
   notify();
@@ -103,7 +136,7 @@ function recomputeConflicts() {
   const oldResolutions = new Map(
     state.conflicts.filter(c => c.resolved).map(c => [c.id, c])
   );
-  state.conflicts = detectConflicts(state.events, state.starred);
+  state.conflicts = detectConflicts(getActiveEvents(), state.starred);
   for (const c of state.conflicts) {
     const old = oldResolutions.get(c.id);
     if (old) { c.resolved = old.resolved; c.winner = old.winner; }
@@ -111,8 +144,9 @@ function recomputeConflicts() {
 }
 
 function saveToStorage() {
+  if (!state.city) return;
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+    localStorage.setItem(storageKey(), JSON.stringify({
       starred: [...state.starred],
       conflicts: state.conflicts,
       currentDay: state.currentDay,
@@ -122,8 +156,9 @@ function saveToStorage() {
 }
 
 function loadFromStorage() {
+  if (!state.city) return;
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(storageKey());
     if (!raw) return;
     const data = JSON.parse(raw);
     if (data.starred) state.starred = new Set(data.starred);
