@@ -2,7 +2,7 @@ import L from 'leaflet';
 import { CityEvent } from '../data/types';
 import { getState, toggleStar } from '../state';
 import { dayKey, fmt } from '../utils/time';
-import { VENUE_COORDS } from '../data/coordinates';
+import { VENUE_COORDS } from '../cities/austin/coordinates';
 import { isEventLocked, isMusicEvent } from '../paywall';
 
 // Fix Leaflet default icon issue with bundlers

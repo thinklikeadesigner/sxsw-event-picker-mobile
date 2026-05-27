@@ -1,5 +1,5 @@
 import { CityEvent, Conflict, ViewMode, Filters } from './data/types';
-import { loadEvents } from './data/events';
+import { loadEvents } from './cities/austin/events';
 import { detectConflicts } from './data/conflicts';
 
 const STORAGE_KEY = 'sxsw2026-v2';

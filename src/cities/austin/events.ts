@@ -1,4 +1,4 @@
-import { RawEvent, CityEvent } from './types';
+import { RawEvent, CityEvent } from '../../data/types';
 
 const EVENTS_DATA: RawEvent[] = [
   {
