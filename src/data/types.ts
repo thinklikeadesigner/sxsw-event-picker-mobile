@@ -42,3 +42,20 @@ export interface Filters {
   type: string;
   search: string;
 }
+
+export interface LaunchConfig {
+  slug: string;
+  name: string;
+  window?: { start: Date; end: Date };
+  description?: string;
+}
+
+export interface CityConfig {
+  slug: string;
+  name: string;
+  theme: Record<string, string>;
+  map: { center: [number, number]; zoom: number };
+  launches: LaunchConfig[];
+  loadEvents: () => Promise<CityEvent[]>;
+  loadCoordinates: () => Promise<Record<string, [number, number]>>;
+}
