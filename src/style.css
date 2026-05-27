@@ -1026,3 +1026,25 @@ body.view-map .tl-wrapper { flex: 1; min-height: 0; border-radius: 0 !important;
   .day-header { font-size: 16px; }
   .toast { left: 12px; right: 12px; bottom: 70px; max-width: none; }
 }
+
+.landing { max-width: 720px; margin: 80px auto; padding: 24px; }
+.landing-hero { text-align: center; margin-bottom: 48px; }
+.landing-hero h1 { font-size: 36px; color: var(--color-text, #e0e0e0); margin-bottom: 12px; }
+.landing-sub { color: var(--color-text-muted, #888); font-size: 16px; }
+.landing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.landing-tile {
+  background: var(--color-surface, #1a1a1a);
+  border: 1px solid var(--color-border, #333);
+  border-radius: 12px;
+  padding: 24px;
+  color: var(--color-text, #e0e0e0);
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: border-color 0.15s;
+}
+.landing-tile:hover { border-color: var(--color-primary, #4ade80); }
+.landing-tile-name { font-size: 20px; font-weight: 600; }
+.landing-tile-meta { font-size: 13px; color: var(--color-text-muted, #888); }
