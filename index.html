@@ -25,33 +25,35 @@
   </script>
 </head>
 <body>
-  <div class="wrap-banner" id="wrap-banner"><button class="banner-close" id="banner-close">&times;</button>SXSW 2026 is almost over! <span class="banner-br"></span>If this tool helped you out, <a href="https://www.linkedin.com/in/rebecca-burch/" target="_blank">let's connect on LinkedIn</a>.</div>
-  <div class="sticky-top">
-    <header>
-      <div>
-        <h1>Wandr ATX</h1>
-        <div class="subtitle">SXSW energy. Every week.</div>
-      </div>
-      <div class="header-stats">
-        <div class="stat">Starred: <span id="starred-count">0</span></div>
-        <div class="stat">Conflicts: <span id="conflict-count">0</span></div>
-        <div class="social-links">
-          <a href="https://www.linkedin.com/in/rebecca-burch/" target="_blank" class="social-link" id="linkedin-link" aria-label="LinkedIn">in</a>
-          <a href="https://x.com/thinkLikeADev" target="_blank" class="social-link" aria-label="X / Twitter">X</a>
+  <div id="app-shell">
+    <div class="wrap-banner" id="wrap-banner"><button class="banner-close" id="banner-close">&times;</button>SXSW 2026 is almost over! <span class="banner-br"></span>If this tool helped you out, <a href="https://www.linkedin.com/in/rebecca-burch/" target="_blank">let's connect on LinkedIn</a>.</div>
+    <div class="sticky-top">
+      <header>
+        <div>
+          <h1>Wandr ATX</h1>
+          <div class="subtitle">SXSW energy. Every week.</div>
         </div>
-      </div>
-    </header>
-    <nav class="view-tabs">
-      <button class="tab active" data-view="discover">Discover</button>
-      <button class="tab" data-view="map">Map</button>
-      <button class="tab" data-view="resolve">Resolve <span class="tab-badge" id="resolve-badge" style="display:none">0</span></button>
-      <button class="tab" data-view="schedule">Schedule</button>
-    </nav>
-    <div class="controls" id="controls">
-      <button class="filter-toggle" id="filter-toggle">Filters ▾</button>
-      <div class="filter-rows" id="filter-rows">
-        <div class="filter-row" id="day-filters"></div>
-        <div class="filter-row" id="cost-filters"></div>
+        <div class="header-stats">
+          <div class="stat">Starred: <span id="starred-count">0</span></div>
+          <div class="stat">Conflicts: <span id="conflict-count">0</span></div>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/rebecca-burch/" target="_blank" class="social-link" id="linkedin-link" aria-label="LinkedIn">in</a>
+            <a href="https://x.com/thinkLikeADev" target="_blank" class="social-link" aria-label="X / Twitter">X</a>
+          </div>
+        </div>
+      </header>
+      <nav class="view-tabs">
+        <button class="tab active" data-view="discover">Discover</button>
+        <button class="tab" data-view="map">Map</button>
+        <button class="tab" data-view="resolve">Resolve <span class="tab-badge" id="resolve-badge" style="display:none">0</span></button>
+        <button class="tab" data-view="schedule">Schedule</button>
+      </nav>
+      <div class="controls" id="controls">
+        <button class="filter-toggle" id="filter-toggle">Filters ▾</button>
+        <div class="filter-rows" id="filter-rows">
+          <div class="filter-row" id="day-filters"></div>
+          <div class="filter-row" id="cost-filters"></div>
+        </div>
       </div>
     </div>
   </div>

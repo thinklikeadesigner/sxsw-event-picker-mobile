@@ -1,4 +1,4 @@
-import { getState, toggleStar } from '../state';
+import { getState, toggleStar, getActiveEvents } from '../state';
 import { renderEventCard } from '../components/event-card';
 import { dayKey, dayLabel, fmt } from '../utils/time';
 import { PAYWALL_ENABLED, isMusicUnlocked, countLockedMusic, countTotalMusic, STRIPE_PAYMENT_LINK } from '../paywall';
@@ -26,7 +26,8 @@ function matchesTypeFilter(event: { type: string; summary: string; description: 
 }
 
 export function renderDiscover(container: HTMLElement) {
-  const { events, starred, currentDay, filters, conflicts } = getState();
+  const { starred, currentDay, filters, conflicts } = getState();
+  const events = getActiveEvents();
 
   // Filter events for current day, cost, and not ended
   const now = new Date();

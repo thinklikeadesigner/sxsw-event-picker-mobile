@@ -1,6 +1,6 @@
 import L from 'leaflet';
 import { CityEvent } from '../data/types';
-import { getState, toggleStar } from '../state';
+import { getState, toggleStar, getActiveEvents } from '../state';
 import { dayKey, fmt } from '../utils/time';
 import { VENUE_COORDS } from '../cities/austin/coordinates';
 import { isEventLocked, isMusicEvent } from '../paywall';
@@ -64,7 +64,8 @@ function createMap(container: HTMLElement): L.Map {
 }
 
 export function renderMap(container: HTMLElement) {
-  const { events, starred, currentDay, filters } = getState();
+  const { starred, currentDay, filters } = getState();
+  const events = getActiveEvents();
 
   if (!map || !container.querySelector('#map-container')) {
     if (map) {

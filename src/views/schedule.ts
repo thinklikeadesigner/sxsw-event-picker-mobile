@@ -1,10 +1,11 @@
-import { getState, toggleStar } from '../state';
+import { getState, toggleStar, getActiveEvents } from '../state';
 import { renderEventCard } from '../components/event-card';
 import { dayKey, dayLabel } from '../utils/time';
 import { downloadICS } from '../utils/ics';
 
 export function renderSchedule(container: HTMLElement) {
-  const { events, starred, conflicts } = getState();
+  const { starred, conflicts } = getState();
+  const events = getActiveEvents();
   const starredEvents = events.filter(e => starred.has(e.index));
 
   if (starredEvents.length === 0) {

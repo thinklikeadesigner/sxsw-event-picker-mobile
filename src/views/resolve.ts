@@ -1,4 +1,4 @@
-import { getState, resolveConflict, skipConflict } from '../state';
+import { getState, resolveConflict, skipConflict, getActiveEvents } from '../state';
 import { CityEvent } from '../data/types';
 import { fmt } from '../utils/time';
 import { formatUrlLabel } from '../components/event-card';
@@ -19,7 +19,8 @@ function renderResolveCard(event: CityEvent): string {
 }
 
 export function renderResolve(container: HTMLElement) {
-  const { events, conflicts, resolveIndex } = getState();
+  const { conflicts, resolveIndex } = getState();
+  const events = getActiveEvents();
   const unresolved = conflicts.filter(c => !c.resolved);
   const total = conflicts.length;
   const resolvedCount = total - unresolved.length;
@@ -38,8 +39,10 @@ export function renderResolve(container: HTMLElement) {
 
   const idx = resolveIndex % unresolved.length;
   const conflict = unresolved[idx];
-  const eventA = events[conflict.eventA];
-  const eventB = events[conflict.eventB];
+  // Look up by .index, not array position \u2014 getActiveEvents() may be filtered,
+  // so positional indexing no longer matches the .index values stored on the conflict.
+  const eventA = events.find(e => e.index === conflict.eventA)!;
+  const eventB = events.find(e => e.index === conflict.eventB)!;
 
   container.innerHTML = `
     <div class="resolve-container">
