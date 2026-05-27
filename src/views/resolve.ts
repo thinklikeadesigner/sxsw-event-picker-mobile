@@ -1,9 +1,9 @@
 import { getState, resolveConflict, skipConflict } from '../state';
-import { SXSWEvent } from '../data/types';
+import { CityEvent } from '../data/types';
 import { fmt } from '../utils/time';
 import { formatUrlLabel } from '../components/event-card';
 
-function renderResolveCard(event: SXSWEvent): string {
+function renderResolveCard(event: CityEvent): string {
   return `
     <div class="resolve-card">
       <div class="event-name">${event.summary}</div>

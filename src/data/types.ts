@@ -11,7 +11,7 @@ export interface RawEvent {
   rawBlock: string;
 }
 
-export interface SXSWEvent {
+export interface CityEvent {
   uid: string;
   summary: string;
   description: string;
@@ -23,6 +23,7 @@ export interface SXSWEvent {
   type: string;
   rawBlock: string;
   index: number;
+  tags: string[];
 }
 
 export interface Conflict {

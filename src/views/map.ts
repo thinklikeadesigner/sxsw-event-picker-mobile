@@ -1,5 +1,5 @@
 import L from 'leaflet';
-import { SXSWEvent } from '../data/types';
+import { CityEvent } from '../data/types';
 import { getState, toggleStar } from '../state';
 import { dayKey, fmt } from '../utils/time';
 import { VENUE_COORDS } from '../data/coordinates';
@@ -190,7 +190,7 @@ export function renderMap(container: HTMLElement) {
   if (timelineDiv) renderTimeline(timelineDiv, dayEvents, now);
 }
 
-function renderTimeline(container: HTMLElement, events: SXSWEvent[], now: Date) {
+function renderTimeline(container: HTMLElement, events: CityEvent[], now: Date) {
   if (events.length === 0) {
     container.innerHTML = '';
     return;

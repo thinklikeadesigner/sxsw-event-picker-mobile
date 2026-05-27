@@ -1,4 +1,4 @@
-import { SXSWEvent } from '../data/types';
+import { CityEvent } from '../data/types';
 import { fmt } from '../utils/time';
 import { isEventLocked, isFreeSample, isMusicEvent } from '../paywall';
 
@@ -22,7 +22,7 @@ export function formatUrlLabel(url: string): string {
   }
 }
 
-export function renderEventCard(event: SXSWEvent, starred: boolean, conflictCount: number): string {
+export function renderEventCard(event: CityEvent, starred: boolean, conflictCount: number): string {
   if (isEventLocked(event)) {
     return renderLockedCard(event);
   }
@@ -52,7 +52,7 @@ export function renderEventCard(event: SXSWEvent, starred: boolean, conflictCoun
     </div>`;
 }
 
-function renderLockedCard(event: SXSWEvent): string {
+function renderLockedCard(event: CityEvent): string {
   return `
     <div class="event-card locked-card" data-index="${event.index}">
       <div class="locked-icon">&#x1F512;</div>

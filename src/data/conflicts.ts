@@ -1,6 +1,6 @@
-import { SXSWEvent, Conflict } from './types';
+import { CityEvent, Conflict } from './types';
 
-export function detectConflicts(events: SXSWEvent[], starredIndices: Set<number>): Conflict[] {
+export function detectConflicts(events: CityEvent[], starredIndices: Set<number>): Conflict[] {
   const conflicts: Conflict[] = [];
   const starred = events.filter(e => starredIndices.has(e.index));
   for (let i = 0; i < starred.length; i++) {

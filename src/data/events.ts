@@ -1,4 +1,4 @@
-import { RawEvent, SXSWEvent } from './types';
+import { RawEvent, CityEvent } from './types';
 
 const EVENTS_DATA: RawEvent[] = [
   {
@@ -9552,9 +9552,9 @@ function parseLocalDate(s: string): Date {
   return new Date(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +m[6]);
 }
 
-export function loadEvents(): SXSWEvent[] {
+export function loadEvents(): CityEvent[] {
   const seen = new Set<string>();
-  const events: SXSWEvent[] = [];
+  const events: CityEvent[] = [];
   for (const d of EVENTS_DATA) {
     const key = d.summary.trim() + '|' + d.dtstart;
     if (seen.has(key)) continue;
@@ -9571,6 +9571,7 @@ export function loadEvents(): SXSWEvent[] {
       type: d.type,
       rawBlock: d.rawBlock,
       index: events.length,
+      tags: [],
     });
   }
   return events;

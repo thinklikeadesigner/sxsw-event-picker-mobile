@@ -1,11 +1,11 @@
-import { SXSWEvent, Conflict, ViewMode, Filters } from './data/types';
+import { CityEvent, Conflict, ViewMode, Filters } from './data/types';
 import { loadEvents } from './data/events';
 import { detectConflicts } from './data/conflicts';
 
 const STORAGE_KEY = 'sxsw2026-v2';
 
 interface AppState {
-  events: SXSWEvent[];
+  events: CityEvent[];
   starred: Set<number>;
   conflicts: Conflict[];
   currentView: ViewMode;

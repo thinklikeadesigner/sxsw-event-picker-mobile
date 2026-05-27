@@ -1,4 +1,4 @@
-import { SXSWEvent } from './data/types';
+import { CityEvent } from './data/types';
 
 // --- Configuration ---
 // Set to true to enable the music paywall, false to show all events free
@@ -19,7 +19,7 @@ const UNLOCK_KEY = 'sxsw2026-music';
 
 // --- Core logic ---
 
-export function isMusicEvent(event: SXSWEvent): boolean {
+export function isMusicEvent(event: CityEvent): boolean {
   return event.type === 'Music + Live Show';
 }
 
@@ -31,11 +31,11 @@ export function unlockMusic() {
   localStorage.setItem(UNLOCK_KEY, 'unlocked');
 }
 
-export function isFreeSample(event: SXSWEvent): boolean {
+export function isFreeSample(event: CityEvent): boolean {
   return FREE_SAMPLE_UIDS.has(event.uid);
 }
 
-export function isEventLocked(event: SXSWEvent): boolean {
+export function isEventLocked(event: CityEvent): boolean {
   if (!PAYWALL_ENABLED) return false;
   if (!isMusicEvent(event)) return false;
   if (isMusicUnlocked()) return false;
@@ -56,7 +56,7 @@ export function checkUnlockFromUrl(): boolean {
 }
 
 /** Count of locked music events for a given day */
-export function countLockedMusic(events: SXSWEvent[], dayKeyFn: (d: Date) => string, day: string): number {
+export function countLockedMusic(events: CityEvent[], dayKeyFn: (d: Date) => string, day: string): number {
   const now = new Date();
   return events.filter(e =>
     isMusicEvent(e) && !isFreeSample(e) && dayKeyFn(e.start) === day && e.end > now
@@ -64,7 +64,7 @@ export function countLockedMusic(events: SXSWEvent[], dayKeyFn: (d: Date) => str
 }
 
 /** Total music events remaining */
-export function countTotalMusic(events: SXSWEvent[]): number {
+export function countTotalMusic(events: CityEvent[]): number {
   const now = new Date();
   return events.filter(e => isMusicEvent(e) && e.end > now).length;
 }
