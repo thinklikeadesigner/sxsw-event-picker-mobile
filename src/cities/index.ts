@@ -1,10 +1,12 @@
 import { CityConfig } from '../data/types';
 import { austinConfig } from './austin/config';
 import { nycConfig } from './nyc/config';
+import { bostonConfig } from './boston/config';
 
 export const CITIES: Record<string, CityConfig> = {
   austin: austinConfig,
   nyc: nycConfig,
+  boston: bostonConfig,
 };
 
 export function getCity(slug: string): CityConfig | null {
