@@ -26,8 +26,17 @@ function matchesTypeFilter(event: { type: string; summary: string; description: 
 }
 
 export function renderDiscover(container: HTMLElement) {
-  const { starred, currentDay, filters, conflicts } = getState();
+  const { starred, currentDay, filters, conflicts, city } = getState();
   const events = getActiveEvents();
+
+  if (events.length === 0) {
+    container.innerHTML = `
+      <div class="empty-state">
+        <h2>Coming soon to ${city?.name ?? 'this city'}.</h2>
+        <p>We're building out the event list. Check back soon.</p>
+      </div>`;
+    return;
+  }
 
   // Filter events for current day, cost, and not ended
   const now = new Date();
