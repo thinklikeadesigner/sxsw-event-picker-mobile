@@ -9552,6 +9552,17 @@ function parseLocalDate(s: string): Date {
   return new Date(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +m[6]);
 }
 
+function classifyTags(start: Date): string[] {
+  const tags: string[] = [];
+  const sxswStart = new Date(2026, 2, 9);
+  const sxswEnd   = new Date(2026, 2, 19);
+  if (start >= sxswStart && start < sxswEnd) tags.push('sxsw');
+  const twStart = new Date(2026, 4, 4);
+  const twEnd   = new Date(2026, 4, 12);
+  if (start >= twStart && start < twEnd) tags.push('tech-week');
+  return tags;
+}
+
 export function loadEvents(): CityEvent[] {
   const seen = new Set<string>();
   const events: CityEvent[] = [];
@@ -9571,7 +9582,7 @@ export function loadEvents(): CityEvent[] {
       type: d.type,
       rawBlock: d.rawBlock,
       index: events.length,
-      tags: [],
+      tags: classifyTags(parseLocalDate(d.dtstart)),
     });
   }
   return events;
