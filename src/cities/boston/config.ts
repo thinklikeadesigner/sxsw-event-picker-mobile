@@ -21,7 +21,17 @@ export const bostonConfig: CityConfig = {
     center: [42.3551, -71.0656],
     zoom: 13,
   },
-  launches: [],
+  launches: [
+    {
+      slug: 'tech-week',
+      name: 'Boston Tech Week 2026',
+      window: {
+        start: new Date(2026, 4, 26),
+        end:   new Date(2026, 4, 31),
+      },
+      description: 'AI, biotech, deep tech, and founder events across Boston.',
+    },
+  ],
   loadEvents: () => import('./events').then(m => m.loadEvents()),
   loadCoordinates: () => import('./coordinates').then(m => m.VENUE_COORDS),
 };
