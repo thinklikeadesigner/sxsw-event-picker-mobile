@@ -2,7 +2,6 @@ import L from 'leaflet';
 import { CityEvent } from '../data/types';
 import { getState, toggleStar, getActiveEvents } from '../state';
 import { dayKey, fmt } from '../utils/time';
-import { VENUE_COORDS } from '../cities/austin/coordinates';
 import { isEventLocked, isMusicEvent } from '../paywall';
 
 // Fix Leaflet default icon issue with bundlers
@@ -18,6 +17,18 @@ let markersLayer: L.LayerGroup | null = null;
 let userMarker: L.CircleMarker | null = null;
 let happeningSoon = false;
 
+let venueCoords: Record<string, [number, number]> = {};
+let venueCoordsCityKey: string | null = null;
+
+async function ensureCoords(): Promise<Record<string, [number, number]>> {
+  const city = getState().city;
+  if (!city) return {};
+  if (venueCoordsCityKey === city.slug) return venueCoords;
+  venueCoords = await city.loadCoordinates();
+  venueCoordsCityKey = city.slug;
+  return venueCoords;
+}
+
 function createMap(container: HTMLElement): L.Map {
   container.innerHTML = '';
 
@@ -31,7 +42,10 @@ function createMap(container: HTMLElement): L.Map {
   tlDiv.id = 'timeline-container';
   container.appendChild(tlDiv);
 
-  map = L.map('map-container').setView([30.2672, -97.7431], 14);
+  const city = getState().city;
+  const center: [number, number] = city?.map.center ?? [30.2672, -97.7431];
+  const zoom = city?.map.zoom ?? 14;
+  map = L.map('map-container').setView(center, zoom);
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
     maxZoom: 20,
@@ -63,7 +77,8 @@ function createMap(container: HTMLElement): L.Map {
   return map;
 }
 
-export function renderMap(container: HTMLElement) {
+export async function renderMap(container: HTMLElement) {
+  await ensureCoords();
   const { starred, currentDay, filters } = getState();
   const events = getActiveEvents();
 
@@ -112,7 +127,7 @@ export function renderMap(container: HTMLElement) {
 
   // Place markers
   for (const event of dayEvents) {
-    const coords = VENUE_COORDS[event.location];
+    const coords = venueCoords[event.location];
     if (!coords) continue;
 
     const locked = isEventLocked(event);
@@ -283,7 +298,7 @@ function renderTimeline(container: HTMLElement, events: CityEvent[], now: Date) 
       if (!event) return;
 
       const isMobile = window.innerWidth <= 768;
-      const coords = VENUE_COORDS[event.location];
+      const coords = venueCoords[event.location];
 
       // On desktop, try to pan map to the venue first
       if (!isMobile && map && markersLayer && coords) {
