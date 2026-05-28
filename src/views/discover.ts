@@ -1,7 +1,28 @@
 import { getState, toggleStar, getActiveEvents } from '../state';
 import { renderEventCard } from '../components/event-card';
+import { locationKey } from '../components/filters';
 import { dayKey, dayLabel, fmt } from '../utils/time';
 import { PAYWALL_ENABLED, isMusicUnlocked, countLockedMusic, countTotalMusic, STRIPE_PAYMENT_LINK } from '../paywall';
+
+function matchesTimeOfDay(event: { start: Date }, bucket: string): boolean {
+  if (bucket === 'all') return true;
+  const h = event.start.getHours();
+  if (bucket === 'morning') return h < 12;
+  if (bucket === 'afternoon') return h >= 12 && h < 17;
+  if (bucket === 'evening') return h >= 17;
+  return true;
+}
+
+function matchesSearch(event: { summary: string; description: string; location: string }, q: string): boolean {
+  if (!q) return true;
+  const needle = q.trim().toLowerCase();
+  if (!needle) return true;
+  return (
+    event.summary.toLowerCase().includes(needle) ||
+    event.description.toLowerCase().includes(needle) ||
+    event.location.toLowerCase().includes(needle)
+  );
+}
 
 const WELLNESS_TYPES = new Set([
   'Relax + Networking',
@@ -38,11 +59,14 @@ export function renderDiscover(container: HTMLElement) {
     return;
   }
 
-  // Filter events for current day + type filter. Past events stay visible —
-  // for multi-day curated launches users want to browse the full schedule
-  // (including sessions that already happened earlier today).
+  // Filter events for current day + type + search + location + time-of-day.
+  // Past events stay visible — users browse the full day, not just upcoming.
   const dayEvents = events.filter(e =>
-    dayKey(e.start) === currentDay && matchesTypeFilter(e, filters.type)
+    dayKey(e.start) === currentDay
+    && matchesTypeFilter(e, filters.type)
+    && matchesSearch(e, filters.search)
+    && matchesTimeOfDay(e, filters.timeOfDay)
+    && (filters.location === 'all' || locationKey(e.location) === filters.location)
   );
 
   if (dayEvents.length === 0) {

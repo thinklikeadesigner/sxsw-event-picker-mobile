@@ -1,6 +1,7 @@
 import L from 'leaflet';
 import { CityEvent } from '../data/types';
 import { getState, toggleStar, getActiveEvents } from '../state';
+import { locationKey } from '../components/filters';
 import { dayKey, fmt } from '../utils/time';
 import { isEventLocked, isMusicEvent } from '../paywall';
 
@@ -131,6 +132,22 @@ export async function renderMap(container: HTMLElement) {
     if (filters.cost === 'approval' && !cost.includes('approval')) return false;
     if (filters.cost === 'request' && !cost.includes('request')) return false;
     if (filters.cost === 'paid' && !/\$/.test(e.cost)) return false;
+    // Search + location + time-of-day filters (shared with Discover view)
+    if (filters.search) {
+      const q = filters.search.trim().toLowerCase();
+      if (q && !(
+        e.summary.toLowerCase().includes(q) ||
+        e.description.toLowerCase().includes(q) ||
+        e.location.toLowerCase().includes(q)
+      )) return false;
+    }
+    if (filters.location !== 'all' && locationKey(e.location) !== filters.location) return false;
+    if (filters.timeOfDay !== 'all') {
+      const h = e.start.getHours();
+      if (filters.timeOfDay === 'morning' && h >= 12) return false;
+      if (filters.timeOfDay === 'afternoon' && (h < 12 || h >= 17)) return false;
+      if (filters.timeOfDay === 'evening' && h < 17) return false;
+    }
     if (happeningSoon) {
       const isHappening = e.start <= now && e.end > now;
       const isStartingSoon = e.start > now && e.start <= oneHourFromNow;

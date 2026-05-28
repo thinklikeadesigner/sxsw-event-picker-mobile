@@ -37,22 +37,40 @@ function getPageLabel(offset: number): string {
   end.setDate(start.getDate() + 6);
   const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   if (start.getMonth() === end.getMonth()) {
-    return `${monthNames[start.getMonth()]} ${start.getDate()}\u2013${end.getDate()}`;
+    return `${monthNames[start.getMonth()]} ${start.getDate()}–${end.getDate()}`;
   }
-  return `${monthNames[start.getMonth()]} ${start.getDate()} \u2013 ${monthNames[end.getMonth()]} ${end.getDate()}`;
+  return `${monthNames[start.getMonth()]} ${start.getDate()} – ${monthNames[end.getMonth()]} ${end.getDate()}`;
 }
 
 const TYPES = [
   { key: 'all', label: 'All' },
-  { key: 'music', label: '\uD83C\uDFB5 Music' },
+  { key: 'music', label: '🎵 Music' },
   { key: 'tech', label: 'Tech & Networking' },
-  { key: 'wellness', label: '\uD83E\uDDD8 Wellness' },
+  { key: 'wellness', label: '🧘 Wellness' },
 ];
+
+const TIME_BUCKETS = [
+  { key: 'all', label: 'All' },
+  { key: 'morning', label: 'Morning' },
+  { key: 'afternoon', label: 'Afternoon' },
+  { key: 'evening', label: 'Evening' },
+];
+
+// Pull the leading segment of "Back Bay, Boston, MA" → "Back Bay".
+// Used both for the filter menu and to test events against the active filter.
+export function locationKey(loc: string): string {
+  return (loc || '').split(',')[0].trim();
+}
+
+function escapeAttr(s: string): string {
+  return s.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+}
 
 export function renderFilters() {
   const { currentDay, filters } = getState();
   const events = getActiveEvents();
 
+  // --- Day filter row (existing) ---
   const dayFilters = document.getElementById('day-filters')!;
   const dayCounts: Record<string, number> = {};
   for (const e of events) {
@@ -65,9 +83,9 @@ export function renderFilters() {
 
   dayFilters.innerHTML = `
     <div class="week-nav">
-      <button class="week-nav-btn" id="prev-week">\u2190</button>
+      <button class="week-nav-btn" id="prev-week">←</button>
       <span class="week-label">${weekOffset === 0 ? 'This Week' : weekLabel}</span>
-      <button class="week-nav-btn" id="next-week">\u2192</button>
+      <button class="week-nav-btn" id="next-week">→</button>
     </div>
     <div class="week-days">
       ${weekDays.map(d => `
@@ -83,6 +101,36 @@ export function renderFilters() {
     </div>
   `;
 
+  // --- Search input row ---
+  // Render the input ONCE per render cycle (skip if already there) so typing
+  // doesn't lose focus when state changes trigger re-renders.
+  const searchEl = document.getElementById('search-filter')!;
+  let searchInput = searchEl.querySelector<HTMLInputElement>('#search-input');
+  if (!searchInput) {
+    searchEl.innerHTML = `
+      <label class="search-wrap">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <input
+          type="search"
+          id="search-input"
+          class="search-input"
+          placeholder="Search events, hosts, venues..."
+          value="${escapeAttr(filters.search)}"
+          autocomplete="off"
+          spellcheck="false"
+        >
+      </label>
+    `;
+    searchInput = searchEl.querySelector<HTMLInputElement>('#search-input')!;
+    searchInput.addEventListener('input', (e) => {
+      setFilter('search', (e.target as HTMLInputElement).value);
+    });
+  } else if (searchInput.value !== filters.search) {
+    // Sync value if state was reset externally; don't disturb focus otherwise.
+    searchInput.value = filters.search;
+  }
+
+  // --- Type row (existing) ---
   const costFilters = document.getElementById('cost-filters')!;
   costFilters.innerHTML = `
     <span class="filter-label">TYPE:</span>
@@ -91,7 +139,35 @@ export function renderFilters() {
     `).join('')}
   `;
 
-  // Bind week nav
+  // --- Time-of-day row ---
+  const timeFilters = document.getElementById('time-filters')!;
+  timeFilters.innerHTML = `
+    <span class="filter-label">TIME:</span>
+    ${TIME_BUCKETS.map(t => `
+      <button class="filter-btn ${filters.timeOfDay === t.key ? 'active' : ''}" data-time="${t.key}">${t.label}</button>
+    `).join('')}
+  `;
+
+  // --- Location row ---
+  // Derived from the leading segment of each event's location string.
+  // Counts are computed against the active set; "all" is always present.
+  const locationFilters = document.getElementById('location-filters')!;
+  const locCounts: Record<string, number> = {};
+  for (const e of events) {
+    const k = locationKey(e.location);
+    if (!k) continue;
+    locCounts[k] = (locCounts[k] || 0) + 1;
+  }
+  const sortedLocations = Object.keys(locCounts).sort((a, b) => locCounts[b] - locCounts[a]);
+  locationFilters.innerHTML = `
+    <span class="filter-label">WHERE:</span>
+    <button class="filter-btn ${filters.location === 'all' ? 'active' : ''}" data-location="all">All</button>
+    ${sortedLocations.map(loc => `
+      <button class="filter-btn ${filters.location === loc ? 'active' : ''}" data-location="${escapeAttr(loc)}">${loc} <span class="filter-count">${locCounts[loc]}</span></button>
+    `).join('')}
+  `;
+
+  // --- Bindings ---
   document.getElementById('prev-week')?.addEventListener('click', () => {
     weekOffset--;
     renderFilters();
@@ -101,17 +177,22 @@ export function renderFilters() {
     renderFilters();
   });
 
-  // Bind day buttons
   dayFilters.querySelectorAll('[data-day]').forEach(btn => {
     btn.addEventListener('click', () => setDay(btn.getAttribute('data-day')!));
   });
 
-  // Bind type buttons
   costFilters.querySelectorAll('[data-type]').forEach(btn => {
     btn.addEventListener('click', () => setFilter('type', btn.getAttribute('data-type')!));
   });
 
-  // Bind star/clear day
+  timeFilters.querySelectorAll('[data-time]').forEach(btn => {
+    btn.addEventListener('click', () => setFilter('timeOfDay', btn.getAttribute('data-time')!));
+  });
+
+  locationFilters.querySelectorAll('[data-location]').forEach(btn => {
+    btn.addEventListener('click', () => setFilter('location', btn.getAttribute('data-location')!));
+  });
+
   document.getElementById('star-day')?.addEventListener('click', () => {
     const { currentDay } = getState();
     const dayIndices = getActiveEvents().filter(e => dayKey(e.start) === currentDay).map(e => e.index);

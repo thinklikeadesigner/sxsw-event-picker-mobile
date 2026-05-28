@@ -41,6 +41,8 @@ export interface Filters {
   cost: string;
   type: string;
   search: string;
+  location: string;   // 'all' or the leading segment of event.location (e.g. "Back Bay")
+  timeOfDay: string;  // 'all' | 'morning' | 'afternoon' | 'evening'
 }
 
 export interface LaunchConfig {
