@@ -51,7 +51,7 @@ const CITIES: Record<string, CityTheme> = {
     bg: '#0c0f14',
     surface: '#161b22',
     primary: '#dc2626',
-    accent: '#fbbf24',
+    accent: '#3b82f6',
     wordmark: 'Wandr Boston',
     tagline: 'Boston Tech Week, mapped for builders.',
   },

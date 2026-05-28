@@ -15,7 +15,7 @@ export const bostonConfig: CityConfig = {
     '--color-text-muted': '#8b95a6',
     '--color-text-faint': '#525d72',
     '--color-primary': '#dc2626',
-    '--color-accent': '#fbbf24',
+    '--color-accent': '#3b82f6',
   },
   map: {
     center: [42.3551, -71.0656],
