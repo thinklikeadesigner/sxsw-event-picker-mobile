@@ -23,7 +23,7 @@ const state: AppState = {
   conflicts: [],
   currentView: 'discover',
   currentDay: (() => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; })(),
-  filters: { cost: 'all', type: 'all', search: '', location: 'all', timeOfDay: 'all' },
+  filters: { cost: 'all', type: 'all', search: '', location: 'all', timeOfDay: 'all', track: 'all' },
   resolveIndex: 0,
 };
 
@@ -103,12 +103,13 @@ export function clearFilters() {
   state.filters.location = 'all';
   state.filters.timeOfDay = 'all';
   state.filters.cost = 'all';
+  state.filters.track = 'all';
   notify();
 }
 
 export function hasActiveFilters(): boolean {
   const f = state.filters;
-  return f.type !== 'all' || f.timeOfDay !== 'all' || f.location !== 'all' || (f.search || '').trim() !== '';
+  return f.type !== 'all' || f.timeOfDay !== 'all' || f.location !== 'all' || f.track !== 'all' || (f.search || '').trim() !== '';
 }
 
 export function resolveConflict(conflictId: string, winnerIndex: number) {

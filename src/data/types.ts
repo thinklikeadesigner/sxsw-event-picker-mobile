@@ -43,6 +43,7 @@ export interface Filters {
   search: string;
   location: string;   // 'all' or the leading segment of event.location (e.g. "Back Bay")
   timeOfDay: string;  // 'all' | 'morning' | 'afternoon' | 'evening'
+  track: string;      // 'all' | 'ai' | 'hackathons' | 'bio' | 'students' | 'engineers' | 'founders' | 'deeptech' | 'investors'
 }
 
 export interface LaunchConfig {

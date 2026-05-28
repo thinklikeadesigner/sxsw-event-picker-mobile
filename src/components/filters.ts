@@ -63,6 +63,43 @@ export function locationKey(loc: string): string {
   return (loc || '').split(',')[0].trim();
 }
 
+// ---- Curated tracks (keyword-based classifier) ----
+//
+// Maps a track key to a list of regex patterns. An event matches a track if any
+// pattern hits inside summary + description + type. Patterns are intentionally
+// loose — overlap is fine, the user just wants a quick "show me the AI events"
+// scan, not perfect classification.
+const TRACK_PATTERNS: Record<string, RegExp[]> = {
+  ai: [/\bAI\b/i, /\bML\b/, /\bLLM\b/i, /\bGPT\b/i, /\bagent[s]?\b/i, /machine learning/i, /generative/i, /\binfra(structure)?\b/i, /\bMLOps\b/i],
+  hackathons: [/hackathon/i, /\bhack(-|\s)?night/i, /build night/i, /build sprint/i],
+  bio: [/biotech/i, /bio\+?\s?health/i, /\bbio\b/i, /\bhealth(care|tech)?\b/i, /pharma/i, /\bmedical\b/i, /medtech/i, /clinical/i, /life sciences?/i, /longevity/i, /drug discovery/i, /diagnos/i],
+  students: [/\bstudent[s]?\b/i, /undergrad/i, /\bcollege\b/i, /university/i, /early[\s-]career/i, /MIT Sloan/i, /Northeastern/i, /Babson/i],
+  engineers: [/\bengineer[s]?\b/i, /developer/i, /\bdev\b/i, /\bcoding\b/i, /\bbuilder[s]?\b/i, /\bCTO\b/i, /technical/i, /platform/i],
+  founders: [/\bfounder[s]?\b/i, /\bCEO\b/i, /\bstartup[s]?\b/i, /\bpitch\b/i, /\bseed[\s-]stage\b/i],
+  deeptech: [/deep[\s-]tech/i, /\brobot(ic[s]?)?\b/i, /physical\s+AI/i, /quantum/i, /semiconductor/i, /\bmaterials\b/i, /\bhardware\b/i, /\bfrontier\b/i, /aerospace/i, /defense/i, /climate/i, /\benergy\b/i],
+  investors: [/\bVC\b/, /venture (capital|debt|partner)/i, /investor[s]?\b/i, /\bLP[s]?\b/, /\bangel[s]?\b/i, /seed\s+(?:round|funding|investor)/i, /series\s+[A-C]\b/i, /family office/i, /\bfund\b/i, /\bpartner[s]?\b/i],
+};
+
+export function matchesTrack(event: { summary: string; description: string; type: string }, key: string): boolean {
+  if (key === 'all') return true;
+  const patterns = TRACK_PATTERNS[key];
+  if (!patterns) return true;
+  const text = `${event.summary} ${event.description} ${event.type}`;
+  return patterns.some((p) => p.test(text));
+}
+
+const TRACKS = [
+  { key: 'all', label: 'All' },
+  { key: 'ai', label: 'AI + Infra' },
+  { key: 'hackathons', label: 'Hackathons' },
+  { key: 'bio', label: 'Bio + Health' },
+  { key: 'founders', label: 'Founders' },
+  { key: 'engineers', label: 'Engineers' },
+  { key: 'investors', label: 'Investors' },
+  { key: 'deeptech', label: 'Deep Tech' },
+  { key: 'students', label: 'Students' },
+];
+
 function escapeAttr(s: string): string {
   return s.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
 }
@@ -152,6 +189,25 @@ export function renderFilters() {
     `).join('')}
   `;
 
+  // --- Track (curated category) row ---
+  const trackFilters = document.getElementById('track-filters')!;
+  const trackCounts: Record<string, number> = {};
+  for (const e of events) {
+    for (const t of TRACKS) {
+      if (t.key !== 'all' && matchesTrack(e, t.key)) {
+        trackCounts[t.key] = (trackCounts[t.key] || 0) + 1;
+      }
+    }
+  }
+  trackFilters.innerHTML = `
+    <span class="filter-label">TRACK:</span>
+    ${TRACKS.map(t => `
+      <button class="filter-btn ${filters.track === t.key ? 'active' : ''}" data-track="${t.key}">
+        ${t.label}${t.key !== 'all' && trackCounts[t.key] ? ` <span class="filter-count">${trackCounts[t.key]}</span>` : ''}
+      </button>
+    `).join('')}
+  `;
+
   // --- Location row ---
   // Derived from the leading segment of each event's location string.
   // Counts are computed against the active set; "all" is always present.
@@ -191,6 +247,10 @@ export function renderFilters() {
 
   timeFilters.querySelectorAll('[data-time]').forEach(btn => {
     btn.addEventListener('click', () => setFilter('timeOfDay', btn.getAttribute('data-time')!));
+  });
+
+  trackFilters.querySelectorAll('[data-track]').forEach(btn => {
+    btn.addEventListener('click', () => setFilter('track', btn.getAttribute('data-track')!));
   });
 
   locationFilters.querySelectorAll('[data-location]').forEach(btn => {

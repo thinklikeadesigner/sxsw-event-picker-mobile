@@ -1,7 +1,7 @@
 import L from 'leaflet';
 import { CityEvent } from '../data/types';
 import { getState, toggleStar, getActiveEvents } from '../state';
-import { locationKey } from '../components/filters';
+import { locationKey, matchesTrack } from '../components/filters';
 import { dayKey, fmt } from '../utils/time';
 import { isEventLocked, isMusicEvent } from '../paywall';
 
@@ -142,6 +142,7 @@ export async function renderMap(container: HTMLElement) {
       )) return false;
     }
     if (filters.location !== 'all' && locationKey(e.location) !== filters.location) return false;
+    if (!matchesTrack(e, filters.track)) return false;
     if (filters.timeOfDay !== 'all') {
       const h = e.start.getHours();
       if (filters.timeOfDay === 'morning' && h >= 12) return false;

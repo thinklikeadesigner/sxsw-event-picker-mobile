@@ -1,6 +1,6 @@
 import { getState, toggleStar, getActiveEvents } from '../state';
 import { renderEventCard } from '../components/event-card';
-import { locationKey } from '../components/filters';
+import { locationKey, matchesTrack } from '../components/filters';
 import { dayKey, dayLabel, fmt } from '../utils/time';
 import { PAYWALL_ENABLED, isMusicUnlocked, countLockedMusic, countTotalMusic, STRIPE_PAYMENT_LINK } from '../paywall';
 
@@ -68,6 +68,7 @@ export function renderDiscover(container: HTMLElement) {
     && matchesSearch(e, filters.search)
     && matchesTimeOfDay(e, filters.timeOfDay)
     && (filters.location === 'all' || locationKey(e.location) === filters.location)
+    && matchesTrack(e, filters.track)
   );
 
   if (dayEvents.length === 0) {
