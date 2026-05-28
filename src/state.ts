@@ -97,6 +97,20 @@ export function setFilter(key: keyof Filters, value: string) {
   notify();
 }
 
+export function clearFilters() {
+  state.filters.type = 'all';
+  state.filters.search = '';
+  state.filters.location = 'all';
+  state.filters.timeOfDay = 'all';
+  state.filters.cost = 'all';
+  notify();
+}
+
+export function hasActiveFilters(): boolean {
+  const f = state.filters;
+  return f.type !== 'all' || f.timeOfDay !== 'all' || f.location !== 'all' || (f.search || '').trim() !== '';
+}
+
 export function resolveConflict(conflictId: string, winnerIndex: number) {
   const conflict = state.conflicts.find(c => c.id === conflictId);
   if (!conflict) return;

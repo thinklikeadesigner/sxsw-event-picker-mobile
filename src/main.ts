@@ -1,6 +1,6 @@
 import './style.css';
 import { inject } from '@vercel/analytics';
-import { initCity, onStateChange, getState, setView, setLaunch, resetCity } from './state';
+import { initCity, onStateChange, getState, setView, setLaunch, resetCity, clearFilters, hasActiveFilters } from './state';
 import { renderDiscover } from './views/discover';
 import { renderResolve } from './views/resolve';
 import { renderSchedule } from './views/schedule';
@@ -12,6 +12,29 @@ import { parsePath, applyTheme, setDocumentMeta, pickSmartEntry, navigate } from
 import { renderLanding } from './landing/landing';
 
 inject();
+
+function updateActiveFilterDot() {
+  const dot = document.getElementById('filter-active-dot');
+  if (!dot) return;
+  dot.hidden = !hasActiveFilters();
+}
+
+function closeFilterSheet() {
+  document.body.classList.remove('sheet-open', 'search-open');
+}
+function openFilterSheet() {
+  document.body.classList.remove('search-open');
+  document.body.classList.add('sheet-open');
+}
+function openSearchSheet() {
+  document.body.classList.remove('sheet-open');
+  document.body.classList.add('search-open');
+  // Focus the search input once the sheet is open
+  setTimeout(() => {
+    const el = document.getElementById('search-input') as HTMLInputElement | null;
+    el?.focus();
+  }, 80);
+}
 
 function updateBanner() {
   const messageEl = document.getElementById('banner-message');
@@ -34,6 +57,7 @@ function render() {
   const appShell = document.getElementById('app-shell');
 
   updateBanner();
+  updateActiveFilterDot();
 
   if (!state.city) {
     if (appShell) appShell.style.display = 'none';
@@ -123,6 +147,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const filterToggle = document.getElementById('filter-toggle');
   if (filterToggle) filterToggle.style.display = 'none';
+
+  // Mobile filter sheet wiring
+  document.getElementById('mobile-filter-btn')?.addEventListener('click', openFilterSheet);
+  document.getElementById('mobile-search-btn')?.addEventListener('click', openSearchSheet);
+  document.getElementById('filter-sheet-close')?.addEventListener('click', closeFilterSheet);
+  document.getElementById('sheet-backdrop')?.addEventListener('click', closeFilterSheet);
+  document.getElementById('clear-all-filters')?.addEventListener('click', () => {
+    clearFilters();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeFilterSheet();
+  });
 
   function updateStickyOffset() {
     const banner = document.getElementById('wrap-banner');

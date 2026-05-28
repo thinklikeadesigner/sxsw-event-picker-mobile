@@ -50,15 +50,33 @@
         <button class="tab" data-view="schedule">Schedule</button>
       </nav>
       <div class="controls" id="controls">
-        <button class="filter-toggle" id="filter-toggle">Filters ▾</button>
+        <!-- Day picker is always visible (above the sheet) so navigation
+             works without opening the modal. -->
+        <div class="filter-row day-filter-row" id="day-filters"></div>
+        <!-- Mobile-only icon bar (hidden on desktop via CSS). Tapping the
+             filter icon opens the filter-rows as a bottom sheet; tapping
+             search opens the same sheet but only the search input. -->
+        <div class="mobile-filter-bar">
+          <button class="icon-btn" id="mobile-search-btn" aria-label="Search events">🔍</button>
+          <button class="icon-btn" id="mobile-filter-btn" aria-label="Open filters">
+            <span class="icon-glyph">☰</span>
+            <span class="filter-active-dot" id="filter-active-dot" hidden></span>
+          </button>
+        </div>
         <div class="filter-rows" id="filter-rows">
-          <div class="filter-row" id="day-filters"></div>
+          <div class="sheet-header" id="filter-sheet-header">
+            <span class="sheet-grabber" aria-hidden="true"></span>
+            <span class="sheet-title">Filters</span>
+            <button class="sheet-clear" id="clear-all-filters">Clear all</button>
+            <button class="sheet-close" id="filter-sheet-close" aria-label="Close">✕</button>
+          </div>
           <div class="filter-row search-row" id="search-filter"></div>
           <div class="filter-row" id="cost-filters"></div>
           <div class="filter-row" id="time-filters"></div>
           <div class="filter-row" id="location-filters"></div>
         </div>
       </div>
+      <div class="sheet-backdrop" id="sheet-backdrop"></div>
     </div>
   </div>
   <main id="content"></main>
