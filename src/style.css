@@ -288,7 +288,7 @@ main { padding: 16px 24px; }
 }
 .event-card:hover { border-color: #444; background: var(--color-surface); }
 .event-card.starred { border-color: var(--color-primary); background: color-mix(in srgb, var(--color-primary) 15%, var(--color-bg)); }
-.event-card.starred .event-name { color: var(--color-primary); }
+.event-card.starred .event-name { color: var(--color-text); }
 .event-card.has-conflict { border-left: 3px solid #f97316; }
 .event-card.starred.has-conflict { border-color: var(--color-primary); border-left: 3px solid #f97316; }
 
