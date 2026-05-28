@@ -123,7 +123,7 @@ export async function renderMap(container: HTMLElement) {
   const oneHourFromNow = new Date(now.getTime() + 60 * 60 * 1000);
 
   const dayEvents = events.filter(e => {
-    if (dayKey(e.start) !== currentDay) return false;
+    if (currentDay !== 'all' && dayKey(e.start) !== currentDay) return false;
     // Past events stay on the map — only the "Happening Soon" toggle below
     // applies a time-based filter, and only when the user explicitly enables it.
     const cost = (e.cost || '').toLowerCase();

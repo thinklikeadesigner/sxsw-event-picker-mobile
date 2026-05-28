@@ -61,8 +61,9 @@ export function renderDiscover(container: HTMLElement) {
 
   // Filter events for current day + type + search + location + time-of-day.
   // Past events stay visible — users browse the full day, not just upcoming.
+  // currentDay === 'all' bypasses the day check (shows every day's events).
   const dayEvents = events.filter(e =>
-    dayKey(e.start) === currentDay
+    (currentDay === 'all' || dayKey(e.start) === currentDay)
     && matchesTypeFilter(e, filters.type)
     && matchesSearch(e, filters.search)
     && matchesTimeOfDay(e, filters.timeOfDay)
@@ -83,33 +84,30 @@ export function renderDiscover(container: HTMLElement) {
     }
   }
 
-  // Group by start time
-  const byTime: Record<string, typeof dayEvents> = {};
+  const timeToMin = (t: string): number => {
+    const m = t.match(/(\d+):(\d+) (AM|PM)/);
+    if (!m) return 0;
+    let h = +m[1];
+    if (m[3] === 'PM' && h !== 12) h += 12;
+    if (m[3] === 'AM' && h === 12) h = 0;
+    return h * 60 + (+m[2]);
+  };
+
+  // Group events by day. Single-day mode = one group; 'all' mode = many.
+  const byDay: Record<string, typeof dayEvents> = {};
   for (const e of dayEvents) {
-    const key = fmt(e.start);
-    if (!byTime[key]) byTime[key] = [];
-    byTime[key].push(e);
+    const k = dayKey(e.start);
+    if (!byDay[k]) byDay[k] = [];
+    byDay[k].push(e);
   }
+  const sortedDayKeys = Object.keys(byDay).sort();
 
-  const sortedTimes = Object.keys(byTime).sort((a, b) => {
-    const toMin = (t: string) => {
-      const m = t.match(/(\d+):(\d+) (AM|PM)/);
-      if (!m) return 0;
-      let h = +m[1];
-      if (m[3] === 'PM' && h !== 12) h += 12;
-      if (m[3] === 'AM' && h === 12) h = 0;
-      return h * 60 + (+m[2]);
-    };
-    return toMin(a) - toMin(b);
-  });
-
-  const d = dayEvents[0].start;
-  const starredInDay = dayEvents.filter(e => starred.has(e.index)).length;
-  const conflictsInDay = dayEvents.filter(e => conflictCounts[e.index]).length;
-
-  // Paywall banner
+  // Paywall banner (computed once, shown at top regardless of day mode)
   const musicUnlocked = isMusicUnlocked();
-  const lockedCount = countLockedMusic(events, dayKey, currentDay);
+  // For paywall counts, fall back to the first visible day when in 'all' mode
+  // so the helper functions (which expect a single day key) don't barf.
+  const paywallDayKey = currentDay === 'all' ? sortedDayKeys[0] : currentDay;
+  const lockedCount = countLockedMusic(events, dayKey, paywallDayKey);
   const totalMusic = countTotalMusic(events);
   let paywallHtml = '';
   if (PAYWALL_ENABLED && !musicUnlocked && lockedCount > 0) {
@@ -128,22 +126,40 @@ export function renderDiscover(container: HTMLElement) {
       </div>`;
   }
 
-  let html = paywallHtml + `
-    <div class="day-header">
-      ${dayLabel(d)}
-      <span class="day-badge">${dayEvents.length} events</span>
-      <span class="day-badge starred-badge">${starredInDay} starred</span>
-      ${conflictsInDay > 0 ? `<span class="day-badge conflict-badge">\u26A1 ${conflictsInDay} conflicts</span>` : ''}
-    </div>`;
+  let html = paywallHtml;
 
-  for (const time of sortedTimes) {
+  for (const dKey of sortedDayKeys) {
+    const dayEvts = byDay[dKey];
+    // Group this day's events by start time
+    const byTime: Record<string, typeof dayEvents> = {};
+    for (const e of dayEvts) {
+      const key = fmt(e.start);
+      if (!byTime[key]) byTime[key] = [];
+      byTime[key].push(e);
+    }
+    const sortedTimes = Object.keys(byTime).sort((a, b) => timeToMin(a) - timeToMin(b));
+
+    const d = dayEvts[0].start;
+    const starredInDay = dayEvts.filter(e => starred.has(e.index)).length;
+    const conflictsInDay = dayEvts.filter(e => conflictCounts[e.index]).length;
+
     html += `
-      <div class="time-slot">
-        <div class="time-label">${time}</div>
-        <div class="events-row">
-          ${byTime[time].map(e => renderEventCard(e, starred.has(e.index), conflictCounts[e.index] || 0)).join('')}
-        </div>
+      <div class="day-header">
+        ${dayLabel(d)}
+        <span class="day-badge">${dayEvts.length} events</span>
+        <span class="day-badge starred-badge">${starredInDay} starred</span>
+        ${conflictsInDay > 0 ? `<span class="day-badge conflict-badge">\u26A1 ${conflictsInDay} conflicts</span>` : ''}
       </div>`;
+
+    for (const time of sortedTimes) {
+      html += `
+        <div class="time-slot">
+          <div class="time-label">${time}</div>
+          <div class="events-row">
+            ${byTime[time].map(e => renderEventCard(e, starred.has(e.index), conflictCounts[e.index] || 0)).join('')}
+          </div>
+        </div>`;
+    }
   }
 
   container.innerHTML = html;

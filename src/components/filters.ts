@@ -15,14 +15,15 @@ function getPageDays(offset: number, events: { start: Date; end: Date }[]): { ke
   }
 
   const days: { key: string; label: string }[] = [];
-  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   for (let i = 0; i < 7; i++) {
     const d = new Date(start);
     d.setDate(start.getDate() + i);
     const key = dayKey(d);
     if (eventDays.has(key)) {
-      days.push({ key, label: `${dayNames[d.getDay()]} ${monthNames[d.getMonth()]} ${d.getDate()}` });
+      // Short label like "Wed" — date/month would just add visual noise on the
+      // pill, the launch context already tells you which week we're in.
+      days.push({ key, label: dayNames[d.getDay()] });
     }
   }
   return days;
@@ -88,10 +89,10 @@ export function renderFilters() {
       <button class="week-nav-btn" id="next-week">→</button>
     </div>
     <div class="week-days">
+      <button class="filter-btn day-btn ${currentDay === 'all' ? 'active' : ''}" data-day="all">All</button>
       ${weekDays.map(d => `
         <button class="filter-btn day-btn ${currentDay === d.key ? 'active' : ''}" data-day="${d.key}">
           ${d.label}
-          <span class="filter-count">${dayCounts[d.key] || 0}</span>
         </button>
       `).join('') || '<span class="empty-week">No events this week</span>'}
     </div>
