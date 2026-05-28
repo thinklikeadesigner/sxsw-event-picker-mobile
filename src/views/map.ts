@@ -79,8 +79,11 @@ function createMap(container: HTMLElement): L.Map {
 
 export async function renderMap(container: HTMLElement) {
   await ensureCoords();
-  const { starred, currentDay, filters } = getState();
+  const { starred, currentDay, filters, city } = getState();
   const events = getActiveEvents();
+  // City-themed marker palette. Falls back to Austin's greens if no city yet.
+  const themePrimary = city?.theme['--color-primary'] ?? '#4ade80';
+  const themeAccent = city?.theme['--color-accent'] ?? '#22d3ee';
 
   if (!map || !container.querySelector('#map-container')) {
     if (map) {
@@ -137,8 +140,9 @@ export async function renderMap(container: HTMLElement) {
 
     const marker = L.circleMarker([coords[0], coords[1]], {
       radius: 8,
-      fillColor: locked ? '#a78bfa' : isStarred ? '#4ade80' : isMusic ? '#c4b5fd' : '#3b82f6',
-      color: locked ? '#4c1d95' : isStarred ? '#166534' : isMusic ? '#6d28d9' : '#1e40af',
+      // Theme palette: starred = primary (loud), default = accent (subdued), music = purple (semantic)
+      fillColor: locked ? '#a78bfa' : isStarred ? themePrimary : isMusic ? '#c4b5fd' : themeAccent,
+      color: locked ? '#4c1d95' : isMusic ? '#6d28d9' : '#0a0a0a',
       weight: 2,
       opacity: locked ? 0.5 : 1,
       fillOpacity: locked ? 0.4 : 0.8,
@@ -205,10 +209,10 @@ export async function renderMap(container: HTMLElement) {
 
   // --- Timeline below map ---
   const timelineDiv = document.getElementById('timeline-container');
-  if (timelineDiv) renderTimeline(timelineDiv, dayEvents, now);
+  if (timelineDiv) renderTimeline(timelineDiv, dayEvents, now, themePrimary);
 }
 
-function renderTimeline(container: HTMLElement, events: CityEvent[], now: Date) {
+function renderTimeline(container: HTMLElement, events: CityEvent[], now: Date, themePrimary: string) {
   if (events.length === 0) {
     container.innerHTML = '';
     return;
@@ -274,7 +278,7 @@ function renderTimeline(container: HTMLElement, events: CityEvent[], now: Date) 
     const width = ((e.end.getTime() - e.start.getTime()) / totalMs) * 100;
     const top = eventLanes[i] * (rowHeight + 4);
     const isMusic = e.type === 'Music + Live Show';
-    const bg = isMusic ? '#7c3aed' : '#2563eb';
+    const bg = isMusic ? '#7c3aed' : themePrimary;
     const label = e.summary.length > 30 ? e.summary.slice(0, 28) + '...' : e.summary;
     return `<div class="tl-bar" data-index="${e.index}" style="left:${left}%;width:${Math.max(width, 1.5)}%;top:${top}px;background:${bg}" title="${e.summary}\n${fmt(e.start)} \u2013 ${fmt(e.end)}\n${e.location}">${label}</div>`;
   }).join('');
