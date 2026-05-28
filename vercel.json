@@ -1,5 +1,14 @@
 {
   "rewrites": [
+    { "source": "/austin/sxsw", "destination": "/austin/sxsw/index.html" },
+    { "source": "/austin/tech-week", "destination": "/austin/tech-week/index.html" },
+    { "source": "/austin/(.*)", "destination": "/austin/index.html" },
+    { "source": "/austin", "destination": "/austin/index.html" },
+    { "source": "/boston/tech-week", "destination": "/boston/tech-week/index.html" },
+    { "source": "/boston/(.*)", "destination": "/boston/index.html" },
+    { "source": "/boston", "destination": "/boston/index.html" },
+    { "source": "/nyc/(.*)", "destination": "/nyc/index.html" },
+    { "source": "/nyc", "destination": "/nyc/index.html" },
     { "source": "/((?!assets|favicon\\.ico|og-image\\.html|robots\\.txt).*)", "destination": "/index.html" }
   ]
 }
