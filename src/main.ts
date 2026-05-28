@@ -80,12 +80,13 @@ function render() {
   if (state.currentView !== 'map') destroyMap();
 
   document.body.classList.toggle('view-map', state.currentView === 'map');
-  if (state.currentView === 'map') {
-    const stickyTop = document.querySelector('.sticky-top') as HTMLElement;
-    const banner = document.querySelector('.wrap-banner') as HTMLElement;
-    const h = (stickyTop?.offsetHeight || 0) + (banner?.offsetHeight || 0);
-    document.documentElement.style.setProperty('--sticky-top-h', h + 'px');
-  }
+  // Sticky-top height is used by both the map view AND the desktop filter
+  // sidebar (positioned just below the sticky header). Compute on every render.
+  const stickyTop = document.querySelector('.sticky-top') as HTMLElement | null;
+  const banner = document.querySelector('.wrap-banner') as HTMLElement | null;
+  const bannerH = banner && banner.style.display !== 'none' ? banner.offsetHeight : 0;
+  const h = (stickyTop?.offsetHeight || 0) + bannerH;
+  document.documentElement.style.setProperty('--sticky-top-h', h + 'px');
 
   controls.style.display = (state.currentView === 'discover' || state.currentView === 'map') ? '' : 'none';
 
