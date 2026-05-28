@@ -259,7 +259,10 @@ header .subtitle { font-size: 12px; color: var(--color-text-muted); margin-top: 
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  /* Hide scrollbar — scroll still works via touch / wheel / shift+wheel */
+  scrollbar-width: none;
 }
+.week-days::-webkit-scrollbar { display: none; }
 .empty-week {
   font-size: 12px;
   color: var(--color-text-faint);
@@ -1123,7 +1126,8 @@ body.view-map .tl-wrapper { flex: 1; min-height: 0; border-radius: 0 !important;
   }
   .filter-rows.collapsed { display: none; }
   .controls { padding: 0 12px; }
-  .filter-row { gap: 6px; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; padding: 4px 0; }
+  .filter-row { gap: 6px; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; padding: 4px 0; scrollbar-width: none; }
+  .filter-row::-webkit-scrollbar { display: none; }
 
   /* 3b. Horizontal scrollable day picker */
   #day-filters {
