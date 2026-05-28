@@ -13,11 +13,27 @@ import { renderLanding } from './landing/landing';
 
 inject();
 
+function updateBanner() {
+  const messageEl = document.getElementById('banner-message');
+  if (!messageEl) return;
+  const state = getState();
+  if (!state.city) {
+    messageEl.textContent = 'Find this useful?';
+    return;
+  }
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const active = state.city.launches.find(l => l.window && today >= l.window.start && today <= l.window.end);
+  messageEl.textContent = active ? `${active.name} is live.` : 'Find this useful?';
+}
+
 function render() {
   const state = getState();
   const content = document.getElementById('content')!;
   const controls = document.getElementById('controls')!;
   const appShell = document.getElementById('app-shell');
+
+  updateBanner();
 
   if (!state.city) {
     if (appShell) appShell.style.display = 'none';
