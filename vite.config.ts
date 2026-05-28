@@ -53,9 +53,14 @@ function esc(s: string): string {
 
 function rewriteMeta(
   html: string,
-  { title, description, url }: { title: string; description: string; url: string },
+  {
+    title,
+    description,
+    url,
+    image,
+  }: { title: string; description: string; url: string; image: string },
 ): string {
-  return html
+  let updated = html
     .replace(/<title>[^<]*<\/title>/, `<title>${esc(title)}</title>`)
     .replace(
       /<meta name="description" content="[^"]*"/,
@@ -81,6 +86,22 @@ function rewriteMeta(
       /<meta name="twitter:description" content="[^"]*"/,
       `<meta name="twitter:description" content="${esc(description)}"`,
     )
+
+  // Inject og:image + twitter:image + twitter:card upgrade right before </head>.
+  // index.html doesn't currently set these, so we add them rather than replace.
+  const imageTags =
+    `  <meta property="og:image" content="${esc(image)}">\n` +
+    `  <meta property="og:image:width" content="1200">\n` +
+    `  <meta property="og:image:height" content="630">\n` +
+    `  <meta name="twitter:image" content="${esc(image)}">\n`
+  // Bump twitter:card to summary_large_image so the generated 1200x630 OG image
+  // is shown as a wide banner instead of the default small square thumbnail.
+  updated = updated.replace(
+    /<meta name="twitter:card" content="[^"]*"/,
+    `<meta name="twitter:card" content="summary_large_image"`,
+  )
+  updated = updated.replace('</head>', `${imageTags}</head>`)
+  return updated
 }
 
 function generatePerRouteHtml(): Plugin {
@@ -107,6 +128,7 @@ function generatePerRouteHtml(): Plugin {
           title: city.title,
           description: city.description,
           url: `${SITE_URL}/${citySlug}`,
+          image: `${SITE_URL}/api/og?city=${citySlug}`,
         })
 
         for (const [launchSlug, launch] of Object.entries(city.launches)) {
@@ -114,6 +136,7 @@ function generatePerRouteHtml(): Plugin {
             title: `${launch.name} — ${city.name} | Wandr`,
             description: launch.description,
             url: `${SITE_URL}/${citySlug}/${launchSlug}`,
+            image: `${SITE_URL}/api/og?city=${citySlug}&launch=${launchSlug}`,
           })
         }
       }

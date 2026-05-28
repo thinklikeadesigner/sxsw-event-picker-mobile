@@ -9,6 +9,6 @@
     { "source": "/boston", "destination": "/boston/index.html" },
     { "source": "/nyc/(.*)", "destination": "/nyc/index.html" },
     { "source": "/nyc", "destination": "/nyc/index.html" },
-    { "source": "/((?!assets|favicon\\.ico|og-image\\.html|robots\\.txt).*)", "destination": "/index.html" }
+    { "source": "/((?!api|assets|favicon\\.ico|og-image\\.html|robots\\.txt).*)", "destination": "/index.html" }
   ]
 }
