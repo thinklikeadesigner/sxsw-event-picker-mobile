@@ -258,7 +258,7 @@ main { padding: 16px 24px; }
   border-radius: 10px;
   font-weight: 500;
 }
-.starred-badge { background: #052e16; color: var(--color-primary); }
+.starred-badge { background: color-mix(in srgb, var(--color-primary) 15%, var(--color-bg)); color: var(--color-primary); }
 .conflict-badge { background: #7c2d12; color: #fb923c; }
 
 /* Time slots and event cards */
@@ -287,7 +287,7 @@ main { padding: 16px 24px; }
   user-select: none;
 }
 .event-card:hover { border-color: #444; background: var(--color-surface); }
-.event-card.starred { border-color: var(--color-primary); background: #052e16; }
+.event-card.starred { border-color: var(--color-primary); background: color-mix(in srgb, var(--color-primary) 15%, var(--color-bg)); }
 .event-card.starred .event-name { color: var(--color-primary); }
 .event-card.has-conflict { border-left: 3px solid #f97316; }
 .event-card.starred.has-conflict { border-color: var(--color-primary); border-left: 3px solid #f97316; }
@@ -609,7 +609,7 @@ main { padding: 16px 24px; }
 }
 .resolve-pick {
   padding: 12px 24px;
-  background: #052e16;
+  background: color-mix(in srgb, var(--color-primary) 15%, var(--color-bg));
   border: 2px solid var(--color-primary);
   color: var(--color-primary);
   border-radius: 10px;
