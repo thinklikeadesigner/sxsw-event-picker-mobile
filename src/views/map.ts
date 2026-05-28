@@ -20,6 +20,16 @@ let happeningSoon = false;
 let venueCoords: Record<string, [number, number]> = {};
 let venueCoordsCityKey: string | null = null;
 
+// Lightweight toast for map view errors (location, etc.). Reuses the .toast
+// class already defined in style.css for the schedule-export confirmation.
+function showMapToast(msg: string) {
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 4000);
+}
+
 async function ensureCoords(): Promise<Record<string, [number, number]>> {
   const city = getState().city;
   if (!city) return {};
@@ -177,31 +187,51 @@ export async function renderMap(container: HTMLElement) {
     toggleStar(index);
   };
 
-  // Show user's current location
-  function updateUserLocation(center?: boolean) {
-    if (!map || !navigator.geolocation) return;
-    navigator.geolocation.getCurrentPosition((pos) => {
-      if (!map) return;
-      const { latitude, longitude } = pos.coords;
-      if (userMarker) map.removeLayer(userMarker);
-      userMarker = L.circleMarker([latitude, longitude], {
-        radius: 10,
-        fillColor: '#e839f6',
-        color: '#fff',
-        weight: 3,
-        opacity: 1,
-        fillOpacity: 0.9,
-      }).addTo(map);
-      userMarker.bindPopup('<strong style="font-family:-apple-system,sans-serif">You are here</strong>');
-      if (center) map.setView([latitude, longitude], 16);
-    }, () => {});
+  // Show user's current location. `feedback` triggers a visible toast on failure
+  // (only when the button is clicked — silent on the initial passive call).
+  function updateUserLocation(center?: boolean, feedback?: boolean) {
+    if (!map) return;
+    if (!navigator.geolocation) {
+      if (feedback) showMapToast("Your browser doesn't support location.");
+      return;
+    }
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        if (!map) return;
+        const { latitude, longitude } = pos.coords;
+        if (userMarker) map.removeLayer(userMarker);
+        userMarker = L.circleMarker([latitude, longitude], {
+          radius: 10,
+          fillColor: '#e839f6',
+          color: '#fff',
+          weight: 3,
+          opacity: 1,
+          fillOpacity: 0.9,
+        }).addTo(map);
+        userMarker.bindPopup('<strong style="font-family:-apple-system,sans-serif">You are here</strong>');
+        if (center) map.setView([latitude, longitude], 16);
+      },
+      (err) => {
+        if (!feedback) return; // stay silent on the initial passive call
+        if (err.code === err.PERMISSION_DENIED) {
+          showMapToast('Location is blocked. Enable it in your browser settings to see yourself on the map.');
+        } else if (err.code === err.POSITION_UNAVAILABLE) {
+          showMapToast('Location unavailable right now. Try again in a moment.');
+        } else if (err.code === err.TIMEOUT) {
+          showMapToast('Location took too long. Try again.');
+        } else {
+          showMapToast('Could not get your location.');
+        }
+      },
+      { enableHighAccuracy: true, timeout: 8000, maximumAge: 30000 },
+    );
   }
   updateUserLocation();
 
   // Bind location button
   const locBtnEl = document.getElementById('map-loc-btn');
   if (locBtnEl) {
-    locBtnEl.onclick = () => updateUserLocation(true);
+    locBtnEl.onclick = () => updateUserLocation(true, true);
   }
 
   // Invalidate size after render (Leaflet needs this when container changes)
