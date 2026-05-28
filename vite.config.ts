@@ -128,7 +128,7 @@ function generatePerRouteHtml(): Plugin {
           title: city.title,
           description: city.description,
           url: `${SITE_URL}/${citySlug}`,
-          image: `${SITE_URL}/api/og?city=${citySlug}`,
+          image: `${SITE_URL}/og/${citySlug}.png`,
         })
 
         for (const [launchSlug, launch] of Object.entries(city.launches)) {
@@ -136,7 +136,7 @@ function generatePerRouteHtml(): Plugin {
             title: `${launch.name} — ${city.name} | Wandr`,
             description: launch.description,
             url: `${SITE_URL}/${citySlug}/${launchSlug}`,
-            image: `${SITE_URL}/api/og?city=${citySlug}&launch=${launchSlug}`,
+            image: `${SITE_URL}/og/${citySlug}-${launchSlug}.png`,
           })
         }
       }
