@@ -308,8 +308,10 @@ main { padding: 16px 24px; }
   font-weight: 500;
 }
 .pill-time { background: #1e293b; color: #7dd3fc; }
-.pill-cost { background: #1a1a2e; color: #a78bfa; }
-.pill-type { background: #1a2e1a; color: #86efac; }
+/* cost + type pills use the city surface tone so they integrate per theme;
+   music + conflict pills keep their semantic colors (purple / orange) */
+.pill-cost { background: var(--color-surface); color: var(--color-text-muted); border: 1px solid var(--color-border); }
+.pill-type { background: var(--color-surface); color: var(--color-text-muted); border: 1px solid var(--color-border); }
 .pill-conflict { background: #431407; color: #fb923c; }
 .event-location {
   display: block;
