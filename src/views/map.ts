@@ -163,6 +163,7 @@ export async function renderMap(container: HTMLElement) {
       </div>`;
 
     marker.bindPopup(popupContent);
+    (marker as any).__eventIndex = event.index;
     markersLayer!.addLayer(marker);
   }
 
@@ -303,8 +304,12 @@ function renderTimeline(container: HTMLElement, events: CityEvent[], now: Date) 
       // On desktop, try to pan map to the venue first
       if (!isMobile && map && markersLayer && coords) {
         map.setView([coords[0], coords[1]], 16);
+        // Open the popup for the SPECIFIC event clicked, not whatever marker happens
+        // to share coords. Boston uses neighborhood centroids so 10+ events stack at
+        // the same latlng — without this guard, the last marker added at those coords
+        // wins, which shows the wrong event.
         markersLayer.eachLayer((layer: any) => {
-          if (layer.getLatLng && layer.getLatLng().lat === coords[0] && layer.getLatLng().lng === coords[1]) {
+          if (layer.__eventIndex === event.index) {
             layer.openPopup();
           }
         });
