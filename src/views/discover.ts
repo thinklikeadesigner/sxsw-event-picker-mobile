@@ -38,10 +38,11 @@ export function renderDiscover(container: HTMLElement) {
     return;
   }
 
-  // Filter events for current day, cost, and not ended
-  const now = new Date();
+  // Filter events for current day + type filter. Past events stay visible —
+  // for multi-day curated launches users want to browse the full schedule
+  // (including sessions that already happened earlier today).
   const dayEvents = events.filter(e =>
-    dayKey(e.start) === currentDay && matchesTypeFilter(e, filters.type) && e.end > now
+    dayKey(e.start) === currentDay && matchesTypeFilter(e, filters.type)
   );
 
   if (dayEvents.length === 0) {

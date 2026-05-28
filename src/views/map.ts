@@ -110,7 +110,8 @@ export async function renderMap(container: HTMLElement) {
 
   const dayEvents = events.filter(e => {
     if (dayKey(e.start) !== currentDay) return false;
-    if (e.end <= now) return false;
+    // Past events stay on the map — only the "Happening Soon" toggle below
+    // applies a time-based filter, and only when the user explicitly enables it.
     const cost = (e.cost || '').toLowerCase();
     if (filters.cost === 'free' && cost !== 'free') return false;
     if (filters.cost === 'register' && cost !== 'register') return false;

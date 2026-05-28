@@ -1,4 +1,4 @@
-import { getState, setDay, setFilter, starAll, clearStars } from '../state';
+import { getState, setDay, setFilter, starAll, clearStars, getActiveEvents } from '../state';
 import { dayKey } from '../utils/time';
 
 let weekOffset = 0;
@@ -11,7 +11,7 @@ function getPageDays(offset: number, events: { start: Date; end: Date }[]): { ke
 
   const eventDays = new Set<string>();
   for (const e of events) {
-    if (e.end > now) eventDays.add(dayKey(e.start));
+    eventDays.add(dayKey(e.start));
   }
 
   const days: { key: string; label: string }[] = [];
@@ -50,14 +50,12 @@ const TYPES = [
 ];
 
 export function renderFilters() {
-  const { currentDay, filters, events } = getState();
+  const { currentDay, filters } = getState();
+  const events = getActiveEvents();
 
   const dayFilters = document.getElementById('day-filters')!;
-  // Count events per day (only events that haven't ended)
-  const now = new Date();
   const dayCounts: Record<string, number> = {};
   for (const e of events) {
-    if (e.end <= now) continue;
     const k = dayKey(e.start);
     dayCounts[k] = (dayCounts[k] || 0) + 1;
   }
@@ -115,14 +113,14 @@ export function renderFilters() {
 
   // Bind star/clear day
   document.getElementById('star-day')?.addEventListener('click', () => {
-    const { events, currentDay } = getState();
-    const dayIndices = events.filter(e => dayKey(e.start) === currentDay).map(e => e.index);
+    const { currentDay } = getState();
+    const dayIndices = getActiveEvents().filter(e => dayKey(e.start) === currentDay).map(e => e.index);
     starAll(dayIndices);
   });
 
   document.getElementById('clear-day')?.addEventListener('click', () => {
-    const { events, currentDay } = getState();
-    const dayIndices = events.filter(e => dayKey(e.start) === currentDay).map(e => e.index);
+    const { currentDay } = getState();
+    const dayIndices = getActiveEvents().filter(e => dayKey(e.start) === currentDay).map(e => e.index);
     clearStars(dayIndices);
   });
 }
