@@ -57,9 +57,16 @@
              filter icon opens the filter-rows as a bottom sheet; tapping
              search opens the same sheet but only the search input. -->
         <div class="mobile-filter-bar">
-          <button class="icon-btn" id="mobile-search-btn" aria-label="Search events">🔍</button>
+          <button class="icon-btn" id="mobile-search-btn" aria-label="Search events">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <line x1="20" y1="20" x2="16.5" y2="16.5"></line>
+            </svg>
+          </button>
           <button class="icon-btn" id="mobile-filter-btn" aria-label="Open filters">
-            <span class="icon-glyph">☰</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+            </svg>
             <span class="filter-active-dot" id="filter-active-dot" hidden></span>
           </button>
         </div>

@@ -110,7 +110,10 @@ export function renderFilters() {
   if (!searchInput) {
     searchEl.innerHTML = `
       <label class="search-wrap">
-        <span class="search-icon" aria-hidden="true">🔍</span>
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="20" y1="20" x2="16.5" y2="16.5"></line>
+        </svg>
         <input
           type="search"
           id="search-input"
